@@ -1,0 +1,187 @@
+.pc-visible,
+.tablet-visible,
+.mobile-hide{
+	display: none;
+}
+.pc-hide,
+.tablet-hide,
+.mobile-visible{
+	display: block;
+}
+.pc-hide-dt,
+.tablet-hide-dt,
+.mobile-visible-dt{
+	display: table;
+}
+.pc-hide-dtc,
+.tablet-hide-dtc,
+.mobile-visible-dtc{
+	display: table-cell;
+}
+.pc-hide-dib,
+.tablet-hide-dib,
+.mobile-visible-dib{
+	display: inline-block;
+}
+body{
+	font-size: 14px;
+}
+.center-wrap{
+	margin: 0;
+}
+#header{
+	padding: 0;
+}
+#ico-menu{
+	margin: 0;
+}
+#ico-menu.open{
+	position: fixed;
+	right: 0;
+}
+#header .logo{
+	margin: 4px 0;
+}
+.nav-box{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	overflow: auto;
+	width: 260px;
+	background-position: -10px 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.search-form-tablet{
+	padding: 0 0 0 5px;
+}
+.search-form-tablet input[type="text"]{
+	padding: 10px 0 10px 9px;
+	width: 195px;
+	height: 58;
+}
+.search-form-tablet input[type="submit"]{
+	height: 58px;
+}
+.nav-box .socials{
+	padding: 17px 15px 17px 20px;
+}
+.nav-tablet a{
+	padding: 12px 10px 12px 20px;
+}
+/* footer */
+#footer{
+	font-size: 14px;
+	line-height: 25px;
+}
+#footer .column{
+	float: none;
+	margin: 30px 0 0;
+}
+#footer .column:first-child{
+	margin: 0;
+}
+#footer .column.column-2,
+#footer .column.column-3{
+	width: 195px;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+#footer .column.column-2{
+	width: 210px;
+}
+#footer .column.column-1{
+	width: 280px;
+	margin: 40px auto 0;
+}
+#footer .column .socials{
+	margin: 0 0 18px;
+}
+.socials-1 li{
+	width: 40px;
+	margin-left: 11px;
+}
+.btn-donate{
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+}
+#footer .menu{
+	font-size: 18px;
+	line-height: 22px;
+}
+#footer .menu li{
+	margin: 14px 0 0;
+}
+#footer .form-logo-row{
+	text-align: center;
+}
+#footer .form-logo-row .logo{
+	margin: 0;
+	float: none;
+}
+#footer .form-subscribe{
+	display: inline-block;
+	width: 280px;
+	margin: 32px 0 0;
+	font-size: 14px;
+}
+#footer .form-subscribe label{
+	margin: 0 0 12px;
+}
+.form-subscribe input[type="email"],
+.form-subscribe input[type="text"]{
+	width: 204px;
+	height: 36px;
+	font-size: 13px;
+}
+#footer .form-subscribe input[type="submit"]{
+	margin: 0;
+	width: 76px;
+	height: 36px;
+}
+/* end footer */
+#content{
+	padding: 10px 14px;
+	line-height: 27px;
+}
+#content ul, #content ol{
+	line-height: 23px;
+	margin-bottom: 20px;
+}
+#content .alignleft,
+#content .alignright,
+#content .aligncenter{
+	float: none;
+	margin: 0 -14px 14px !important;
+}
+.content-columns .column.col-4{
+	margin: 0;
+	width: auto;
+	float: none;
+}
+.buttons-holder .btn-green{
+	width: 100%;
+	margin: 0 0 10px;
+}
+.bg-sidebar-area > .holder{
+	padding: 20px 0;
+}
+.aside-widget{
+	-webkit-border-radius:0;
+	border-radius:0;
+}
+.aside-widget.w-col{
+	width: auto;
+	float: none;
+	margin: 0 0 20px;
+}
+.aside-widget .list{
+	margin: 0 3%;
+}
+.aside-widget .form-poll{
+	padding: 20px 9% 35px;
+}
