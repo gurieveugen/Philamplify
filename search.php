@@ -7,7 +7,7 @@
 ?>
 <?php get_header(); ?>
 
-<div id="main">
+<div id="content">
 
 <?php if ( have_posts() ) : ?>
 
@@ -24,4 +24,5 @@
 
 </div>
 
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

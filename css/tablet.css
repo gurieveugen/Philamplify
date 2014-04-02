@@ -1,27 +1,27 @@
-.pc-visible,
-.tablet-hide,
-.mobile-visible{
-	display: none;
+*[class*="pc-visible"],
+*[class*="tablet-hide"],
+*[class*="mobile-visible"]{
+	display: none !important;
 }
 .pc-hide,
 .tablet-visible,
 .mobile-hide{
-	display: block;
+	display: block !important;
 }
 .pc-hide-dt,
 .tablet-visible-dt,
 .mobile-hide-dt{
-	display: table;
+	display: table !important;
 }
 .pc-hide-dtc,
 .tablet-visible-dtc,
 .mobile-hide-dtc{
-	display: table-cell;
+	display: table-cell !important;
 }
 .pc-hide-dib,
 .tablet-visible-dib,
 .mobile-hide-dib{
-	display: inline-block;
+	display: inline-block !important;
 }
 body{
 	font-size: 15px;
@@ -150,11 +150,6 @@ body{
 	display: block;
 }
 
-.center-wrap{
-	width: auto;
-	margin: 0 20px;
-}
-
 
 /* footer */
 #footer .column{
@@ -224,18 +219,20 @@ body{
 .bg-sidebar-area{
 	float: none;
 	width: auto;
+}
+#sidebar{
+	float: none;
+	width: auto;
 	background: url(../images/bg-repeat.png);
 }
-.bg-sidebar-area > .holder{
+#sidebar > .holder{
 	background: url(../images/bg-sidebar-area.jpg) no-repeat 50% 0;
 	padding: 40px 24px 0;
 }
 
-#sidebar{
-	float: none;
-	width: auto;
+.aside-widget{
+	font-size: 14px;
 }
-
 .aside-widget.w-col{
 	float: left;
 	width: 48.5%;
@@ -258,7 +255,7 @@ body{
 .aside-widget .form-poll{
 	padding: 20px 12% 35px;
 }
-.aside-widget .form-poll .text-small{
+.aside-widget .form-poll .text-big{
 	font-size: 14px;
 }
 .aside-widget .form-poll p{
@@ -273,4 +270,79 @@ body{
 .aside-widget .form-poll input[type="submit"]{
 	font-size: 15px;
 	height: 45px;
+}
+.posts-holder{
+	line-height: 27px;
+}
+.posts-holder article .image{
+	margin: 10px 12px 0 0;
+}
+.posts-holder article .holder{
+	padding: 0 0 20px;
+}
+.posts-holder article .post-meta{
+	font-size: 14px;
+	line-height: 40px !important;
+}
+.posts-holder article .post-meta li{
+	padding: 0 16px;
+}
+.page-navigation{
+	text-align: center;
+}
+.btn-green{
+	font-size: 15px;
+	line-height: 41px;
+	height: 43px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+}
+.page-navigation .btn-green{
+	margin: 0 5px;
+}
+.page-navigation .right{
+	float: none;
+}
+.btn-more-holder .btn-green{
+	padding: 0 20px;
+}
+
+.filters-area{
+	margin-left: -18px;
+	margin-right: -18px;
+}
+
+.box-story{
+	width: 352px;
+	margin: 0 23px 23px 0;
+}
+.box-story .text{
+	font-size: 14px;
+	line-height: 24px;
+	padding: 10px 20px 15px;
+	color: #565656;
+}
+.box-story .text-media{
+	font-size: 12px;
+	line-height: 20px;
+	padding: 7px 10px 10px;
+	color: #565656;
+}
+.box-story h1{
+	font-size: 14px;
+	line-height: 20px;
+}
+.box-story .meta{
+	font-size: 13px;
+	line-height: 20px;
+}
+
+.main-stories,
+.main-stories.center-wrap{
+	width: auto;
+}
+.center-wrap{
+	width: auto;
+	margin-left: 20px;
+	margin-right: 20px;
 }

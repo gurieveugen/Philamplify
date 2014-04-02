@@ -58,7 +58,7 @@ class GCOptionsPage{
     /**
      * Get all options
      */
-    public function getAllOptions()
+    public function getAll()
     {
         return get_option('gcoptions');
     }
@@ -71,9 +71,11 @@ class GCOptionsPage{
         register_setting('gc_options_page', 'gcoptions', array($this, 'sanitize'));
         add_settings_section('default_settings', __('Options'), null, __FILE__); 
 
-        add_settings_field('phone', __('Phone'), array($this, 'phone_callback'), __FILE__, 'default_settings');
-        add_settings_field('email', __('Email'), array($this, 'email_callback'), __FILE__, 'default_settings');
-        add_settings_field('afterhours', __('Afterhours'), array($this, 'afterhours_callback'), __FILE__, 'default_settings');        
+        add_settings_field('facebook_url', __('Facebook URL'), array($this, 'facebook_url_callback'), __FILE__, 'default_settings');
+        add_settings_field('twitter_url', __('Twitter URL'), array($this, 'twitter_url_callback'), __FILE__, 'default_settings');
+        add_settings_field('youtube_url', __('YouTube URL'), array($this, 'youtube_url_callback'), __FILE__, 'default_settings');
+        add_settings_field('rss_url', __('RSS URL'), array($this, 'rss_url_callback'), __FILE__, 'default_settings');
+        
     }
 
     /**
@@ -85,9 +87,10 @@ class GCOptionsPage{
     {
         $new_input = array();     
 
-        if(isset($input['phone'])) $new_input['phone']           = strip_tags($input['phone']);
-        if(isset($input['email'])) $new_input['email']           = strip_tags($input['email']);
-        if(isset($input['afterhours'])) $new_input['afterhours'] = strip_tags($input['afterhours']);
+        if(isset($input['facebook_url'])) $new_input['facebook_url']                 = strip_tags($input['facebook_url']);
+        if(isset($input['twitter_url'])) $new_input['twitter_url']                   = strip_tags($input['twitter_url']);
+        if(isset($input['youtube_url'])) $new_input['youtube_url']                   = strip_tags($input['youtube_url']);
+        if(isset($input['rss_url'])) $new_input['rss_url']                   = strip_tags($input['rss_url']);
 
         return $new_input;
     }
@@ -95,26 +98,35 @@ class GCOptionsPage{
     /** 
      * Get the settings option array and print one of its values
      */
-    public function phone_callback()
+    public function facebook_url_callback()
     {
-        printf('<input type="text" class="regular-text" id="phone" name="gcoptions[phone]" value="%s" />', isset($this->options['phone']) ? esc_attr($this->options['phone']) : '');
+        printf('<input type="text" class="regular-text" id="facebook_url" name="gcoptions[facebook_url]" value="%s" />', isset($this->options['facebook_url']) ? esc_attr($this->options['facebook_url']) : '');
     }
 
     /** 
      * Get the settings option array and print one of its values
      */
-    public function email_callback()
+    public function twitter_url_callback()
     {
-        printf('<input type="text" class="regular-text" id="email" name="gcoptions[email]" value="%s" />', isset($this->options['email']) ? esc_attr($this->options['email']) : '');
+        printf('<input type="text" class="regular-text" id="twitter_url" name="gcoptions[twitter_url]" value="%s" />', isset($this->options['twitter_url']) ? esc_attr($this->options['twitter_url']) : '');
     }
 
     /** 
      * Get the settings option array and print one of its values
      */
-    public function afterhours_callback()
+    public function youtube_url_callback()
     {
-        printf('<input type="text" class="regular-text" id="afterhours" name="gcoptions[afterhours]" value="%s" />', isset($this->options['afterhours']) ? esc_attr($this->options['afterhours']) : '');
+        printf('<input type="text" class="regular-text" id="youtube_url" name="gcoptions[youtube_url]" value="%s" />', isset($this->options['youtube_url']) ? esc_attr($this->options['youtube_url']) : '');
     }
+
+    /** 
+     * Get the settings option array and print one of its values
+     */
+    public function rss_url_callback()
+    {
+        printf('<input type="text" class="regular-text" id="rss_url" name="gcoptions[rss_url]" value="%s" />', isset($this->options['rss_url']) ? esc_attr($this->options['rss_url']) : '');
+    }
+    
 }
 // =========================================================
 // LAUNCH

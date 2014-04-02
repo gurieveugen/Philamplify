@@ -7,7 +7,7 @@
 ?>
 <?php get_header(); ?>
 
-<div id="main" role="main">
+<div id="content" role="main">
 	<h1 class="archive-title">
 	<?php global $post;
 		if (is_category()):
@@ -30,4 +30,5 @@
 	<?php include("loop.php"); ?>
 </div>
 
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

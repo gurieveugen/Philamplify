@@ -5,7 +5,17 @@
  */
 ?>
 <?php get_header(); ?>
-	<div id="main" role="main">
+<header class="page-title">
+	<div class="holder">
+		<div class="center-wrap">
+			<h1>Newsroom</h1>
+		</div>
+	</div>
+</header>
+<div id="main" class="center-wrap cf">
+	<div id="content" class="cf">
 		<?php include("loop.php"); ?>
 	</div>
+	<?php get_sidebar('blog'); ?>
+</div>
 <?php get_footer(); ?>

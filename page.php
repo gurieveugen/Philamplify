@@ -7,22 +7,20 @@
 ?>
 <?php get_header(); ?>
 
-<div class="visual">
-	<img src="<?php echo TDU; ?>/images/img-visual.jpg" alt="image description">
-</div>
-<div id="main">
-	<article id="content">
 <?php while ( have_posts() ) : the_post(); ?>
-		<h1 class="entry-title"><?php the_title(); ?></h1>
-		<div class="entry-content cf">
-			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'theme' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+<header class="page-title">
+	<div class="holder">
+		<div class="center-wrap">
+			<h1><?php the_title(); ?></h1>
 		</div>
-<?php endwhile; ?>
-	</article>
-	<div class="footer-area">
-		<h2>Available Equipment</h2>
-		<?php if(is_active_sidebar('availabl-equipment')) dynamic_sidebar('availabl-equipment'); ?>		
 	</div>
+</header>
+<div id="main" class="center-wrap cf">
+	<article id="content" class="cf">
+		<?php the_content(); ?>
+	</article>
+	<?php get_sidebar(); ?>
 </div>
+<?php endwhile; ?>
+
 <?php get_footer(); ?>

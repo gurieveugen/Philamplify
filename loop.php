@@ -11,18 +11,31 @@
 <?php while ( have_posts() ) : the_post(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<h1><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h1>
-		<div class="entry-content">
-			<?php
-				if(strpos($post->post_content, '<!--more-->'))
-					the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'theme' ) );
-				else {
-					the_excerpt();
-				}
-				
-				wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'theme' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) );
-			?>
+		
+		<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+		<div class="holder cf">
+			<a href="<?php the_permalink(); ?>" class="image">
+				<img src="<?php echo TDU; ?>/images/img-2.jpg" class="tablet-hide" alt="">
+				<img src="<?php echo TDU; ?>/images/img-2-tablet.jpg" class="tablet-visible" alt="">
+			</a>
+			<div class="content">
+				<?php the_excerpt(); ?>
+			</div>
 		</div>
+		<div class="post-meta-holder">
+			<ul class="post-meta cf">
+				<li class="date"><?php the_date(); ?></li>
+				<?php 
+				if($categories = get_the_category()){
+					foreach($categories as $category) {
+						echo '<li><a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a></li>';
+					}
+				}
+				?>
+				<li><?php comments_number( 'No Comments', '1 Comment', '% Comments' ); ?></li>
+			</ul>
+		</div>
+		
 	</article><!-- #post -->
 
 <?php endwhile; ?>

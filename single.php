@@ -6,44 +6,30 @@
  */
 ?>
 <?php get_header(); ?>
-
-<article id="main">
-
-<?php while ( have_posts() ) : the_post(); ?>
-
-	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<h1 class="entry-title"><?php the_title(); ?></h1>
-		<div class="entry-meta">
-			Posted on 
-			<a href="<?php the_permalink() ?>" rel="bookmark">
-				<span class="entry-date"><?php the_date() ?></span>
-			</a> 
-			by 
-			<span class="author vcard">
-				<a href="<?php echo get_author_posts_url(get_the_author_meta('ID')) ?>"><?php the_author() ?></a>
-			</span>
-		</div>
-
-		<div class="entry-content">
-			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'theme' ) . '</span>', 'after' => '</div>' ) ); ?>
-		</div>
-
-		<div class="entry-meta">
-			<?php theme_entry_meta(); ?>
-			<?php edit_post_link( 'Edit' , '<span class="edit-link">', '</span>' ); ?>
+<header class="page-title">
+	<div class="holder">
+		<div class="center-wrap">
+			<h1><?php the_title(); ?></h1>
 		</div>
 	</div>
-
-	<div id="nav-below" class="navigation nav-single">
-		<span class="nav-previous"><?php previous_post_link( '%link', __( '<span class="meta-nav">&larr;</span> Previous Entry: %title', 'theme' ) ); ?></span>
-		<span class="nav-next"><?php next_post_link( '%link', __( 'Next Entry: %title <span class="meta-nav">&rarr;</span>', 'theme' ) ); ?></span>
-	</div>
+</header>
+<div id="main" class="center-wrap cf">
+	<article id="content" class="cf">
 	
-	<?php comments_template( '', true ); ?>
+	<?php if ( have_posts() ) : the_post(); ?>
+		
+		<p class="entry-meta">
+			Posted on <?php the_date() ?> in <a href="#">Category Name</a>
+		</p>
+		<?php the_content(); ?>
+		<div class="comments-section">
+			<img src="<?php echo TDU; ?>/images/temp-comments.png" alt="">
+		</div>
+	
+	<?php endif; ?>
+	
+	</article>
 
-<?php endwhile; ?>
-
-</article>
-
+	<?php get_sidebar('blog'); ?>
+</div>
 <?php get_footer(); ?>
