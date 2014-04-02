@@ -6,7 +6,7 @@
  */
 ?>
 <?php get_header(); ?> 
-<div id="content">
+<div id="main">
 	<h1 class="page-title"><?php _e( 'Not found', 'theme' ); ?></h1>
 	<div class="page-content">
 		<h2><?php _e( 'This is somewhat embarrassing, isn&rsquo;t it?', 'theme' ); ?></h2>

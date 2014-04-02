@@ -5,7 +5,7 @@
  */
 ?>
 <?php get_header(); ?>
-	<div id="content" role="main">
+	<div id="main" role="main">
 		<?php include("loop.php"); ?>
 	</div>
 <?php get_footer(); ?>

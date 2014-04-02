@@ -7,7 +7,7 @@
 ?>
 <?php get_header(); ?>
 
-<article id="content">
+<article id="main">
 
 <?php while ( have_posts() ) : the_post(); ?>
 
@@ -46,5 +46,4 @@
 
 </article>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
