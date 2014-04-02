@@ -5,7 +5,7 @@
 		<input class="btn-search" type="submit" value="Search"/>
 	</fieldset>
 </form> -->
-<form action="<?php bloginfo('url'); ?>" class="search-form-tablet cf">
+<form action="<?php bloginfo('url'); ?>" class="search-form pc-visible">
 	<input type="text" placeholder="Search" name="s" value="<?php echo $sq; ?>">
 	<input type="submit" value="Search">
 </form>

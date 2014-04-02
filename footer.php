@@ -10,6 +10,7 @@
 	$socials['twitter']  = (isset($options['twitter_url']) && strlen($options['twitter_url'])) ? $options['twitter_url'] : '';
 	$socials['youtube']  = (isset($options['youtube_url']) && strlen($options['youtube_url'])) ? $options['youtube_url'] : '';
 	$socials['rss']      = (isset($options['rss_url']) && strlen($options['rss_url'])) ? $options['rss_url'] : '';
+	$donate_url          = (isset($options['donate_url']) && strlen($options['donate_url'])) ? $options['donate_url'] : '';
 ?>
 		<footer id="footer">
 			<div class="holder">
@@ -22,7 +23,7 @@
 							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-youtube.png" alt=""></a></li>
 							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-rss.png" alt=""></a></li> -->
 						</ul>
-						<a href="#" class="btn-green btn-donate">Donate Now</a>
+						<a href="<?php echo $donate_url; ?>" class="btn-green btn-donate">Donate Now</a>
 					</div>
 					<div class="column column-2">
 						<ul class="menu">

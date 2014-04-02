@@ -62,20 +62,22 @@
 							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-youtube.png" alt=""></a></li>
 							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-rss.png" alt=""></a></li> -->
 						</ul>
-						<form action="#" class="search-form pc-visible">
+						<?php get_search_form(); ?>
+						<!-- <form action="#" class="search-form pc-visible">
 							<input type="text" placeholder="SEARCH">
 							<input type="submit" value="Search">
-						</form>
+						</form> -->
 					</div>
 				</div>
 				<?php wp_nav_menu( array(
-					'container' => 'nav',
+					'container'       => 'nav',
 					'container_class' => 'pc-visible',
-					'container_id' => 'main-nav',
-					'theme_location' => 'primary_nav',
-					'menu_id' => 'nav'
+					'container_id'    => 'main-nav',
+					'theme_location'  => 'primary_nav',
+					'menu_id'         => 'nav'
 				)); ?>
 				<div class="hide nav-box">
+
 					<form action="#" class="search-form-tablet cf">
 						<input type="text" placeholder="Search">
 						<input type="submit" value="Search">

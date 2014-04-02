@@ -7,6 +7,7 @@
 // REQUIRE
 // =========================================================
 require_once 'includes/page_theme_options.php';
+require_once 'includes/widget_news_feed.php';
 // =========================================================
 // Constants
 // =========================================================
@@ -31,20 +32,20 @@ set_post_thumbnail_size( 604, 270, true );
 // Register sidebars and menus
 // =========================================================
 register_sidebar(array(
-	'id' => 'right-sidebar',
-	'name' => 'Right Sidebar',
-	'before_widget' => '<aside class="aside-widget %2$s" id="%1$s">',
-	'after_widget' => '</aside>',
-	'before_title' => '<h3>',
-	'after_title' => '</h3>'
+	'id'            => 'right-sidebar',
+	'name'          => 'Right Sidebar',
+	'before_widget' => '<div class="aside-widget %2$s" id="%1$s">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h3>',
+	'after_title'   => '</h3>'
 ));
 register_sidebar(array(
-	'id' => 'blog-right-sidebar',
-	'name' => 'Blog Right Sidebar',
+	'id'            => 'blog-right-sidebar',
+	'name'          => 'Blog Right Sidebar',
 	'before_widget' => '<aside class="aside-widget %2$s" id="%1$s">',
-	'after_widget' => '</aside>',
-	'before_title' => '<h3>',
-	'after_title' => '</h3>'
+	'after_widget'  => '</aside>',
+	'before_title'  => '<h3>',
+	'after_title'   => '</h3>'
 ));
 
 register_nav_menus( array(
