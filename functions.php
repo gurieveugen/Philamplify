@@ -8,6 +8,7 @@
 // =========================================================
 require_once 'includes/page_theme_options.php';
 require_once 'includes/widget_news_feed.php';
+require_once 'includes/widget_text.php';
 // =========================================================
 // Constants
 // =========================================================
@@ -42,15 +43,16 @@ register_sidebar(array(
 register_sidebar(array(
 	'id'            => 'blog-right-sidebar',
 	'name'          => 'Blog Right Sidebar',
-	'before_widget' => '<aside class="aside-widget %2$s" id="%1$s">',
-	'after_widget'  => '</aside>',
+	'before_widget' => '<div class="aside-widget %2$s" id="%1$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<h3>',
 	'after_title'   => '</h3>'
 ));
 
 register_nav_menus( array(
-	'primary_nav' => __( 'Primary Navigation', 'theme' ),
-	'bottom_nav' => __( 'Footer Navigation', 'theme' )
+	'primary_nav'     => __( 'Primary Navigation', 'theme' ),
+	'bottom_nav'      => __( 'Footer (main) Navigation', 'theme' ),
+	'bottom_left_nav' => __( 'Footer (left) Navigation', 'theme' )
 ) );
 
 // =========================================================

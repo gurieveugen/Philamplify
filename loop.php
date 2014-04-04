@@ -26,9 +26,11 @@
 			<ul class="post-meta cf">
 				<li class="date"><?php the_date(); ?></li>
 				<?php 
-				if($categories = get_the_category()){
-					foreach($categories as $category) {
-						echo '<li><a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a></li>';
+				if($categories = get_the_category())
+				{
+					foreach($categories as $category) 
+					{
+						if($category->term_id != 1) echo '<li><a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a></li>';
 					}
 				}
 				?>

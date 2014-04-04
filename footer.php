@@ -26,20 +26,30 @@
 						<a href="<?php echo $donate_url; ?>" class="btn-green btn-donate">Donate Now</a>
 					</div>
 					<div class="column column-2">
-						<ul class="menu">
+						<?php wp_nav_menu( array(
+							'container'       => '',
+							'theme_location'  => 'bottom_nav',
+							'menu_class'      => 'menu'
+						)); ?>
+						<!-- <ul class="menu">
 							<li><a href="#">About Philamplify</a></li>
 							<li><a href="#">Foundation Assessments</a></li>
 							<li><a href="#">News Room</a></li>
 							<li><a href="#">Contact Us</a></li>
 							<li><a href="#">Your Story</a></li>
-						</ul>
+						</ul> -->
 					</div>
 					<div class="column column-1">
 						<p>&copy;2014 National Committe for Responsive Philanthropy. <br>All rights reserved.</p>
-						<ul class="menu-row cf">
+						<?php wp_nav_menu( array(
+							'container'       => '',
+							'theme_location'  => 'bottom_left_nav',
+							'menu_class'      => 'menu-row cf'
+						)); ?>
+						<!-- <ul class="menu-row cf">
 							<li><a href="#">Terms</a></li>
 							<li><a href="#">Privacy Policy</a></li>
-						</ul>
+						</ul> -->
 						<div class="form-logo-row cf">
 							<a href="#" class="logo"><img src="<?php echo TDU; ?>/images/logo-ncrp.png" alt=""></a>
 							<form action="#" class="form-subscribe">

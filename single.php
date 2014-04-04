@@ -19,16 +19,20 @@
 	<?php if ( have_posts() ) : the_post(); ?>
 	<?php
 		$post_categories = wp_get_post_categories(get_the_id(), array('fields' => 'all'));		
+		$cats            = array();
+		$cats_links      = '';
 		if($post_categories)
 		{
 			foreach ($post_categories as $cat) 
 			{
-				$cats[] = '<a href="'.get_category_link($cat->term_id).'">'.$cat->name.'</a>';
+				if($cat->term_id != 1) $cats[] = '<a href="'.get_category_link($cat->term_id).'">'.$cat->name.'</a>';
 			}	
+			$cats_links = implode(', ', $cats);
+			$cats_links = ($cats_links == '') ? '' : ' in '.$cats_links;
 		}
 	?>
 		<p class="entry-meta">
-			Posted on <?php the_date() ?> in <?php echo implode(', ', $cats); ?> <!-- <a href="#">Category Name</a> -->
+			Posted on <?php the_date(); echo $cats_links; ?><!-- <a href="#">Category Name</a> -->
 		</p>
 		<?php the_content(); ?>
 		<div class="comments-section">
