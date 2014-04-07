@@ -27,6 +27,22 @@
 				return '.slider-area .switcher li:eq(' + idx + ') a';
 			}
 		});
+
+		$('.form-subscribe-ajax').submit(function(e){			
+			jQuery.ajax({
+    			type: "POST",
+    			url: default_options.ajaxurl + '?action=subscribe',
+    			dataType: 'json',
+    			data: {
+    				email: jQuery(this).find('[name="email"]').val(),
+    				security: jQuery(this).find('[name="security"]').val()},    			
+    			success: function(data){    				
+    				alert(data.message);
+    			}
+    		});
+
+			e.preventDefault();
+		});
 		
 	});
 	

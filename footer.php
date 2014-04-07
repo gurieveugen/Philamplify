@@ -17,11 +17,7 @@
 				<div class="center-wrap cf">
 					<div class="column column-3">
 						<ul class="socials socials-1 cf">
-							<?php array_walk($socials, 'printSocials');	?>
-							<!-- <li><a href="#"><img src="<?php echo TDU; ?>/images/ico-facebook.png" alt="alt"></a></li>
-							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-twitter.png" alt=""></a></li>
-							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-youtube.png" alt=""></a></li>
-							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-rss.png" alt=""></a></li> -->
+							<?php array_walk($socials, 'printSocials');	?>							
 						</ul>
 						<a href="<?php echo $donate_url; ?>" class="btn-green btn-donate">Donate Now</a>
 					</div>
@@ -30,14 +26,7 @@
 							'container'       => '',
 							'theme_location'  => 'bottom_nav',
 							'menu_class'      => 'menu'
-						)); ?>
-						<!-- <ul class="menu">
-							<li><a href="#">About Philamplify</a></li>
-							<li><a href="#">Foundation Assessments</a></li>
-							<li><a href="#">News Room</a></li>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Your Story</a></li>
-						</ul> -->
+						)); ?>						
 					</div>
 					<div class="column column-1">
 						<p>&copy;2014 National Committe for Responsive Philanthropy. <br>All rights reserved.</p>
@@ -45,18 +34,15 @@
 							'container'       => '',
 							'theme_location'  => 'bottom_left_nav',
 							'menu_class'      => 'menu-row cf'
-						)); ?>
-						<!-- <ul class="menu-row cf">
-							<li><a href="#">Terms</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-						</ul> -->
+						)); ?>						
 						<div class="form-logo-row cf">
 							<a href="#" class="logo"><img src="<?php echo TDU; ?>/images/logo-ncrp.png" alt=""></a>
-							<form action="#" class="form-subscribe">
+							<form action="#" class="form-subscribe form-subscribe-ajax">
 								<label>Subscribe to NCRP Newsletter</label>
 								<div class="cf">
-									<input type="email" placeholder="EMAIL ADDRESS">
+									<input type="email" placeholder="EMAIL ADDRESS" name="email">
 									<input type="submit" value="SUBMIT">
+									<?php wp_nonce_field( 'ajax-subscribe-nonce', 'security' ); ?>
 								</div>
 							</form>
 						</div>

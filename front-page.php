@@ -40,83 +40,13 @@
 			<h2 class="title-section">Latest Foundation Assessments</h2>
 			<div class="slider-control">
 				<a href="#" class="link-prev pc-hide-dib">Previous</a>
-				<?php echo $GLOBALS['slider']->getSwitcher(); ?>
-				<!-- <ul class="switcher">
-					<li class="active"><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-					<li><a href="#"></a></li>
-				</ul> -->
+				<?php echo $GLOBALS['slider']->getSwitcher(); ?>				
 				<a href="#" class="link-next pc-hide-dib">Next</a>
 			</div>
 		</div>
 		<a href="#" class="link-prev pc-visible">Previous</a>
 		<a href="#" class="link-next pc-visible">Next</a>
-		<?php echo $GLOBALS['slider']->getSlides(); ?>
-		<!-- <div class="slides">
-			<div class="slide">
-				<div class="text">
-					<h3>Winthrop Rockefeller Foundation</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus. In hac habitasse platea dictumst.</p>
-				</div>
-				<div class="image">
-					<img src="<?php echo TDU; ?>/images/img-8.jpg" alt="">
-				</div>
-				<a href="#" class="btn-blue">Read More and Decide</a>
-			</div>
-			<div class="slide">
-				<div class="text">
-					<h3>Winthrop Rockefeller Foundation</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus. In hac habitasse platea dictumst.</p>
-				</div>
-				<div class="image">
-					<img src="<?php echo TDU; ?>/images/img-8.jpg" alt="">
-				</div>
-				<a href="#" class="btn-blue">Read More and Decide</a>
-			</div>
-			<div class="slide">
-				<div class="text">
-					<h3>Winthrop Rockefeller Foundation</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus. In hac habitasse platea dictumst.</p>
-				</div>
-				<div class="image">
-					<img src="<?php echo TDU; ?>/images/img-8.jpg" alt="">
-				</div>
-				<a href="#" class="btn-blue">Read More and Decide</a>
-			</div>
-			<div class="slide">
-				<div class="text">
-					<h3>Winthrop Rockefeller Foundation</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus. In hac habitasse platea dictumst.</p>
-				</div>
-				<div class="image">
-					<img src="<?php echo TDU; ?>/images/img-8.jpg" alt="">
-				</div>
-				<a href="#" class="btn-blue">Read More and Decide</a>
-			</div>
-			<div class="slide">
-				<div class="text">
-					<h3>Winthrop Rockefeller Foundation</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus. In hac habitasse platea dictumst.</p>
-				</div>
-				<div class="image">
-					<img src="<?php echo TDU; ?>/images/img-8.jpg" alt="">
-				</div>
-				<a href="#" class="btn-blue">Read More and Decide</a>
-			</div>
-			<div class="slide">
-				<div class="text">
-					<h3>Winthrop Rockefeller Foundation</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus. In hac habitasse platea dictumst.</p>
-				</div>
-				<div class="image">
-					<img src="<?php echo TDU; ?>/images/img-8.jpg" alt="">
-				</div>
-				<a href="#" class="btn-blue">Read More and Decide</a>
-			</div>
-		</div> -->
+		<?php echo $GLOBALS['slider']->getSlides(); ?>		
 	</div>
 </section>
 <section class="section-socials cf">
@@ -280,29 +210,7 @@
 <section class="section-columns">
 	<div class="center-wrap cf">
 		<h2 class="title-section lightgreen">How Philamplify Works</h2>
-		<div class="columns cf">
-			<div class="column">
-				<div class="image">
-					<a href="#"><img src="<?php echo TDU; ?>/images/img-9.jpg" alt=""></a>
-				</div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla lacus id sapien mollis pellentesque. Ut adipiscing sit amet sem consequat suscipit.</p>
-				<a href="#" class="link-arrow-big pc-visible">Learn More</a>
-			</div>
-			<div class="column">
-				<div class="image">
-					<a href="#"><img src="<?php echo TDU; ?>/images/img-10.jpg" alt=""></a>
-				</div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla lacus id sapien mollis pellentesque. Ut adipiscing sit amet sem consequat suscipit.</p>
-				<a href="#" class="link-arrow-big pc-visible">Learn More</a>
-			</div>
-			<div class="column">
-				<div class="image">
-					<a href="#"><img src="<?php echo TDU; ?>/images/img-11.jpg" alt=""></a>
-				</div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla lacus id sapien mollis pellentesque. Ut adipiscing sit amet sem consequat suscipit.</p>
-				<a href="#" class="link-arrow-big pc-visible">Learn More</a>
-			</div>
-		</div>
+		<?php echo $GLOBALS['meta_box_featured_post']->getFeaturedPosts(); ?>		
 	</div>
 </section>
 
