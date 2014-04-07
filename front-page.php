@@ -40,20 +40,22 @@
 			<h2 class="title-section">Latest Foundation Assessments</h2>
 			<div class="slider-control">
 				<a href="#" class="link-prev pc-hide-dib">Previous</a>
-				<ul class="switcher">
+				<?php echo $GLOBALS['slider']->getSwitcher(); ?>
+				<!-- <ul class="switcher">
 					<li class="active"><a href="#"></a></li>
 					<li><a href="#"></a></li>
 					<li><a href="#"></a></li>
 					<li><a href="#"></a></li>
 					<li><a href="#"></a></li>
 					<li><a href="#"></a></li>
-				</ul>
+				</ul> -->
 				<a href="#" class="link-next pc-hide-dib">Next</a>
 			</div>
 		</div>
 		<a href="#" class="link-prev pc-visible">Previous</a>
 		<a href="#" class="link-next pc-visible">Next</a>
-		<div class="slides">
+		<?php echo $GLOBALS['slider']->getSlides(); ?>
+		<!-- <div class="slides">
 			<div class="slide">
 				<div class="text">
 					<h3>Winthrop Rockefeller Foundation</h3>
@@ -114,7 +116,7 @@
 				</div>
 				<a href="#" class="btn-blue">Read More and Decide</a>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 <section class="section-socials cf">

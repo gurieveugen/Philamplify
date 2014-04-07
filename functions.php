@@ -7,6 +7,7 @@
 // REQUIRE
 // =========================================================
 require_once 'includes/page_theme_options.php';
+require_once 'includes/post_type_slider.php';
 require_once 'includes/widget_news_feed.php';
 require_once 'includes/widget_text.php';
 // =========================================================
