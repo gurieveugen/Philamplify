@@ -148,7 +148,8 @@ body{
 	padding: 10px 14px;
 	line-height: 27px;
 }
-#content ul, #content ol{
+.main-content ul,
+.main-content ol{
 	line-height: 23px;
 	margin-bottom: 20px;
 }
@@ -169,8 +170,8 @@ body{
 	width: 100%;
 	margin: 0 0 10px;
 }
-.bg-sidebar-area > .holder{
-	padding: 20px 0;
+#sidebar > .holder{
+	padding: 50px 0 20px;
 }
 .aside-widget{
 	-webkit-border-radius:0;
@@ -286,4 +287,332 @@ body{
 }
 .box-story .text-media p{
 	margin: 0 0 6px;
+}
+
+.content-box{
+	padding: 10px 12px;
+	line-height: 21px;
+}
+.form-story{
+	padding: 0 0 20px;
+}
+.form-story h4{
+	font-size: 14px;
+	line-height: 30px;
+}
+.form-story .column{
+	width: 35%;
+	margin: 0 3% 0 0;
+}
+
+.form-story .column,
+.form-story .column.last,
+.form-story .width-125,
+.form-story .width-140,
+.form-story .width-175,
+.form-story .width-238{
+	width: 100% !important;
+	margin: 0 0 20px;
+}
+.form-story input[type="text"],
+.form-story input[type="email"]{
+	padding: 7px 10px;
+	font-size: 17px;
+}
+.form-story .row{
+	padding: 0;
+}
+.form-story .row-1{
+	padding: 0 0 7px;
+}
+.form-story .row-2{
+	padding: 0 0 5px;
+}
+.form-story .jq-selectbox__select{
+	height: 32px;
+	line-height: 32px;
+}
+.form-story .jq-selectbox__dropdown{
+	top: 32px;
+}
+.form-story .file{
+	line-height: 30px;
+}
+.form-story textarea{
+	height: 125px;
+}
+.form-story .submit-row{
+	padding: 17px 0 0;
+	text-align: center;
+}
+.form-story .submit-row .right{
+	float: none;
+}
+.form-story input[type="submit"]{
+	padding: 0 30px;
+	margin: 0;
+	height: 46px;
+	float: none;
+}
+.form-story .agree{
+	font-size: 13px;
+	padding: 0 0 24px;
+	float: none;
+}
+
+.data-section h1{
+	margin-left: 12px;
+	margin-right: 12px;
+}
+.data-section .block{
+	padding: 0 0 5px;
+}
+.video-box{
+	margin: 0 0 20px;
+}
+.video-box .ico-video{
+	background: url(../images/ico-video-m.png) no-repeat 50% 50%;
+}
+.data-section .quotes-holder{
+	width: auto;
+}
+.data-section .quotes-holder .box-quote{
+	padding: 13px 23px;
+	margin: 0 0 43px;
+	-webkit-border-radius:0;
+	border-radius:0;
+}
+.data-section .quotes-holder .box-quote:before{
+	right: 33px;
+}
+.data-section .quotes-holder .box-quote.q1:before{
+	left: 33px;
+}
+#content.content-1{
+	font-size: 14px;
+}
+.data-box .content{
+	font-size: 13px;
+}
+.data-box .content h3{
+	font-size: 16px;
+}
+.data-box .content p{
+	margin: 0 0 21px;
+}
+.data-box{
+	margin: 0 -14px 25px;
+	-webkit-border-radius:0;
+	border-radius:0;
+}
+.data-box .btn-box .arrow{
+	margin: 0 0 0 5px;
+}
+.r-box{
+	margin: 0 -14px 20px;
+	border: none;
+	border-top: 4px solid #179bd7;
+	-webkit-border-radius:0;
+	border-radius:0;
+}
+.r-box header{
+	padding: 8px 12px;
+}
+.r-box .link-view{
+	float: right;
+	width: 20px;
+	height: 20px;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+.r-box .link-view:after{
+	float: right;
+	margin: 5px 0 0;
+}
+.r-box footer{
+	text-align: center;
+	line-height: 33px;
+}
+.r-box .buttons{
+	float: none;
+	width: 230px;
+	margin: 0 auto 4px;
+}
+.r-box footer .info{
+	font-size: 17px;
+	height: auto;
+}
+.r-box footer .link-comments{
+	float: none;
+	font-size: 14px;
+	margin: 0 0 -5px;
+}
+.aside-widget .w-block{
+	padding: 18px 35px;
+}
+.section-media > .holder{
+	padding-bottom: 48px;
+}
+.section-media .text{
+	line-height: 25px;
+}
+.section-media .video-box{
+	float: none;
+	width: auto;
+	margin: 0 0 30px;
+}
+.section-media .quotes-holder{
+	float: none;
+	width: auto;
+	margin: 0 10px -32px;
+}
+.section-media .box-quote{
+	font-size: 14px;
+	padding: 10px 18px;
+	-webkit-border-radius:7px;
+	border-radius:7px;
+}
+.section-media .box-quote cite{
+	float: left;
+	margin: 0;
+}
+.section-media .box-quote .link-share{
+	float: right;
+	font-size: 12px;
+}
+.slider-area{
+	height: auto;
+}
+.slider-area .title-row{
+	position: relative;
+	padding: 0 0 5px;
+}
+.title-section{
+	float: none;
+	display: block;
+	padding: 0 10px;
+	-webkit-border-radius:0;
+	border-radius:0;
+	margin: 0 0 17px;
+}
+.slider-area .title-section{
+	margin: 0 0 17px;
+}
+.slider-area .slider-control{
+	display: block;
+	padding: 0;
+	text-align: center;
+}
+.slider-area .link-prev,
+.slider-area .link-next{
+	width: 13px;
+	height: 22px;
+	background-position: -64px 0;
+	margin: 0 15px 0 0;
+}
+.slider-area .link-next{
+	background-position: -64px -24px;
+	margin: 0 0 0 15px;
+}
+.slider-area .switcher li a{
+	width: 17px;
+	height: 16px;
+	background-position: -19px -14px;
+}
+.slider-area .switcher li a:hover,
+.slider-area .switcher li.activeSlide a{
+	background-position: 0 -14px;
+}
+.slider-area .slides{
+	height: 574px;
+}
+.slider-area .slides .slide{
+	padding: 5px 0 0;
+	height: 574px !important;
+}
+.slider-area .text{
+	padding: 0 20px;
+	margin: 0 0 15px;
+	width: auto;
+	float: none;
+	height: 230px;
+}
+.slider-area .text h3{
+	line-height: 30px;
+	margin: 0 0 10px;
+}
+.slider-area .image{
+	float: none;
+	margin: 0 -20px 18px;
+	width: auto;
+	height: 235px;
+}
+.btn-blue{
+	font-size: 15px;
+	height: 42px;
+	line-height: 35px;
+}
+.slider-area .btn-blue{
+	position: relative;
+	left: auto;
+	bottom: auto;
+	display: block;
+	margin: 0 20px;
+}
+.section-socials{
+	background: none;
+}
+.section-socials > .holder{
+	background: none;
+}
+.section-socials .title-row{
+	margin: 0 0 22px;
+}
+.section-socials .title-section{
+	margin: 0;
+	display: block;
+	-webkit-border-radius:0;
+	border-radius:0;
+}
+.socials-filter-row{
+	position: static;
+	margin: 0 0 18px;
+}
+.content-socials .socials-holder{
+	margin: 0 0 10px;
+}
+.box-social{
+	margin: 0;
+	padding: 13px 16px;
+	-webkit-border-radius:0;
+	border-radius:0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.box-social .ico{
+	position: static;
+	float: left;
+	margin: -2px 14px 0 0;
+	width: auto;
+}
+.section-socials #sidebar > .holder{
+	background: url(../images/bg-sidebar-area.jpg) no-repeat 50% 0;
+}
+.section-columns .title-section{
+	margin: 0 0 12px;
+	-webkit-border-radius:0 0 7px 7px;
+	border-radius:0 0 7px 7px;
+}
+.section-columns .columns{
+	margin: 0 20px 0 26px;
+}
+.section-columns .column{
+	float: none;
+	width: auto;
+	padding: 0 0 5px;
+}
+.section-columns .column .image{
+	padding: 0 10px;
+	margin: 0 0 10px;
 }

@@ -16,7 +16,7 @@
 	</div>
 </header>
 <div id="main" class="center-wrap cf">
-	<article id="content" class="cf">
+	<article id="content" class="main-content cf">
 		<?php the_content(); ?>
 	</article>
 	<?php get_sidebar(); ?>
