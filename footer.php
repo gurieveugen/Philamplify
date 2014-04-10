@@ -11,6 +11,7 @@
 	$socials['youtube']  = (isset($options['youtube_url']) && strlen($options['youtube_url'])) ? $options['youtube_url'] : '';
 	$socials['rss']      = (isset($options['rss_url']) && strlen($options['rss_url'])) ? $options['rss_url'] : '';
 	$donate_url          = (isset($options['donate_url']) && strlen($options['donate_url'])) ? $options['donate_url'] : '';
+	$ncrp_url            = (isset($options['ncrp_url']) && strlen($options['ncrp_url'])) ? $options['ncrp_url'] : '';
 ?>
 		<footer id="footer">
 			<div class="holder">
@@ -36,7 +37,7 @@
 							'menu_class'      => 'menu-row cf'
 						)); ?>						
 						<div class="form-logo-row cf">
-							<a href="#" class="logo"><img src="<?php echo TDU; ?>/images/logo-ncrp.png" alt=""></a>
+							<a href="<?php echo $ncrp_url; ?>" class="logo"><img src="<?php echo TDU; ?>/images/logo-ncrp.png" alt=""></a>
 							<form action="#" class="form-subscribe form-subscribe-ajax">
 								<label>Subscribe to NCRP Newsletter</label>
 								<div class="cf">

@@ -76,6 +76,7 @@ class GCOptionsPage{
         add_settings_field('youtube_url', __('YouTube URL'), array($this, 'youtube_url_callback'), __FILE__, 'default_settings');
         add_settings_field('rss_url', __('RSS URL'), array($this, 'rss_url_callback'), __FILE__, 'default_settings');
         add_settings_field('donate_url', __('Donate URL'), array($this, 'donate_url_callback'), __FILE__, 'default_settings');
+        add_settings_field('ncrp_url', __('NCRP URL'), array($this, 'ncrp_url_callback'), __FILE__, 'default_settings');
         
     }
 
@@ -93,6 +94,7 @@ class GCOptionsPage{
         if(isset($input['youtube_url'])) $new_input['youtube_url']   = strip_tags($input['youtube_url']);
         if(isset($input['rss_url'])) $new_input['rss_url']           = strip_tags($input['rss_url']);
         if(isset($input['donate_url'])) $new_input['donate_url']     = strip_tags($input['donate_url']);
+        if(isset($input['ncrp_url'])) $new_input['ncrp_url']         = strip_tags($input['ncrp_url']);
 
         return $new_input;
     }
@@ -135,6 +137,14 @@ class GCOptionsPage{
     public function donate_url_callback()
     {
         printf('<input type="text" class="regular-text" id="donate_url" name="gcoptions[donate_url]" value="%s" />', isset($this->options['donate_url']) ? esc_attr($this->options['donate_url']) : '');
+    }
+
+    /** 
+     * Get the settings option array and print one of its values
+     */
+    public function ncrp_url_callback()
+    {
+        printf('<input type="text" class="regular-text" id="ncrp_url" name="gcoptions[ncrp_url]" value="%s" />', isset($this->options['ncrp_url']) ? esc_attr($this->options['ncrp_url']) : '');
     }
     
 }
