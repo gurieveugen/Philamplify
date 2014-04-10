@@ -5,6 +5,7 @@
 // =========================================================
 require_once 'google_url.php'; 
 require_once 'twitteroauth/twitteroauth.php'; 
+require_once 'facebook/facebook.php';
 
 class SocialFeed{
 	//                          __              __      
@@ -16,6 +17,8 @@ class SocialFeed{
 	const TWITTER_CONSUMER_SECRET     = 'Kudk8D5ZAxb5tWAoXRO21T47gp6EXRplJ82MEUiqc';
 	const TWITTER_ACCESS_TOKEN        = '532546390-23aT4nDlWpYLA543yUfmExBqFs0RDb9AZBRbNFTd';
 	const TWITTER_ACCESS_TOKEN_SECRET = 'Mt9Hj9aocqQ7qSQGzowzUkFWpvJx8kyBoLAV9GGfV9kvL';
+	const FACEBOOK_APP_ID			  = '1423814364535515';
+	const FACEBOOK_SECRET			  = 'bdeb449de6a7a8fb5d0cafa953446ed6';
 
 	//                __  _                 
 	//   ____  ____  / /_(_)___  ____  _____
@@ -25,6 +28,7 @@ class SocialFeed{
 	//     /_/                              
 	private $googl;
 	private $twitter;
+	private $facebook;
 	private $options; 
 
 	//                    __  __              __    
@@ -34,8 +38,11 @@ class SocialFeed{
 	// /_/ /_/ /_/\___/\__/_/ /_/\____/\__,_/____/  
 	public function __construct()
 	{
-		$this->googl   = new Googl();
-		$this->twitter = new TwitterOAuth(self::TWITTER_CONSUMER_KEY, self::TWITTER_CONSUMER_SECRET, self::TWITTER_ACCESS_TOKEN, self::TWITTER_ACCESS_TOKEN_SECRET);
+		$this->googl    = new Googl();
+		$this->twitter  = new TwitterOAuth(self::TWITTER_CONSUMER_KEY, self::TWITTER_CONSUMER_SECRET, self::TWITTER_ACCESS_TOKEN, self::TWITTER_ACCESS_TOKEN_SECRET);
+		$this->facebook = new Facebook(array(
+			'appId'  => '344617158898614',
+			'secret' => '6dc8ac871858b34798bc2488200e503d')); 
 		$this->options = $GLOBALS['sfoptions']->getAll();
 			
 
@@ -46,6 +53,11 @@ class SocialFeed{
 	{		
 		$tweets = $this->twitter->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$this->options['twitter']."&count=".$this->options['count']);		
 		
+		
+		$user = $this->facebook->getUser();
+		// $some_shit = $this->facebook->api('/kingstar.inc/feed?limit=3');
+		// var_dump($some_shit);
+		var_dump($user);
 		?>
 		<div class="content-socials">
 			<div class="title-row cf">
@@ -69,59 +81,7 @@ class SocialFeed{
 				</select>
 			</div>
 			<div class="socials-holder">
-				<?php echo $this->getTweets($tweets); ?>
-				<!-- <article class="box-social blue feed-twitter feed-all">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-twitter-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-blue mobile-hide-dib">View on Twitter</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social blue feed-twitter">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-twitter-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-blue mobile-hide-dib">View on Twitter</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social blue feed-twitter">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-twitter-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-blue mobile-hide-dib">View on Twitter</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social blue feed-twitter">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-twitter-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-blue mobile-hide-dib">View on Twitter</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>	 -->			
+				<?php echo $this->getTweets($tweets); ?>						
 				<article class="box-social green feed-philamplify feed-all">
 					<header class="cf">
 						<div class="ico">
