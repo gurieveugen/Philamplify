@@ -4,11 +4,11 @@
 		$( '#nav li:has(ul), .nav-tablet li:has(ul)' ).doubleTapToGo();
 		
 		$('#ico-menu').click(function() {
-			$('.nav-box').toggle();
+			$('.nav-box').toggle().toggleClass('open');
 			$(this).toggleClass('open');
 		});
 		
-		$('.form-poll input[type="radio"], .filters-area select, .form-story select').styler();
+		$('.form-poll input[type="radio"], .filters-area select, .form-story select, .select-socials-filter').styler();
 		
 		$('.data-box .btn-box').click(function(){
 			$(this).toggleClass('open');
@@ -40,9 +40,9 @@
     				alert(data.message);
     			}
     		});
-
 			e.preventDefault();
 		});
+
 		
 	});
 	

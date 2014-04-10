@@ -40,7 +40,7 @@ class Subscribe extends WP_Widget {
 	function form($instance) 
 	{	
 		$title     = $instance['title'];     		
-		
+
 		?>		
 		<p>
 			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title'); ?>: 
@@ -60,7 +60,7 @@ class Subscribe extends WP_Widget {
 	{
 		$instance              = $old_instance;		
 		$instance['title']     = strip_tags($new_instance['title']);				
-		
+
 		return $instance;
 	}
 }

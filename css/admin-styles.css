@@ -1,0 +1,12 @@
+#adminmenu #menu-posts-slide .wp-menu-image:before {
+	content: "\f03e";  
+ 	font-family: 'FontAwesome' !important;
+ 	font-size: 18px !important;
+}
+
+#adminmenu #toplevel_page_SocialFeedOptions .wp-menu-image:before {
+	content: "\f164";  
+ 	font-family: 'FontAwesome' !important;
+ 	font-size: 18px !important;
+}
+

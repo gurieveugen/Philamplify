@@ -2366,7 +2366,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	padding: 7px 10px 10px 43px;
 	margin: 0 0 20px;
 	position: relative;
-	border-top: 5px solid #62abde;
+	border-top: 5px solid #154eac;
 	font-size: 14px;
 	line-height: 23px;
 	color: #000;
@@ -2383,7 +2383,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	border-color: #91c521;
 }
 .box-social.blue{
-	border-color: #154eac;
+	border-color: #62abde;
 }
 .box-social.red{
 	border-color: #d1472c;

@@ -12,6 +12,8 @@ require_once 'includes/widget_news_feed.php';
 require_once 'includes/widget_text.php';
 require_once 'includes/widget_subscribe.php';
 require_once 'includes/meta_box_featured_post.php';
+require_once 'includes/social_feed_options.php';
+require_once 'includes/social_feed.php';
 // =========================================================
 // Constants
 // =========================================================
@@ -19,9 +21,6 @@ define('TDU', get_bloginfo('template_url'));
 // =========================================================
 // Hooks
 // =========================================================
-add_action('init', 'initializeTheme');
-add_action('wp_ajax_subscribe', 'subscribeAJAX');
-add_action('wp_ajax_nopriv_subscribe', 'subscribeAJAX');
 add_filter('nav_menu_css_class', 'change_menu_classes');
 add_filter('the_content', 'filter_template_url');
 add_filter('get_the_content', 'filter_template_url');
@@ -61,49 +60,17 @@ register_nav_menus( array(
 	'bottom_left_nav' => __( 'Footer (left) Navigation', 'theme' )
 ) );
 
-
-
+// =========================================================
+// ADD STYLES
+// =========================================================
+if(is_admin())
+{
+	wp_enqueue_style('font-awesome', TDU.'/css/font-awesome.min.css');
+	wp_enqueue_style('admin-styles', TDU.'/css/admin-styles.css');	
+}
 // =========================================================
 // methods
 // =========================================================
-function initializeTheme()
-{
-	wp_enqueue_script('main', TDU.'/js/jquery.main.js', array('jquery'));
-	wp_localize_script('main', 'default_options', array( 
-		'ajaxurl'        => admin_url( 'admin-ajax.php' )		
-    ));
-}
-
-function subscribeAJAX()
-{
-	check_ajax_referer('ajax-subscribe-nonce', 'security');
-	if(is_email($_POST['email']))
-	{
-		$to          = get_option('admin_email');
-		$subject     = 'New subscribe user';
-		$message     = 'You have a new subscriber '.$_POST['email'];
-
-		if(wp_mail($to, $subject, $message))
-		{
-			$json['subscribe'] = true;
-			$json['message']   = 'Congratulations! You are subscribed!';
-		}
-		else
-		{
-			$json['subscribe'] = false;
-			$json['message']   = 'Unable to send email.';
-		}
-	}
-	else
-	{
-		$json['subscribed'] = false;
-		$json['message']    = 'Email is not valid!';
-	}
-
-	echo json_encode($json);
-	die();
-}
-
 function change_menu_classes($css_classes)
 {
 	$css_classes = str_replace("current-menu-item", "current-menu-item active", $css_classes);

@@ -52,82 +52,7 @@
 <section class="section-socials cf">
 	<div class="holder">
 		<div class="center-wrap cf">
-			<div class="content-socials">
-				<div class="title-row cf">
-					<h2 class="title-section green">Recent Activity</h2>
-					<ul class="socials-filter pc-visible-dib">
-						<li class="active"><a href="#">All</a></li>
-						<li><a href="#">Philamplify</a></li>
-						<li><a href="#">Twitter</a></li>
-						<li><a href="#">Facebook</a></li>
-						<li><a href="#">Google+</a></li>
-					</ul>
-				</div>
-				<div class="socials-filter-row pc-hide bf">
-					<select name="socials-filter" class="select-socials-filter">
-						<option value="0" class="filter">FILTER</a></li>
-						<option value="all">All</a></li>
-						<option value="philamplify">Philamplify</a></li>
-						<option value="twitter">Twitter</a></li>
-						<option value="facebook">Facebook</a></li>
-						<option value="google">Google+</a></li>
-					</select>
-				</div>
-				<div class="socials-holder">
-					<article class="box-social blue">
-						<header class="cf">
-							<div class="ico">
-								<img src="<?php echo TDU; ?>/images/ico-twitter-2.png" alt="">
-							</div>
-							<h4>User Name</h4>
-							<strong class="date">1/1/14 at 11:43am</strong>
-							<a href="#" class="link-arrow-blue mobile-hide-dib">View on Twitter</a>
-						</header>
-						<div class="content">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-						</div>
-					</article>
-					<article class="box-social green">
-						<header class="cf">
-							<div class="ico">
-								<img src="<?php echo TDU; ?>/images/ico-assessment.png" alt="">
-							</div>
-							<h4>User Name</h4>
-							<strong class="date">1/1/14 at 11:43am</strong>
-							<a href="#" class="link-arrow mobile-hide-dib">View the Assessment</a>
-						</header>
-						<div class="content">
-							<p>User Name AGREES with the <a href="#">Winthrop Rockefeller Foundation assessment</a>.</p>
-						</div>
-					</article>
-					<article class="box-social dark-blue">
-						<header class="cf">
-							<div class="ico">
-								<img src="<?php echo TDU; ?>/images/ico-facebook-2.png" alt="">
-							</div>
-							<h4>User Name</h4>
-							<strong class="date">1/1/14 at 11:43am</strong>
-							<a href="#" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>
-						</header>
-						<div class="content">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-						</div>
-					</article>
-					<article class="box-social red">
-						<header class="cf">
-							<div class="ico">
-								<img src="<?php echo TDU; ?>/images/ico-google-2.png" alt="">
-							</div>
-							<h4>User Name</h4>
-							<strong class="date">1/1/14 at 11:43am</strong>
-							<a href="#" class="link-arrow-red mobile-hide-dib">View on Google +</a>
-						</header>
-						<div class="content">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-						</div>
-					</article>
-				</div>
-			</div>
+			<?php $GLOBALS['social_feed']->displayFeed(); ?>
 			<div id="sidebar">
 				<div class="holder cf">
 					<div class="aside-widget tablet-visible">
@@ -210,7 +135,29 @@
 <section class="section-columns">
 	<div class="center-wrap cf">
 		<h2 class="title-section lightgreen">How Philamplify Works</h2>
-		<?php echo $GLOBALS['meta_box_featured_post']->getFeaturedPosts(); ?>		
+		<div class="columns cf">
+			<div class="column">
+				<div class="image">
+					<a href="#"><img src="<?php echo TDU; ?>/images/img-9.jpg" alt=""></a>
+				</div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla lacus id sapien mollis pellentesque. Ut adipiscing sit amet sem consequat suscipit.</p>
+				<a href="#" class="link-arrow-big pc-visible">Learn More</a>
+			</div>
+			<div class="column">
+				<div class="image">
+					<a href="#"><img src="<?php echo TDU; ?>/images/img-10.jpg" alt=""></a>
+				</div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla lacus id sapien mollis pellentesque. Ut adipiscing sit amet sem consequat suscipit.</p>
+				<a href="#" class="link-arrow-big pc-visible">Learn More</a>
+			</div>
+			<div class="column">
+				<div class="image">
+					<a href="#"><img src="<?php echo TDU; ?>/images/img-11.jpg" alt=""></a>
+				</div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla lacus id sapien mollis pellentesque. Ut adipiscing sit amet sem consequat suscipit.</p>
+				<a href="#" class="link-arrow-big pc-visible">Learn More</a>
+			</div>
+		</div>
 	</div>
 </section>
 
