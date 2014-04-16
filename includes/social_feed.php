@@ -13,12 +13,18 @@ class SocialFeed{
 	//  / ___/ __ \/ __ \/ ___/ __/ __ `/ __ \/ __/ ___/
 	// / /__/ /_/ / / / (__  ) /_/ /_/ / / / / /_(__  ) 
 	// \___/\____/_/ /_/____/\__/\__,_/_/ /_/\__/____/  
+	const TWITTER_CACHE_LABEL         = 'twitter';
 	const TWITTER_CONSUMER_KEY        = 'FoRJZBenKUFmIQFLDp2gQ';
 	const TWITTER_CONSUMER_SECRET     = 'Kudk8D5ZAxb5tWAoXRO21T47gp6EXRplJ82MEUiqc';
 	const TWITTER_ACCESS_TOKEN        = '532546390-23aT4nDlWpYLA543yUfmExBqFs0RDb9AZBRbNFTd';
 	const TWITTER_ACCESS_TOKEN_SECRET = 'Mt9Hj9aocqQ7qSQGzowzUkFWpvJx8kyBoLAV9GGfV9kvL';
+	const FACEBOOK_CACHE_LABEL        = 'fb';
 	const FACEBOOK_APP_ID			  = '1423814364535515';
 	const FACEBOOK_SECRET			  = 'bdeb449de6a7a8fb5d0cafa953446ed6';
+	const GOOGLE_PLUS_CACHE_LABEL     = 'google_plus';
+	const GOOGLE_PLUS_KEY			  = 'AIzaSyAAF3e1RCZrRV86bVKLY4LBqfKREV57DWg';
+	const CACHE_ON                    = TRUE;
+	const CACHE_KEY					  = '34f0';
 
 	//                __  _                 
 	//   ____  ____  / /_(_)___  ____  _____
@@ -40,24 +46,15 @@ class SocialFeed{
 	{
 		$this->googl    = new Googl();
 		$this->twitter  = new TwitterOAuth(self::TWITTER_CONSUMER_KEY, self::TWITTER_CONSUMER_SECRET, self::TWITTER_ACCESS_TOKEN, self::TWITTER_ACCESS_TOKEN_SECRET);
-		$this->facebook = new Facebook(array(
-			'appId'  => '344617158898614',
-			'secret' => '6dc8ac871858b34798bc2488200e503d')); 
-		$this->options = $GLOBALS['sfoptions']->getAll();
+		$this->facebook = new Facebook(array( 'appId'  => self::FACEBOOK_APP_ID, 'secret' => self::FACEBOOK_SECRET)); 
+		$this->options  = $GLOBALS['sfoptions']->getAll();
 			
 
 		wp_enqueue_script('social_feed', get_bloginfo('template_url').'/js/social_feed.js', array('jquery'));
 	}
 
 	public function displayFeed()
-	{		
-		$tweets = $this->twitter->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$this->options['twitter']."&count=".$this->options['count']);		
-		
-		
-		$user = $this->facebook->getUser();
-		// $some_shit = $this->facebook->api('/kingstar.inc/feed?limit=3');
-		// var_dump($some_shit);
-		var_dump($user);
+	{	
 		?>
 		<div class="content-socials">
 			<div class="title-row cf">
@@ -81,7 +78,13 @@ class SocialFeed{
 				</select>
 			</div>
 			<div class="socials-holder">
-				<?php echo $this->getTweets($tweets); ?>						
+				<?php 
+					if(isset($this->options['twitter']) && strlen($this->options['twitter']))
+					{
+						$tweets = $this->getTwitterMsg($this->options['twitter'], $this->options['count']);
+						echo $this->getTweets($tweets); 	
+					}
+				?>						
 				<article class="box-social green feed-philamplify feed-all">
 					<header class="cf">
 						<div class="ico">
@@ -134,110 +137,17 @@ class SocialFeed{
 						<p>User Name AGREES with the <a href="#">Winthrop Rockefeller Foundation assessment</a>.</p>
 					</div>
 				</article>
-				<article class="box-social dark-blue feed-facebook feed-all">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-facebook-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social dark-blue feed-facebook">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-facebook-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social dark-blue feed-facebook">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-facebook-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social dark-blue feed-facebook">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-facebook-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social red feed-google_plus feed-all">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-google-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-red mobile-hide-dib">View on Google +</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social red feed-google_plus">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-google-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-red mobile-hide-dib">View on Google +</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social red feed-google_plus">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-google-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-red mobile-hide-dib">View on Google +</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
-				<article class="box-social red feed-google_plus">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-google-2.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow-red mobile-hide-dib">View on Google +</a>
-					</header>
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris venenatis, lorem malesuada accumsan facilisis, nisl ligula ullamcorper libero, ut faucibus eros nibh non velit. ullamcorper libero.</p>
-					</div>
-				</article>
+				<?php 
+					if(isset($this->options['facebook']) && strlen($this->options['facebook']))
+					{
+						echo $this->getFacebookFeed($this->options['facebook'], $this->options['count']);	
+					}
+					
+					if(isset($this->options['google_plus']) && strlen($this->options['google_plus']))
+					{
+						echo $this->getGooglePlusFeed($this->options['google_plus'], $this->options['count']);								
+					}
+				?>				
 			</div>
 		</div>
 		<?php
@@ -250,6 +160,8 @@ class SocialFeed{
 	 */
 	public function getTweets($tweets)
 	{
+		if(!$tweets) return '';
+
 		$out           = '';
 		$first         = true;
 		$tweets        = array_reverse($tweets);		
@@ -285,6 +197,221 @@ class SocialFeed{
 			}
 		}
 		return $out;
+	}
+
+	/**
+	 * Get twitter messages
+	 * @param  string $user 
+	 * @param  integer $count
+	 * @return array
+	 */
+	public function getTwitterMsg($user, $count)
+	{
+		$cache = $this->getCache($user.$count, self::TWITTER_CACHE_LABEL);
+		if($cache)
+		{			
+			return $cache;
+		}
+
+		$tweets = $this->twitter->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$user."&count=".$count);
+
+		$this->setCache($user.$count, $tweets, 3600, self::TWITTER_CACHE_LABEL);
+
+		return $tweets;
+	}
+
+	/**
+	 * Get Facebook HTML feed
+	 * @param  string $user  
+	 * @param  integer $count 
+	 * @return string
+	 */
+	public function getFacebookFeed($user, $count)
+	{
+		$out   = '';
+		$fb    = $this->getFacebookMsg($user, $count);
+		$first = true;
+		$class = array('box-social', 'dark-blue', 'feed-facebook');
+
+		if($fb)
+		{
+			foreach ($fb as $value) 
+			{
+				if($first)
+				{
+					$first    = false;
+					$feed_all = ' feed-all';
+				}
+				else
+				{
+					$feed_all = '';	
+				}
+
+				$classes = implode(' ', $class).$feed_all;
+
+				$out.= sprintf('<article class="%s">', $classes);
+				$out.= '<header class="cf">';
+				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-facebook-2.png" alt=""></div>';
+				$out.= sprintf('<h4>%s</h4>', $value['name']);
+				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value['created_time'])));
+				$out.= sprintf('<a href="%s" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>', $value['url']);
+				$out.= '</header>';
+				$out.= sprintf('<div class="content"><p>%s</p></div>', $value['msg']);				
+				$out.= '</article>';
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * Get facebook messages
+	 * @param  string $user 
+	 * @return array
+	 */
+	public function getFacebookMsg($user, $count)
+	{
+		$key   = $user.$count;
+		$cache = $this->getCache($key, self::FACEBOOK_CACHE_LABEL);
+		if($cache)
+		{	
+			return $cache;
+		}
+
+		$fb = array();
+		$user_profile = $this->facebook->api('/'.$user.'/posts');
+		
+		foreach ($user_profile['data'] as &$post) 
+		{
+			$id  = $post['id'];
+			$msg = isset($post['story']) ? $post['story'] : '';
+			$msg = isset($post['message']) ? $post['message'] : $msg;
+			$url = 'https://www.facebook.com/'.$id.'/';
+			$url = $this->googl->shorten($url);
+			$c   = intval($count);
+
+			if(strlen($msg) && $count)
+			{
+				$count--;
+				$fb[] = array(
+					'id'           => $id, 
+					'name'         => $post['from']['name'],
+					'msg'          => $msg,
+					'url'          => $url,
+					'created_time' => $post['created_time']);
+			}
+		}		
+
+		$this->setCache($key, $fb, 3600, self::FACEBOOK_CACHE_LABEL);
+
+		return $fb;
+	}
+
+	/**
+	 * Get Google+ HTML feed
+	 * @param  string $user  
+	 * @param  integer $count 
+	 * @return string
+	 */
+	public function getGooglePlusFeed($id, $count)
+	{		
+		$out    = '';
+		$g_plus = $this->getGooglePlusMsg($id, $count);		
+		$first  = true;
+		$class  = array('box-social', 'red', 'feed-google_plus');
+
+		if($g_plus)
+		{
+			foreach ($g_plus as $value) 
+			{
+				if($first)
+				{
+					$first    = false;
+					$feed_all = ' feed-all';
+				}
+				else
+				{
+					$feed_all = '';	
+				}
+
+				$classes = implode(' ', $class).$feed_all;
+
+				$out.= sprintf('<article class="%s">', $classes);
+				$out.= '<header class="cf">';
+				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-google-2.png" alt=""></div>';
+				$out.= sprintf('<h4>%s</h4>', $value['name']);
+				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value['created_time'])));
+				$out.= sprintf('<a href="%s" class="link-arrow-red mobile-hide-dib">View on Facebook</a>', $value['url']);
+				$out.= '</header>';
+				$out.= sprintf('<div class="content"><p>%s</p></div>', $value['msg']);				
+				$out.= '</article>';
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * Get Google+ messages
+	 * @param  string  $id
+	 * @param  integer $count
+	 * @return array
+	 */
+	public function getGooglePlusMsg($id, $count)
+	{
+		$cache = $this->getCache($id.$count, self::GOOGLE_PLUS_CACHE_LABEL);
+		if($cache)
+		{			
+			return $cache;
+		}
+
+		$out         = array();
+		$dest        = sprintf('https://www.googleapis.com/plus/v1/people/%s/activities/public?maxResults=%s&key=%s', $id, $count, self::GOOGLE_PLUS_KEY);
+		$json_string = file_get_contents($dest);
+		$json        = json_decode($json_string, true);
+
+		if($json['items'])
+		{
+			foreach ($json['items'] as &$post) 
+			{
+				$url = $this->googl->shorten($url);
+				$out[] = array(
+					'url'          => $this->googl->shorten($post['url']),
+					'msg'          => $post['title'],
+					'name'         => $post['actor']['displayName'],
+					'created_time' => $post['published']);
+			}
+		}
+
+		$this->setCache($id.$count, $out, 3600, self::GOOGLE_PLUS_CACHE_LABEL);
+
+		return $out;
+	}
+
+	/**
+	 * Set Cache
+	 * @param string  $key    
+	 * @param string  $val    
+	 * @param integer $time   
+	 * @param string  $prefix 
+	 */
+	public function setCache($key, $val, $time = 3600, $prefix = 'cheched-')
+	{		
+		set_transient($prefix.$key.self::CACHE_KEY, $val, $time);
+	}
+
+	/**
+	 * Get Cache
+	 * @param  string $key    
+	 * @param  string $prefix 
+	 * @return mixed
+	 */
+	public function getCache($key, $prefix = 'cheched-')
+	{		
+		if(self::CACHE_ON)
+		{
+			$cached   = get_transient($prefix.$key.self::CACHE_KEY);
+			if (false !== $cached) return $cached;	
+		}
+		return false;
 	}
 
 	/**
