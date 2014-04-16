@@ -28,22 +28,30 @@
 			}
 		});
 
+		// =========================================================
+		// Subscribe AJAX
+		// =========================================================
 		$('.form-subscribe-ajax').submit(function(e){			
 			jQuery.ajax({
     			type: "POST",
-    			url: default_options.ajaxurl + '?action=subscribe',
+    			url: default_settings.ajaxurl + '?action=subscribe',
     			dataType: 'json',
-    			data: {
-    				email: jQuery(this).find('[name="email"]').val(),
-    				security: jQuery(this).find('[name="security"]').val()},    			
+    			data: $(this).serialize(),    			
     			success: function(data){    				
-    				alert(data.message);
+    				alert(data.msg);
     			}
     		});
 			e.preventDefault();
 		});
+		// =========================================================
+		// MASONRY BRICS
+		// =========================================================
+		var $container = $('.stories-list');
+		// initialize
+		$container.masonry({		  
+		  itemSelector: '.box-story'
+		});
 
-		
 	});
 	
 })(jQuery);

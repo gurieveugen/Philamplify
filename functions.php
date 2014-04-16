@@ -6,8 +6,11 @@
 // =========================================================
 // REQUIRE
 // =========================================================
+require_once 'includes/ajax.php';
+require_once 'includes/page_subscribers.php';
 require_once 'includes/page_theme_options.php';
 require_once 'includes/post_type_slider.php';
+require_once 'includes/post_type_stories.php';
 require_once 'includes/widget_news_feed.php';
 require_once 'includes/widget_text.php';
 require_once 'includes/widget_subscribe.php';
@@ -61,12 +64,16 @@ register_nav_menus( array(
 ) );
 
 // =========================================================
-// ADD STYLES
+// ADD STYLES AND SCRIPTS
 // =========================================================
 if(is_admin())
 {
 	wp_enqueue_style('font-awesome', TDU.'/css/font-awesome.min.css');
 	wp_enqueue_style('admin-styles', TDU.'/css/admin-styles.css');	
+	wp_enqueue_script('jmain-admin', TDU.'/js/jquery.main.admin.js', array('jquery'));
+	wp_localize_script('jmain-admin', 'default_settings', array( 
+			'ajaxurl'     => get_bloginfo('template_url').'/includes/ajax.php',
+			'redirecturl' => get_bloginfo('url')));
 }
 // =========================================================
 // methods
@@ -176,11 +183,19 @@ function theme_entry_meta()
 	}
 }
 
+/**
+ * Register some scripts
+ */
 function scripts_method() 
 {
-	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', TDU.'/js/jquery-1.11.0.min.js');
-	wp_enqueue_script( 'jquery' );
+	wp_deregister_script('jquery');
+	wp_register_script('jquery', TDU.'/js/jquery-1.11.0.min.js');
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('masonry', TDU.'/js/masonry.min.js', array('jquery'));
+	wp_enqueue_script('jmain', TDU.'/js/jquery.main.js', array('jquery'));
+	wp_localize_script('jmain', 'default_settings', array( 
+			'ajaxurl'     => get_bloginfo('template_url').'/includes/ajax.php',
+			'redirecturl' => get_bloginfo('url')));
 }
 
 
@@ -197,4 +212,24 @@ function template_url($text)
 function printSocials(&$item, $key)
 {
 	if(strlen($item)) echo '<li><a href="'.$item.'"><img src="'.TDU.'/images/ico-'.$key.'.png" alt="alt"></a></li>';
+}
+
+/**
+ * Get IP address visitor
+ * @return string
+ */
+function getIP() 
+{
+    $ip = $_SERVER['REMOTE_ADDR'];
+ 
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) 
+    {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } 
+    else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) 
+    {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+ 
+    return $ip;
 }

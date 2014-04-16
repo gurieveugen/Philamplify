@@ -52,8 +52,11 @@
 <section class="section-socials cf">
 	<div class="holder">
 		<div class="center-wrap cf">
-			<?php $GLOBALS['social_feed']->displayFeed(); ?>
-			<div id="sidebar">
+			<?php 
+			$GLOBALS['social_feed']->displayFeed(); 
+			get_sidebar('blog');
+			?>
+			<!-- <div id="sidebar">
 				<div class="holder cf">
 					<div class="aside-widget tablet-visible">
 						<h3><a href="#">News Feed</a></h3>
@@ -129,7 +132,7 @@
 					</aside>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 <section class="section-columns">

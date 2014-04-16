@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="<?php echo TDU; ?>/js/doubletaptogo.js" ></script>
 	<script type="text/javascript" src="<?php echo TDU; ?>/js/jquery.formstyler.min.js" ></script>
 	<script type="text/javascript" src="<?php echo TDU; ?>/js/jquery.cycle.all.js"></script>
-	<script type="text/javascript" src="<?php echo TDU; ?>/js/jquery.main.js" ></script>
+	
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="<?php echo TDU; ?>/js/html5.js"></script>
 		<script type="text/javascript" src="<?php echo TDU; ?>/js/pie.js"></script>

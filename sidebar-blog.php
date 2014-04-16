@@ -1,6 +1,6 @@
 <div id="sidebar" class="cf">
 	<div class="holder cf">
-		<div class="aside-widget">
+		<!-- <div class="aside-widget">
 			<h3><a href="#">Sidebar Widget Area</a></h3>
 			<div class="holder">
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula</p>
@@ -42,7 +42,7 @@
 					<input type="submit" class="btn-dark-green" value="Submit and See Results">
 				</div>
 			</form>
-		</div>
+		</div> -->
 		<?php dynamic_sidebar( 'Blog Right Sidebar' ); ?>
 	</div>
 </div>

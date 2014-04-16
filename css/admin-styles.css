@@ -10,3 +10,58 @@
  	font-size: 18px !important;
 }
 
+#adminmenu #toplevel_page_SubscribersPage .wp-menu-image:before {
+	content: "\f0c0";  
+ 	font-family: 'FontAwesome' !important;
+ 	font-size: 18px !important;
+}
+
+#adminmenu #menu-posts-story .wp-menu-image:before {
+	content: "\f075";  
+ 	font-family: 'FontAwesome' !important;
+ 	font-size: 18px !important;
+}
+
+.gctable{
+	width: 100%;
+	margin: 0 0 50px 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.gctable thead tr th{
+	text-align: left;
+}
+
+.gctable > thead > tr > th, .gctable > tbody > tr > th, .gctable > tfoot > tr > th, .gctable > thead > tr > td, .gctable > tbody > tr > td, .gctable > tfoot > tr > td {
+    border-top: 1px solid #DDDDDD;
+    line-height: 1.42857;
+    padding: 8px;
+    vertical-align: top;
+}
+
+.gctable > thead > tr > th {
+    border-bottom: 2px solid #DDDDDD;
+    vertical-align: bottom;
+}
+
+.gctable > caption + thead > tr:first-child > th, .gctable > colgroup + thead > tr:first-child > th, .gctable > thead:first-child > tr:first-child > th, .gctable > caption + thead > tr:first-child > td, .gctable > colgroup + thead > tr:first-child > td, .gctable > thead:first-child > tr:first-child > td {
+    border-top: 0 none;
+}
+
+.gctable > tbody + tbody {
+    border-top: 2px solid #DDDDDD;
+}
+
+.gctable .gctable {
+    background-color: #FFFFFF;
+}
+
+.gctable> tbody > tr:nth-child(2n+1) > td, .gctable> tbody > tr:nth-child(2n+1) > th {
+    background-color: #FFFFFF;
+}
+
+.w100{
+	width: 100%;
+}
+

@@ -42,8 +42,9 @@
 								<label>Subscribe to NCRP Newsletter</label>
 								<div class="cf">
 									<input type="email" placeholder="EMAIL ADDRESS" name="email">
-									<input type="submit" value="SUBMIT">
-									<?php wp_nonce_field( 'ajax-subscribe-nonce', 'security' ); ?>
+									<input type="hidden" value="<?php echo getIP(); ?>" name="ip">
+									<?php wp_nonce_field('subscribe-nonce', 'security'); ?>
+									<input type="submit" value="SUBMIT">									
 								</div>
 							</form>
 						</div>
