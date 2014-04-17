@@ -188,14 +188,20 @@ function theme_entry_meta()
  */
 function scripts_method() 
 {
+	$options = $GLOBALS['gcoptions']->getAll();
+
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', TDU.'/js/jquery-1.11.0.min.js');
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('masonry', TDU.'/js/masonry.min.js', array('jquery'));
+	wp_enqueue_script('masonry-filter', TDU.'/js/multipleFilterMasonry.js', array('jquery'));
 	wp_enqueue_script('jmain', TDU.'/js/jquery.main.js', array('jquery'));
 	wp_localize_script('jmain', 'default_settings', array( 
-			'ajaxurl'     => get_bloginfo('template_url').'/includes/ajax.php',
-			'redirecturl' => get_bloginfo('url')));
+			'ajaxurl'           => get_bloginfo('template_url').'/includes/ajax.php',
+			'redirecturl'       => get_bloginfo('url'),
+			'stories_count'     => $options['stories_count'], 
+			'stories_container' => '.stories-list',
+			'more_count'        => 1));
 }
 
 

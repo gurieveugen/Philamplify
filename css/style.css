@@ -2488,3 +2488,5 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	display:table;
 	clear:both;
 }
+
+.hide{ display: none; }

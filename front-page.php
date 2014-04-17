@@ -138,7 +138,8 @@
 <section class="section-columns">
 	<div class="center-wrap cf">
 		<h2 class="title-section lightgreen">How Philamplify Works</h2>
-		<div class="columns cf">
+		<?php echo $GLOBALS['meta_box_featured_post']->getFeaturedPosts(); ?>
+		<!-- <div class="columns cf">
 			<div class="column">
 				<div class="image">
 					<a href="#"><img src="<?php echo TDU; ?>/images/img-9.jpg" alt=""></a>
@@ -160,7 +161,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla lacus id sapien mollis pellentesque. Ut adipiscing sit amet sem consequat suscipit.</p>
 				<a href="#" class="link-arrow-big pc-visible">Learn More</a>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 

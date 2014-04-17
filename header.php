@@ -57,17 +57,9 @@
 					</a></strong>
 					<div class="right mobile-hide">
 						<ul class="socials socials-2">
-							<?php array_walk($socials, 'printSocials');	?>
-							<!-- <li><a href="#"><img src="<?php echo TDU; ?>/images/ico-facebook.png" alt=""></a></li>
-							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-twitter.png" alt=""></a></li>
-							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-youtube.png" alt=""></a></li>
-							<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-rss.png" alt=""></a></li> -->
+							<?php array_walk($socials, 'printSocials');	?>							
 						</ul>
-						<?php get_search_form(); ?>
-						<!-- <form action="#" class="search-form pc-visible">
-							<input type="text" placeholder="SEARCH">
-							<input type="submit" value="Search">
-						</form> -->
+						<?php get_search_form(); ?>						
 					</div>
 				</div>
 				<?php wp_nav_menu( array(
@@ -78,11 +70,11 @@
 					'menu_id'         => 'nav'
 				)); ?>
 				<div class="hide nav-box">
-
-					<form action="#" class="search-form-tablet cf">
+					<?php get_template_part('searchform', 'tablet'); ?>
+					<!-- <form action="#" class="search-form-tablet cf">
 						<input type="text" placeholder="Search">
 						<input type="submit" value="Search">
-					</form>
+					</form> -->
 					<ul class="socials cf">
 						<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-facebook.png" alt=""></a></li>
 						<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-twitter.png" alt=""></a></li>

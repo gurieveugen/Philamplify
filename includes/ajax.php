@@ -12,8 +12,8 @@ class AJAX{
 	//  / ___/ __ \/ __ \/ ___/ __/ __ `/ __ \/ __/ ___/
 	// / /__/ /_/ / / / (__  ) /_/ /_/ / / / / /_(__  ) 
 	// \___/\____/_/ /_/____/\__/\__,_/_/ /_/\__/____/  
-	const SUBSCRIBE_NONCE  = 'subscribe-nonce';
-	const SUBSCRIBE_OPTION = 'subscribers';	                                                 
+	const SUBSCRIBE_NONCE    = 'subscribe-nonce';
+	const SUBSCRIBE_OPTION   = 'subscribers';	                                                 
 	//                    __  __              __    
 	//    ____ ___  ___  / /_/ /_  ____  ____/ /____
 	//   / __ `__ \/ _ \/ __/ __ \/ __ \/ __  / ___/
@@ -73,6 +73,31 @@ class AJAX{
 		echo json_encode(array('empty' => true));
 	}
 
+	/**
+	 * Get more stories
+	 */
+	public function moreStories()
+	{
+		$options = $GLOBALS['gcoptions']->getAll();
+		$items   = $GLOBALS['sotries']->getItems(array(
+			'posts_per_page' => intval($options['stories_count']),
+			'offset'         => intval($_POST['offset']))); 
+		if($items)
+		{
+			$json['html']   = $GLOBALS['sotries']->wrapItems($items);
+			$json['result'] = TRUE;
+		}
+		else
+		{			
+			$json['result'] = FALSE;	
+		}
+		echo json_encode($json);
+	}
+
+
+	// =========================================================
+	// OLD! MAYBE IN FUTURE I WILL REMOVE THIS CODE
+	// =========================================================
 	/**
 	 * Sign up
 	 */

@@ -67,10 +67,10 @@ class Stories{
 	public function columnThumb($columns)
 	{
 		return array_merge($columns, array(
-			'first_name' => __('First name'),
-			'last_name' => __('Last name'),
-			'email' => __('Email address'),
-			'thumb' => __('Image')));
+			'first_name'  => __('First name'),
+			'last_name'   => __('Last name'),
+			'email'       => __('Email address'),
+			'story-thumb' => __('Image')));
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Stories{
 				$learn_more = isset($meat['email']) ? sprintf('<a href="mailto:%s">%s</a>', $meat['email'], $meat['email']) : '';
 				echo $learn_more;
 				break;
-			case 'thumb':
+			case 'story-thumb':
 				if(has_post_thumbnail($post_id)) echo get_the_post_thumbnail($post_id, 'story-thumb-small');
 				break;
 		}			
@@ -191,33 +191,104 @@ class Stories{
 	 * @param  integer $count
 	 * @return array        
 	 */
-	public function getItems($count = -1)
+	public function getItems($args)
 	{
-		$all = array(
-			'posts_per_page'   => $count,
+		$def = array(
+			'posts_per_page'   => 500,
 			'offset'           => 0,			
 			'orderby'          => 'post_date',
 			'order'            => 'DESC',
-			'post_type'        => 'slide',
+			'post_type'        => 'story',
 			'post_status'      => 'publish');
-		$arr = get_posts($all);
-		foreach ($arr as $key => &$value) 
-		{
-			$images = null;
-			if(has_post_thumbnail($value->ID))
-			{
-				$post_thumbnail_id = get_post_thumbnail_id($value->ID);
-				$slide_image       = wp_get_attachment_image_src($post_thumbnail_id ,'slide-image', false);
-				$slide_thumb_image = wp_get_attachment_image_src($post_thumbnail_id ,'slide-thumb-image', false);
-				$images['full']    = $slide_image[0];
-				$images['small']   = $slide_thumb_image[0];
-			}
-			$value->images = $images;
-			$value->meta   = $this->getMeta($value->ID);
-		}
-		return $arr;
-	}
 	
+		if($args) $arr = array_merge($def, $args);
+		else $arr = $def;
+
+		$items = get_posts($arr);
+		foreach ($items as &$item) 
+		{
+			$item->image = null;
+			
+			if(has_post_thumbnail($item->ID))
+			{
+				$thumbnail_id     = get_post_thumbnail_id($item->ID);
+				$item->image_meta = $this->getAttachmentInfo($thumbnail_id);
+				$image            = wp_get_attachment_image_src($thumbnail_id,'story-thumb', false);				
+				$item->image      = $image[0];
+			}
+			
+			$item->meta   = $this->getMeta($item->ID);
+		}
+		return $items;
+	}	
+	
+	/**
+	 * Get attachment info
+	 * @param  integer $attachment_id 
+	 * @return mixed
+	 */
+	public function getAttachmentInfo($attachment_id) 
+	{
+		$attachment = get_post($attachment_id);
+		if($attachment)
+		{
+			return array(
+				'ID'           => $attachment_id,
+				'post_title'   => $attachment->post_title,
+				'post_content' => $attachment->post_content);	
+		}
+		return false;
+	}
+
+	/**
+	 * Wrap some items
+	 * @param  array $items
+	 * @return string
+	 */
+	public function wrapItems($items)
+	{
+		$out = '';
+		if($items)
+		{
+			foreach ($items as &$item) 
+			{	
+				$type       = 'text';			
+				$title      = '';
+				$content    = $item->post_content;
+				$img        = '';
+				$first_name = $item->meta['first_name'];
+				$last_name  = $item->meta['last_name'];
+				$date       = $this->formatDate($item->post_date);
+
+				if($item->image)
+				{
+					$type    = 'photo';
+					$title   = $item->image_meta['post_title'];					
+					$img    .= sprintf('<img src="%s" alt="%s">', $item->image, $title);
+				}
+
+				$out.= '<article class="box-story '.$type.'">';
+				$out.= $img;
+				$out.= '<div class="text-media">';
+				$out.= (strlen($title)) ? sprintf('<h1>%s</h1>', $title) : '';
+				$out.= (strlen($content)) ? sprintf('<p>%s</p>', $content) : '';
+				$out.= sprintf('<em class="meta">Shared by %s %s on %s</em>', $first_name, $last_name, $date);
+				$out.= '</div>';
+				$out.= '</article>';
+			}
+		}
+		return $out;
+	}
+
+	/**
+	 * Format date
+	 * @param  datetime $time
+	 * @return datetime
+	 */
+	private function formatDate($time)
+	{
+		return date('j/n/y', $time);
+	}
 }
 // =========================================================
 // LAUNCH

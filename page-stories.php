@@ -21,11 +21,22 @@
 		<strong class="title">Filter</strong>
 		<div class="item">
 			<label class="mobile-hide-dib">Media Type:</label>
-			<ul class="icons">
-				<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-text.png" alt=""></a></li>
-				<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-vdeo.png" alt=""></a></li>
-				<li><a href="#"><img src="<?php echo TDU; ?>/images/ico-photo.png" alt=""></a></li>
+			<ul class="icons filter-icons">
+				<li><a href="#" class="selected" data-id="filter-text" data-selected="<?php echo TDU; ?>/images/ico-text-selected.png" data-notselected="<?php echo TDU; ?>/images/ico-text.png"><img src="<?php echo TDU; ?>/images/ico-text-selected.png" alt=""></a></li>
+				<li><a href="#" class="selected" data-id="filter-video" data-selected="<?php echo TDU; ?>/images/ico-vdeo-selected.png" data-notselected="<?php echo TDU; ?>/images/ico-vdeo.png"><img src="<?php echo TDU; ?>/images/ico-vdeo-selected.png" alt=""></a></li>
+				<li><a href="#" class="selected" data-id="filter-photo" data-selected="<?php echo TDU; ?>/images/ico-photo-selected.png" data-notselected="<?php echo TDU; ?>/images/ico-photo.png"><img src="<?php echo TDU; ?>/images/ico-photo-selected.png" alt=""></a></li>
 			</ul>
+			<div class="filters hide">
+				<input type="checkbox" id="filter-text" name="text" value="text" checked>
+				<input type="checkbox" id="filter-video" name="video" value="video" checked>
+				<input type="checkbox" id="filter-photo" name="photo" value="photo" checked>
+			</div>
+			<!-- PRELOAD IMAGES -->
+			<div class="hide">
+				<img src="<?php echo TDU; ?>/images/ico-text.png" alt="">
+				<img src="<?php echo TDU; ?>/images/ico-vdeo.png" alt="">
+				<img src="<?php echo TDU; ?>/images/ico-photo.png" alt="">				
+			</div>
 		</div>
 		<div class="item">
 			<label class="mobile-hide-dib">State:</label>
@@ -49,7 +60,12 @@
 		</div>
 	</div>
 	<div class="stories-list cf">
-		<article class="box-story">
+		<?php 
+		$options = $GLOBALS['gcoptions']->getAll();
+		$items   = $GLOBALS['sotries']->getItems(array('posts_per_page' => intval($options['stories_count']))); 		
+		echo $GLOBALS['sotries']->wrapItems($items);
+		?>
+		<!-- <article class="box-story">
 			<img src="<?php echo TDU; ?>/images/img-3.jpg" alt="">
 			<div class="text-media">
 				<h1>Media Title</h1>
@@ -108,10 +124,10 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id porttitor nunc. In vitae lobortis elit, vitae tincidunt risus. Fusce eu lorem vel turpis dictum tristique non et erat. Nulla fringilla justo ac mauris dignissim rutrum vitae ac lacus. Aenean rhoncus ipsum porta enim volutpat, blandit bibendum tortor</p>
 				<em class="meta">Shared by First Last on 3/14/14</em>
 			</div>
-		</article>
+		</article> -->
 	</div>
 	<div class="btn-more-holder">
-		<a href="#" class="btn-green">More Stories</a>
+		<a href="#" class="btn-green more-stories-ajax">More Stories</a>
 	</div>
 </div>
 <?php get_footer(); ?>
