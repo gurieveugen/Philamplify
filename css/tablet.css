@@ -260,6 +260,24 @@ body{
 .aside-widget .list{
 	margin: 0 7%;
 }
+/* yop-poll-widget */
+.yop-poll-widget .yop-poll-container{
+	padding: 20px 12% 35px !important;
+}
+.yop-poll-widget .yop-poll-question{
+	margin: 0 0 18px !important;
+}
+.yop-poll-widget .yop-poll-answers{
+	padding: 0 0 22px;
+}
+.yop-poll-widget .yop-poll-footer{
+	padding: 0;
+}
+.yop-poll-widget .yop_poll_vote_button{
+	font-size: 15px;
+	height: 45px;
+}
+/* yop-poll-widget end */
 .aside-widget .form-poll{
 	padding: 20px 12% 35px;
 }

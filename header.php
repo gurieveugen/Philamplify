@@ -20,7 +20,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-	<link media="all" rel="stylesheet" type="text/css" href="<?php echo TDU; ?>/css/style.css" />
 	<link rel="stylesheet" media="(max-width: 970px)" href="<?php echo TDU; ?>/css/tablet.css" />
 	<link rel="stylesheet" media="(max-width: 500px)" href="<?php echo TDU; ?>/css/mobile.css" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />

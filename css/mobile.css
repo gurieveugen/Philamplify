@@ -185,6 +185,11 @@ body{
 .aside-widget .list{
 	margin: 0 3%;
 }
+/* yop-poll-widget */
+.yop-poll-widget .yop-poll-container{
+	padding: 20px 9% 35px !important;
+}
+/* yop-poll-widget end */
 .aside-widget .form-poll{
 	padding: 20px 9% 35px;
 }

@@ -8,7 +8,7 @@
 			$(this).toggleClass('open');
 		});
 		
-		$('.form-poll input[type="radio"], .filters-area select, .form-story select, .select-socials-filter').styler();
+		$('.form-poll input[type="radio"], .yop-poll-widget input[type="radio"], .filters-area select, .form-story select, .select-socials-filter').styler();
 		
 		$('.data-box .btn-box').click(function(){
 			$(this).toggleClass('open');
