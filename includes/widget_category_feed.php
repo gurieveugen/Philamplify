@@ -2,10 +2,10 @@
 /**
  * Register new widget
  */
-add_action('widgets_init', create_function('', 'register_widget( "NewsFeed" );'));
+add_action('widgets_init', create_function('', 'register_widget( "CategoryFeed" );'));
 
 
-class NewsFeed extends WP_Widget {
+class CategoryFeed extends WP_Widget {
 	//                    __  __              __    
 	//    ____ ___  ___  / /_/ /_  ____  ____/ /____
 	//   / __ `__ \/ _ \/ __/ __ \/ __ \/ __  / ___/
@@ -13,8 +13,8 @@ class NewsFeed extends WP_Widget {
 	// /_/ /_/ /_/\___/\__/_/ /_/\____/\__,_/____/  
 	public function __construct() 
 	{
-		$widget_ops     = array('classname' => '', 'description' => 'News feed widget' );		
-		parent::__construct('newsfeed', 'News feed widget', $widget_ops);
+		$widget_ops     = array('classname' => '', 'description' => 'Category feed widget' );		
+		parent::__construct('categoryfeed', 'Category feed widget', $widget_ops);
 	}
 
 	function widget($args, $instance) 
@@ -48,19 +48,19 @@ class NewsFeed extends WP_Widget {
 
 		$posts = get_posts($args);
 		if($title != '') echo $before_title.'<a href="'.$title_url.'">'.$title.'</a>'.$after_title;
-		echo '<ul class="list-news">';
+		echo '<ul class="list">';
 		foreach ($posts as $value) 
 		{
+			$item_title = get_the_title($value);
+			$ask        = strpos($item_title, '?');			
+			$class = ($ask === false) ? 'ico-a' : 'ico-q';
 			?>
 			<li>
-				<a href="<?php echo get_permalink($value); ?>">
-					<span class="date"><?php echo get_post_time('m/d', false, $value); ?></span>
-					<strong class="title"><?php echo get_the_title($value); ?></strong>
-				</a>
+				<a href="<?php echo get_permalink($value); ?>" class="<?php echo $class; ?>"><?php echo $item_title; ?></a>
 			</li>
 			<?php
 		}
-		echo '</ul><!-- list-news -->';
+		echo '</ul><!-- /.list -->';
 		echo $after_widget;
 	}
 
@@ -84,14 +84,14 @@ class NewsFeed extends WP_Widget {
 		</p>	
 		<p>
 			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Count'); ?>: 
-				<input class="widefat" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" type="text" value="<?php echo esc_attr($count); ?>" />
+				<input class="widefat" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" type="text" value="<?php echo intval($count); ?>" />
 			</label>
-		</p>	
+		</p>			
 		<p>
 			<label for="<?php echo $this->get_field_id('category'); ?>"><?php _e('Category'); ?>: 
 				<?php echo $this->getCategoriesControl($this->get_field_name('category'), $this->get_field_id('category'), $category); ?>				
 			</label>
-		</p>				
+		</p>		
 		<?php
 	}
 
@@ -155,8 +155,8 @@ class NewsFeed extends WP_Widget {
 		$instance              = $old_instance;		
 		$instance['title']     = strip_tags($new_instance['title']);		
 		$instance['title_url'] = strip_tags($new_instance['title_url']);		
-		$instance['count']     = intval($new_instance['count']);	
-		$instance['category']  = intval($new_instance['category']);				
+		$instance['count']     = intval($new_instance['count']);				
+		$instance['category']  = intval($new_instance['category']);	
 		
 		return $instance;
 	}

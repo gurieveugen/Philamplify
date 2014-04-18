@@ -6,7 +6,7 @@
 ?>
 <div id="sidebar">
 	<div class="holder cf">
-		<div class="aside-widget tablet-visible">
+		<!-- <div class="aside-widget tablet-visible">
 			<h3><a href="#">News Feed</a></h3>
 			<ul class="list-news">
 				<li>
@@ -114,7 +114,7 @@
 					<input type="submit" value="Submit and See Results">
 				</div>
 			</form>
-		</div>
+		</div> -->
 		<?php dynamic_sidebar( 'Right Sidebar' ); ?>
 	</div>
 </div>

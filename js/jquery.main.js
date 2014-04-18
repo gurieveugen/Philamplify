@@ -21,7 +21,13 @@
 			speed:  500,
 			timeout: 0,
 			prev: '.slider-area .link-prev',
-			next: '.slider-area .link-next',
+			next: '.slider-area .link-next'			
+		});
+
+		$('.mainslides').cycle({ 
+			fx:     'scrollHorz',
+			speed:  500,
+			timeout: 0,			
 			pager:  '.slider-area .switcher',
 			pagerAnchorBuilder: function(idx, slide) {
 				return '.slider-area .switcher li:eq(' + idx + ') a';
@@ -95,6 +101,16 @@
 				$(this).html('<img src="' + notselected + '" alt="" />');
 			}
 			e.preventDefault();
+		});
+		// =========================================================
+		// SUBMIT STORY
+		// =========================================================
+		$('.form-share-story-ajax').submit(function(e){
+			if(!$(this).find('[name=i_agree]').prop("checked"))
+			{
+				e.preventDefault();
+				alert('You did not agree with Terms of Use and Privacy Policy!');
+			}
 		});
 	});
 	

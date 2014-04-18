@@ -13,7 +13,7 @@
 	</div>
 </header>
 <div class="main-stories center-wrap cf">
-	<a href="#" class="btn-submit-stories">
+	<a href="<?php bloginfo('url'); ?>/share-your-story" class="btn-submit-stories">
 		<img src="<?php echo TDU; ?>/images/ico-story.png" alt="">
 		Submit your own stories!
 	</a>

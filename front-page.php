@@ -8,8 +8,9 @@
 <?php get_header(); ?>
 
 <section class="section-media">
-	<div class="holder">
-		<div class="center-wrap cf">
+	<div class="holder mainslides">
+		<?php echo $GLOBALS['mainslider']->getSlides(); ?>	
+		<!-- <div class="center-wrap cf">
 			<div class="text pc-hide">
 				<h1>Honest Feedback to Improve Philanthropy</h1>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum.</p>
@@ -31,7 +32,7 @@
 					</blockquote>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </section>
 <section class="slider-area">
@@ -40,7 +41,7 @@
 			<h2 class="title-section">Latest Foundation Assessments</h2>
 			<div class="slider-control">
 				<a href="#" class="link-prev pc-hide-dib">Previous</a>
-				<?php echo $GLOBALS['slider']->getSwitcher(); ?>				
+				<?php echo $GLOBALS['mainslider']->getSwitcher(); ?>				
 				<a href="#" class="link-next pc-hide-dib">Next</a>
 			</div>
 		</div>
