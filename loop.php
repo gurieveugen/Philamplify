@@ -24,7 +24,7 @@
 		</div>
 		<div class="post-meta-holder">
 			<ul class="post-meta cf">
-				<li class="date"><?php the_date(); ?></li>
+				<li class="date"><?php the_time('F j, Y'); ?></li>
 				<?php 
 				if($categories = get_the_category())
 				{

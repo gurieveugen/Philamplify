@@ -302,7 +302,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	color:#41a62a;
 }
 .comment-list article, .comment-list .pingback, .comment-list .trackback{
-	border-top:1px solid rgba(0, 0, 0, 0.1);
+	border-top:1px solid #ccc;
 	margin-bottom:24px;
 	padding-top:24px;
 }
@@ -313,7 +313,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	position:relative;
 }
 .comment-author .avatar{
-	border:1px solid rgba(0, 0, 0, 0.1);
+	border:1px solid #ccc;
 	height:18px;
 	padding:2px;
 	position:absolute;
@@ -603,7 +603,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	position: absolute;
 	left: -10px;
 	right: -10px;
-	z-index: 100;
+	z-index: 300;
 	padding: 0 10px;
 	background: #80bd01;
 	font-size: 14px;
@@ -1532,7 +1532,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	margin: 0;
 	font-size: 12px;
 	line-height: 17px;
-	font-weight: 600px;
+	font-weight: 600;
 	color: #383737;
 }
 .box-story .text p{
@@ -2127,7 +2127,21 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 .section-media > .holder{
 	background: url(images/bg-2.jpg) no-repeat 50% 0;
 	padding: 20px 0;
+	min-height: 280px;
 }
+.section-media .center-wrap{
+	position: relative;
+}
+.section-media .mainslides .mainslide{
+	width: 100%;
+	position: absolute;
+	display: none;
+	background: none !important;
+}
+.section-media .mainslides .mainslide:first-child{
+	display: block;
+}
+
 .section-media .text{
 	float: right;
 	width: 460px;

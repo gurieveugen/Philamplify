@@ -241,7 +241,7 @@ class MainSlider{
 		{
 			foreach ($this->items as &$item) 
 			{
-				$output.= '<div class="center-wrap cf mainslide">';
+				$output.= '<div class="mainslide">';
 				$output.= '<div class="text pc-hide">';
 				$output.= '<h1>'.$item->post_title.'</h1>';
 				$output.= '<p>'.$item->post_content.'</p>';
@@ -249,7 +249,7 @@ class MainSlider{
 
 				$output.= '<div class="video-box">';
 				$output.= '<img src="'.TDU.'/images/img-7.jpg" alt="">';
-				$output.= '<a href="'.$item->meta['video_url'].'" class="ico-video">play</a>';
+				$output.= '<a href="'.$item->meta['video_url'].'" target="_blank" class="ico-video">play</a>';
 				$output.= '</div>';
 
 				$output.= '<div class="text">';
@@ -265,7 +265,7 @@ class MainSlider{
 				$output.= '</blockquote>';
 				$output.= '</div>';
 				$output.= '</div>';		
-				$output.= '</div><!-- /.center-wrap --!>';	
+				$output.= '</div>';	
 			}
 		}
 		

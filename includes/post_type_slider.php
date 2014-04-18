@@ -242,7 +242,7 @@ class Slider{
 				$output.= sprintf('</div><!-- slide (%d) -->', $item->ID);
 			}
 		}
-		$output.= '</div><!-- slides --!>';
+		$output.= '</div>';
 		return $output; 
 	}
 

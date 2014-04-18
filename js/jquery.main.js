@@ -27,7 +27,7 @@
 		$('.mainslides').cycle({ 
 			fx:     'scrollHorz',
 			speed:  500,
-			timeout: 0,			
+			timeout: 0,
 			pager:  '.slider-area .switcher',
 			pagerAnchorBuilder: function(idx, slide) {
 				return '.slider-area .switcher li:eq(' + idx + ') a';

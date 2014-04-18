@@ -155,6 +155,7 @@ body{
 /* footer */
 #footer > .holder{
 	padding: 38px 0;
+	background: none;
 }
 #footer .column{
 	width: 330px;
@@ -318,7 +319,7 @@ body{
 }
 .btn-green{
 	font-size: 15px;
-	line-height: 41px;
+	line-height: 35px;
 	height: 43px;
 	-webkit-border-radius:6px;
 	border-radius:6px;
@@ -466,8 +467,11 @@ body{
 	background: url(../images/bg-3.jpg) no-repeat 50% 0;
 	padding: 13px 0 33px;
 }
+.section-media .center-wrap{
+	margin: 0;
+}
 .section-media .text.pc-hide{
-	padding: 0 7px 5px;
+	padding: 0 27px 5px;
 }
 .section-media .text{
 	float: none;
@@ -480,12 +484,12 @@ body{
 .section-media .video-box{
 	float: left;
 	width: 500px;
-	margin: 0 0 0 -20px;
+	margin: 0;
 }
 .section-media .quotes-holder{
 	float: right;
 	width: 247px;
-	margin: 0 -20px -32px 0;
+	margin: 0 0 -32px;
 }
 .section-media .box-quote{
 	padding: 27px 28px 16px;
@@ -560,7 +564,7 @@ body{
 }
 .section-socials #sidebar > .holder{
 	background: none;
-	padding: 30px 0 0;
+	padding-top: 30px;
 }
 .section-socials .title-section{
 	margin: 0;
@@ -598,7 +602,7 @@ body{
 	display: none !important;
 }
 .content-socials .socials-holder{
-	margin: 0 75px;
+	margin: 0 10%;
 }
 .section-columns .title-section{
 	margin: 0 0 18px -20px;

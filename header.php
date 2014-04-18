@@ -31,8 +31,9 @@
 	
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="<?php echo TDU; ?>/js/html5.js"></script>
-		<script type="text/javascript" src="<?php echo TDU; ?>/js/pie.js"></script>
-		<script type="text/javascript" src="<?php echo TDU; ?>/js/init-pie.js"></script>
+		<style>
+			body{min-width:980px}
+		</style>
 	<![endif]-->
 	<!--[if lte IE 9]>
 		<script type="text/javascript" src="<?php echo TDU; ?>/js/jquery.placeholder.min.js"></script>

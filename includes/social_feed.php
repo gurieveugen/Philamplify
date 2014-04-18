@@ -69,12 +69,12 @@ class SocialFeed{
 			</div>
 			<div class="socials-filter-row pc-hide bf">
 				<select name="socials-filter" class="select-socials-filter">
-					<option value="0" class="filter">FILTER</a></li>
-					<option value="all">All</a></li>
-					<option value="philamplify">Philamplify</a></li>
-					<option value="twitter">Twitter</a></li>
-					<option value="facebook">Facebook</a></li>
-					<option value="google">Google+</a></li>
+					<option value="0" class="filter">FILTER</option>
+					<option value="all">All</option>
+					<option value="philamplify">Philamplify</option>
+					<option value="twitter">Twitter</option>
+					<option value="facebook">Facebook</option>
+					<option value="google">Google+</option>
 				</select>
 			</div>
 			<div class="socials-holder">

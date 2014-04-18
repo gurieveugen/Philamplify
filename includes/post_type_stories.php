@@ -272,6 +272,7 @@ class Stories{
 				$out.= '<div class="text-media">';
 				$out.= (strlen($title)) ? sprintf('<h1>%s</h1>', $title) : '';
 				$out.= (strlen($content)) ? sprintf('<p>%s</p>', $content) : '';
+				$out.= print_r($item->meta, true);
 				$out.= sprintf('<em class="meta">Shared by %s %s on %s</em>', $first_name, $last_name, $date);
 				$out.= '</div>';
 				$out.= '</article>';

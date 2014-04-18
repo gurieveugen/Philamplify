@@ -103,7 +103,7 @@
 				Write Your Story
 			</h4>
 			<div class="row-2 cf">
-				<textarea name="story" id="" cols="30" rows="10" required></textarea>
+				<textarea name="story" cols="30" rows="10" required></textarea>
 			</div>
 			<div class="submit-row cf">
 				<div class="right">

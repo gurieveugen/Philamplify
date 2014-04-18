@@ -9,9 +9,9 @@
 {	
 	$.fn.doubleTapToGo = function( params )
 	{
-		//if( !( 'ontouchstart' in window ) &&
-		//	!navigator.msMaxTouchPoints &&
-		//	!navigator.userAgent.toLowerCase().match( /windows phone os 7/i ) ) return false;
+		if( !( 'ontouchstart' in window ) &&
+			!navigator.msMaxTouchPoints &&
+			!navigator.userAgent.toLowerCase().match( /windows phone os 7/i ) ) return false;
 
 		this.each( function()
 		{

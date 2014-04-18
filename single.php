@@ -6,13 +6,13 @@
  */
 ?>
 <?php get_header(); ?>
-<header class="page-title">
+<div class="page-title">
 	<div class="holder">
 		<div class="center-wrap">
 			<h1><?php the_title(); ?></h1>
 		</div>
 	</div>
-</header>
+</div>
 <div id="main" class="center-wrap cf">
 	<article id="content" class="main-content cf">
 	

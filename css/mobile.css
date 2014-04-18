@@ -456,10 +456,11 @@ body{
 	padding: 18px 35px;
 }
 .section-media > .holder{
-	padding-bottom: 48px;
+	padding-bottom: 18px;
 }
-.section-media .text{
+.section-media .text.pc-hide{
 	line-height: 25px;
+	padding: 0 7px 5px;
 }
 .section-media .video-box{
 	float: none;
@@ -469,7 +470,7 @@ body{
 .section-media .quotes-holder{
 	float: none;
 	width: auto;
-	margin: 0 10px -32px;
+	margin: 0 10px 0;
 }
 .section-media .box-quote{
 	font-size: 14px;

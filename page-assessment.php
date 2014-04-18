@@ -10,17 +10,17 @@
 		<div class="center-wrap">
 			<h1>Assessment Title</h1>
 			<div class="block cf">
-				<div class="video">
+				<div class="video-box">
 					<img src="<?php echo TDU; ?>/images/img-6.jpg" alt="">
 					<a href="#" class="ico-video"></a>
 				</div>
-				<div class="quotes">
+				<div class="quotes-holder">
 					<blockquote class="box-quote">
-						<q>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie”</q>
+						<q>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie”</q>
 						<cite>-- <a href="#">Quote Source</a></cite>
 					</blockquote>
 					<blockquote class="box-quote q1">
-						<q>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie”</q>
+						<q>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie”</q>
 						<cite>-- <a href="#">Quote Source</a></cite>
 					</blockquote>
 				</div>
@@ -43,9 +43,9 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
 					<h3>Key Findings</h3>
 					<ol>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
+						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
 					</ol>
 				</div>
 			</div>
