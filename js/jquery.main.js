@@ -15,6 +15,19 @@
 			$(this).parent().find('.content').slideToggle(200);
 			return false;
 		});
+
+		$('.r-box .cf .link-view').click(function(e){
+			$(this).parent().parent().toggleClass('open');
+			if($(this).parent().parent().hasClass('open'))
+			{
+				$(this).parent().parent().find('.content').slideDown(200);
+			}
+			else
+			{
+				$(this).parent().parent().find('.content').slideUp(200);
+			}
+			e.preventDefault();
+		});
 		
 		$('.slider-area .slides').cycle({ 
 			fx:     'scrollHorz',
@@ -66,7 +79,7 @@
     					default_settings.more_count++;   
 
     					$(default_settings.stories_container).append(append_html);
-    					setTimeout(function() { $(default_settings.stories_container).masonry('appended', append_html, true); });
+    					setTimeout(function() { $(default_settings.stories_container).masonry('appended', append_html, true); }, 1000);
     				} 				    				
     			}
     		});

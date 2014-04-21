@@ -251,34 +251,82 @@ class Stories{
 		if($items)
 		{
 			foreach ($items as &$item) 
-			{	
-				$type       = 'text';			
-				$title      = '';
-				$content    = $item->post_content;
-				$img        = '';
-				$first_name = $item->meta['first_name'];
-				$last_name  = $item->meta['last_name'];
-				$date       = $this->formatDate($item->post_date);
+			{						
+				$title         = '';
+				$content       = $item->post_content;
+				$img           = '';
+				$video         = '';
+				$video_title   = '';
+				$video_content = '';
+				$first_name    = $item->meta['first_name'];
+				$last_name     = $item->meta['last_name'];
+				$date          = $this->formatDate(strtotime($item->post_date));
 
 				if($item->image)
-				{
-					$type    = 'photo';
-					$title   = $item->image_meta['post_title'];					
+				{					
+					$img_title   = $item->image_meta['post_title'];					
+					$img_content = $item->image_meta['post_content'];
 					$img    .= sprintf('<img src="%s" alt="%s">', $item->image, $title);
 				}
 
+				if($item->meta['video'])
+				{
+					$video         = sprintf('<iframe width="352" height="250" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe>', $item->meta['video']);
+					$video_title   = $item->meta['video_title'];
+					$video_content = $item->meta['video_description'];
+				}
+
+				if($item->meta['media_link'])
+				{
+					$media         = sprintf('<a href="%s" style="margin-left: 10px;">%s</a>', $item->meta['media_link'], $item->meta['media_title']);
+					$media_content = $item->meta['media_description'];
+				}
+
 				$out.= '<article class="box-story '.$type.'">';
-				$out.= $img;
+
+				$out.= $this->wrapMediaBlock($img, $img_title, $img_content);				
+				$out.= $this->wrapMediaBlock($video, $video_title, $video_content);
+				$out.= $this->wrapMediaBlock($media, '', $media_content);
+
 				$out.= '<div class="text-media">';
-				$out.= (strlen($title)) ? sprintf('<h1>%s</h1>', $title) : '';
-				$out.= (strlen($content)) ? sprintf('<p>%s</p>', $content) : '';
-				$out.= print_r($item->meta, true);
+				$out.= (strlen($content)) ? sprintf('<p>%s</p>', $content) : '';				
 				$out.= sprintf('<em class="meta">Shared by %s %s on %s</em>', $first_name, $last_name, $date);
 				$out.= '</div>';
 				$out.= '</article>';
 			}
 		}
 		return $out;
+	}
+
+	/**
+	 * Wrap media block
+	 * @param  string $media  
+	 * @param  string $title   
+	 * @param  string $content 
+	 * @param  array $args    
+	 * @return string
+	 */
+	private function wrapMediaBlock($media, $title = '', $content = '', $args = null)
+	{
+		$res 		  = '';
+		$default_args = array(
+			'before'            => '<div class="text-media">', 
+			'after'             => '</div>',
+			'container_title'   => 'h1',
+			'container_content' => 'p');
+		if($args) $new_args = array_merge($default_args, $args);
+		else $new_args = $default_args;
+
+		if(strlen($media))
+		{
+			$res = $media;
+			$res.= $new_args['before'];
+			$res.= strlen($title) ? sprintf('<%s>%s</%s>', $new_args['container_title'], $title , $new_args['container_title']) : '';
+			$res.= strlen($content) ? sprintf('<%s>%s</%s>', $new_args['container_content'], $content , $new_args['container_content']) : '';
+			$res.= $new_args['after'];
+			
+		}
+		return $res;
 	}
 
 	/**

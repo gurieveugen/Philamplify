@@ -34,9 +34,9 @@ class ShareStory{
 	private $post;
 	private $files;
 	private $errors;
-	private $fields_meta       = array('first_name', 'last_name', 'email', 'zip', 'industry', 'media_title', 'media_description', 'media_link');
+	private $fields_meta       = array('first_name', 'last_name', 'email', 'zip', 'industry', 'media_title', 'media_description', 'media_link', 'video_title', 'video_description');
 	private $fields_required   = array('first_name', 'last_name', 'email', 'story');
-	private $fields_video      = array('video', 'photo');
+	private $fields_files      = array('video', 'photo');
 	private $fields_photo_file = array('file' => 'photo', 'title' => 'photo_title', 'description' => 'photo_description');
 	private $fields_video_file = array('file' => 'video', 'title' => 'video_title', 'description' => 'video_description');
 	
@@ -46,26 +46,26 @@ class ShareStory{
 	//  / / / / / /  __/ /_/ / / / /_/ / /_/ (__  ) 
 	// /_/ /_/ /_/\___/\__/_/ /_/\____/\__,_/____/  
 	public function __construct($post, $files)
-	{		
-		$this->_session_start();
+	{	
+		$this->_session_start();		
+		
 		$this->post  = $post;
 		$this->files = $files;
 		$user_id     = get_current_user_id();		
+		if(isset($_GET['unset']))
+		{
+			session_unset();
+			return;
+		}	
 
-		// =========================================================
-		// CHECK ERRORS
-		// =========================================================
-		$this->checkPostErrors($this->fields_required);
-		$this->checkFilesErrors($this->fields_video);
-		if(isset($_GET['code']))
+		if(isset($_GET['code']) OR isset($_SESSION['token']))
 		{			
 			$res = $this->loadToYouTube($_SESSION['video_file'], $_SESSION['video_title'], $_SESSION['video_description']);			
 			if($res['uploaded'])
 			{
-				var_dump($_SESSION);
+				$meta = get_post_meta($_SESSION['post_id'], 'meta', true);				
 				$meta[$this->fields_video_file['file']] = $res['video_id'];
-				update_post_meta($post_id, self::META_KEY, $meta);
-				wp_redirect(get_bloginfo('url').self::REDIRECT_PAGE);
+				update_post_meta($_SESSION['post_id'], self::META_KEY, $meta);				
 			}
 			else
 			{
@@ -75,6 +75,12 @@ class ShareStory{
 		}
 		else
 		{	
+			// =========================================================
+			// CHECK ERRORS
+			// =========================================================
+			$this->checkPostErrors($this->fields_required);
+			$this->checkFilesErrors($this->fields_files);
+
 			if($this->errors == null)
 			{
 				// =========================================================
@@ -95,52 +101,69 @@ class ShareStory{
 					// INSERT THUMBNAIL
 					// =========================================================
 					$photo_file        = $this->files[$this->fields_photo_file['file']];
-					$photo_title       = $this->files[$this->fields_photo_file['title']];
-					$photo_description = $this->files[$this->fields_photo_file['description']];
+					$photo_title       = $this->post[$this->fields_photo_file['title']];
+					$photo_description = $this->post[$this->fields_photo_file['description']];
 
-					$photo_upload = wp_handle_upload($photo_file, array('test_form' => false));
-					                   
-		            $photo_attachment = array(
-						'post_mime_type' => $photo_file['type'],
-						'post_title'     => $photo_title,
-						'post_content'   => $photo_description,
-						'post_status'    => 'inherit',
-						'post_parent'    => $post_id);
-		            
-		            $photot_attach_id  = wp_insert_attachment($photo_attachment, $photo_upload['file']);	 	            
-		            $photo_attach_data = wp_generate_attachment_metadata($photot_attach_id, $photo_upload['file']);	            
-		            wp_update_attachment_metadata($photot_attach_id, $photo_attach_data);
-		            set_post_thumbnail($post_id,  $photot_attach_id);
+					if($photo_file)
+					{
+						$photo_upload = wp_handle_upload($photo_file, array('test_form' => false));
+						                   
+			            $photo_attachment = array(
+							'post_mime_type' => $photo_file['type'],
+							'post_title'     => $photo_title,
+							'post_content'   => $photo_description,
+							'post_status'    => 'inherit',
+							'post_parent'    => $post_id);
+			            
+			            $photot_attach_id  = wp_insert_attachment($photo_attachment, $photo_upload['file']);	 	            
+			            $photo_attach_data = wp_generate_attachment_metadata($photot_attach_id, $photo_upload['file']);	            
+			            wp_update_attachment_metadata($photot_attach_id, $photo_attach_data);
+			            set_post_thumbnail($post_id,  $photot_attach_id);
+					}
 		            // =========================================================
 		            // INSERT VIDEO YOUTUBE
 		            // =========================================================
 					$video_file                    = $this->files[$this->fields_video_file['file']];
-					$video_title                   = $this->files[$this->fields_video_file['title']];
-					$video_description             = $this->files[$this->fields_video_file['description']];
-					$_SESSION['post_id']           = $post_id;
-					$_SESSION['video_file']        = $video_file['file'];
-					$_SESSION['video_title']       = $video_title;
-					$_SESSION['video_description'] = $video_description;
+					$video_title                   = $this->post[$this->fields_video_file['title']];
+					$video_description             = $this->post[$this->fields_video_file['description']];
+
+					if($video_file)
+					{
+						$video_upload = wp_handle_upload($video_file , array('test_form' => false));
+						$_SESSION['post_id']           = $post_id;
+						$_SESSION['video_file']        = $video_upload['file'];
+						$_SESSION['video_title']       = $video_title;
+						$_SESSION['video_description'] = $video_description;
+						
+			            $res =  $this->loadToYouTube($video_upload['file'], $video_title, $video_description);
+			            if($res['uploaded'])
+			            {
+			            	$meta[$this->fields_video_file['file']] = $res['video_id'];		            	
+			            	update_post_meta($post_id, self::META_KEY, $meta);
+			            	
+			            }
+			            else
+			            {
+			            	$this->errors[] = $res['msg'];	
+			            }
+					}
 					
-		            $res =  $this->loadToYouTube($video_file['tmp_name'], $video_title, $video_description);
-		            if($res['uploaded'])
-		            {
-		            	$meta[$this->fields_video_file['file']] = $res['video_id'];
-		            	var_dump($res['video_id']);
-		            	update_post_meta($post_id, self::META_KEY, $meta);
-		            	wp_redirect(get_bloginfo('url').self::REDIRECT_PAGE);
-		            }
-		            else
-		            {
-		            	$this->errors[] = $res['msg'];		            	
-		            	$this->displayErrorPage();
-		            }
 				}
 				else
 				{
 					$this->errors[] = 'Can not insert post!';
 				}
 			}
+		}
+
+		if($this->errors)
+		{
+			unset($_SESSION['token']);
+			$this->displayErrorPage();
+		}
+		else
+		{
+			wp_redirect(get_bloginfo('url').self::REDIRECT_PAGE);
 		}
 	}
 
@@ -183,13 +206,17 @@ class ShareStory{
 		{
 			if(!isset($this->files[$field]))
 			{
-				$this->errors[] = 'Problems uploading a file!';
+				$this->errors[] = 'Problems uploading a file!'.print_r($_SESSION, true);
 			}
 			else
-			{
+			{				
 				if($this->files[$field]['error'] != 0 && $this->files[$field]['error'] != 4)
 				{
 					$this->errors[] = sprintf('Problems uploading a file! Error code: %s.', $this->files[$field]['error']);
+				}
+				else if($this->files[$field]['error'] == 4)
+				{
+					$this->files[$field] = null;
 				}
 			}
 		}
@@ -213,9 +240,8 @@ class ShareStory{
 	 * @return string             
 	 */
 	public function loadToYouTube($video_path, $video_title = 'Some title', $video_description = 'Some description')
-	{			
-		unset($_SESSION['token']);		
-
+	{	
+			
 		$client = new Google_Client();
 		$client->setClientId(self::GOOGLE_CLIENT);
 		$client->setClientSecret(self::GOOGLE_SECRET);
@@ -238,6 +264,8 @@ class ShareStory{
 			}
 			$client->authenticate($_GET['code']);
 			$_SESSION['token'] = $client->getAccessToken();
+			$this->checkToken();
+
 			header('Location: '.$redirect);
 		}
 
@@ -279,26 +307,26 @@ class ShareStory{
 				fclose($handle);
 				$client->setDefer(false);
 
-
 				$htmlBody          .= "<h3>Video Uploaded</h3><ul>";
 				$htmlBody          .= sprintf('<li>%s (%s)</li>', $status['snippet']['title'], $status['id']);
 				$htmlBody          .= '</ul>';
 				$result['uploaded'] = true; 
-				$result['video_id'] = $status['id'];
+				$result['video_id'] = $status['id'];				
 
 			} 
 			catch (Google_ServiceException $e) 
 			{
 				$result['uploaded'] = false;
-				$htmlBody .= sprintf('<p>A service error occurred: <code>%s</code></p>', htmlspecialchars($e->getMessage()));
+				$htmlBody .= sprintf('<p>A service error occurred: <code>%s</code></p>', htmlspecialchars($e->getMessage()));				
 			} 
 			catch (Google_Exception $e) 
 			{
 				$result['uploaded'] = false;
-				$htmlBody .= sprintf('<p>An client error occurred: <code>%s</code></p>%s', htmlspecialchars($e->getMessage()), print_r($e, true));
+				$htmlBody .= sprintf('<p>An client error occurred: <code>%s</code></p>', htmlspecialchars($e->getMessage()));				
 			}
 
-			$_SESSION['token'] = $client->getAccessToken();
+			$_SESSION['token'] = $client->getAccessToken();	
+			$this->checkToken();		
 		} 
 		else 
 		{
@@ -311,6 +339,14 @@ class ShareStory{
 
 		$result['msg'] = $htmlBody;
 		return $result;
+	}
+
+	private function checkToken()
+	{
+		if($_SESSION['token'] == '[]')
+		{
+			unset($_SESSION['token']);
+		}
 	}
 
 	/**

@@ -12,6 +12,7 @@ require_once 'includes/page_theme_options.php';
 require_once 'includes/post_type_slider.php';
 require_once 'includes/post_type_mainslider.php';
 require_once 'includes/post_type_stories.php';
+require_once 'includes/post_type_assessment.php';
 require_once 'includes/widget_news_feed.php';
 require_once 'includes/widget_category_feed.php';
 require_once 'includes/widget_text.php';
@@ -241,3 +242,24 @@ function getIP()
  
     return $ip;
 }
+
+function getFileSize($file)
+{	
+	$cl = 0;
+    $ch = curl_init($file);
+    curl_setopt($ch, CURLOPT_NOBODY, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+    $data = curl_exec($ch);
+    curl_close($ch);
+
+    if(preg_match('/Content-Length: (\d+)/', $data, $matches)) 
+    {
+        $cl = (int)$matches[1];
+    }
+    if($cl > 0) $cl = intval($cl / 1024);
+    return $cl;
+}
+
