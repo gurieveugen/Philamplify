@@ -177,6 +177,7 @@ class Assessment{
 					<th><?php _e('#'); ?></th>
 					<th><?php _e('Recommendation title'); ?></th>
 					<th><?php _e('Recommendation content'); ?></th>
+					<th><?php _e('Featured'); ?></th>
 					<th><?php _e('AGREE'); ?></th>
 					<th><?php _e('DISAGREE'); ?></th>
 					<th><?php _e('ALL'); ?></th>	
@@ -189,13 +190,15 @@ class Assessment{
 					{
 						foreach ($recommendations as $key => $recommendation) 
 						{						
-							$title_name   = sprintf('recommendations[%s][%s]', $key, 'title');
-							$content_name = sprintf('recommendations[%s][%s]', $key, 'content');
-							$last_key     = $key;
+							$title_name    = sprintf('recommendations[%s][%s]', $key, 'title');
+							$content_name  = sprintf('recommendations[%s][%s]', $key, 'content');
+							$featured_name = sprintf('recommendations[%s][%s]', $key, 'featured');
+							$last_key      = $key;
 							echo '<tr>';
 							printf('<td>%s</td>', $key);
 							printf('<td><input type="text" name="%s" value="%s" class="w100"></td>', $title_name, $recommendation['title']);
 							printf('<td><textarea name="%s" class="w100">%s</textarea></td>', $content_name, $recommendation['content']);
+							printf('<td><input type="hidden" name="%s" value="0"><input type="checkbox" name="%s" value="1" %s></td>', $featured_name, $featured_name, $this->checked($recommendation['featured']));
 							printf('<td>%s</td>', (int)$recommendation['agree']);
 							printf('<td>%s</td>', (int)$recommendation['disagree']);
 							printf('<td>%s</td>', (int)$recommendation['agree'] + (int)$recommendation['disagree']);
@@ -208,6 +211,16 @@ class Assessment{
 		</table>
 		<button type="button" class="button add-recommendation"><?php _e('Add recommendation'); ?></button>
 		<?php
+	}
+
+	/**
+	 * Helper function for checkbox
+	 * @param  boolean $yes 
+	 * @return string
+	 */
+	public function checked($yes = true)
+	{
+		return (intval($yes)) ? 'checked' : '';
 	}
 
 	/**
@@ -255,8 +268,9 @@ class Assessment{
 			if(is_array($_POST['recommendations']))
 			{
 				$new_recommendations = $this->clearEmptyItems($_POST['recommendations']);
+				$new_recommendations = $this->sort($new_recommendations);
+				update_post_meta($post_id, 'recommendations', $new_recommendations);
 			}			
-			update_post_meta($post_id, 'recommendations', $new_recommendations);
 		}		
 		if(isset($_POST['meta']))
 		{
@@ -268,6 +282,11 @@ class Assessment{
 		return $post_id;
 	}
 
+	/**
+	 * Clear array from empty items
+	 * @param  array $arr 
+	 * @return array      
+	 */
 	public function clearEmptyItems($arr)
 	{
 		$new_arr = array();
@@ -276,6 +295,31 @@ class Assessment{
 			if($el['title'] != '' && $el['content'] != '') $new_arr[] = $el;
 		}
 		return $new_arr;
+	}
+
+	/**
+	 * Sort recommendations array
+	 * @param  array $arr
+	 * @return array
+	 */
+	public function sort($arr)
+	{
+		$new_arr = array();
+		$res_arr = array();
+
+		if($arr)
+		{
+			foreach ($arr as $key => $el) 
+			{
+				$new_arr[$key] = $el['featured'];
+			}
+			arsort($new_arr, SORT_NUMERIC);
+			foreach ($new_arr as $key => $value) 
+			{
+				$res_arr[$key] = $arr[$key];
+			}
+		}
+		return $res_arr;
 	}
 
 	/**

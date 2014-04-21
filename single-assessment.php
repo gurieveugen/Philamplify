@@ -1,8 +1,9 @@
 <?php 
 	get_header(); 
 	the_post();
-	$meta = get_post_meta(get_the_id(), 'meta', true);
- 	$size = getFileSize($meta['pdf_url']);
+	$meta            = get_post_meta(get_the_id(), 'meta', true);
+	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);
+	$size            = getFileSize($meta['pdf_url']);
 ?>
 <div class="data-section">
 	<div class="holder">
@@ -58,167 +59,35 @@
 			</div>
 		</div>
 		<h2 class="title-blue">Recommendations</h2>
-		<article class="r-box open">
-			<header class="cf">
-				<h1 class="star">Recommendation Title</h1>
-				<a href="#" class="link-view">View Full Recommendation</a>
-			</header>
-			<div class="content">
-				<div class="holder cf">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Background</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Criteria</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
+		<?php 		
+		foreach ($recommendations as $recommendation) 
+		{
+			$star = (intval($recommendation['featured'])) ? 'star' : '';
+			?>
+			<article class="r-box">
+				<header class="cf">
+					<h1 class="<?php echo $star; ?>"><?php echo $recommendation['title']; ?></h1>
+					<a href="#" class="link-view">View Full Recommendation</a>
+				</header>
+				<div class="content">
+					<div class="holder cf">
+						<?php echo $recommendation['content']; ?>
+					</div>
 				</div>
-			</div>
-			<footer class="cf">
-				<div class="buttons cf">
-					<a href="#" class="btn-agree">AGREE</a>
-					<a href="#" class="btn-disagree">DISAGREE</a>
-				</div>
-				<a href="#" class="link-comments mobile-hide">24 Comments</a>
-				<p class="info"><strong>87%</strong> of 120 people <strong class="blue">AGREE</strong></p>
-				<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
-			</footer>
-		</article>
-		<div class="r-comments">
-			<?php comments_template(); ?>
-			<!-- <img src="<?php echo TDU; ?>/images/temp-r-comments.png" alt=""> -->
-		</div>
-		<article class="r-box">
-			<header class="cf">
-				<h1>Recommendation Title</h1>
-				<a href="#" class="link-view">View Full Recommendation</a>
-			</header>
-			<div class="content cf">
-				<div class="holder cf">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Background</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Criteria</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-				</div>
-			</div>
-			<footer class="cf">
-				<strong class="ico-agree">YOU AGREE <a href="#">Change This</a></strong> 
-				<a href="#" class="link-comments mobile-hide">24 Comments</a>
-				<p class="info"><strong>87%</strong> of 120 people <strong class="blue">AGREE</strong></p>
-				<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
-			</footer>
-		</article>
-		<div class="r-comments open">
-			<?php comments_template(); ?>
-			<!-- <img src="<?php echo TDU; ?>/images/temp-r-comments.png" alt=""> -->
-		</div>
-		<article class="r-box">
-			<header class="cf">
-				<h1>Recommendation Title</h1>
-				<a href="#" class="link-view">View Full Recommendation</a>
-			</header>
-			<div class="content">
-				<div class="holder cf">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Background</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Criteria</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-				</div>
-			</div>
-			<footer class="cf">
-				<div class="buttons cf">
-					<a href="#" class="btn-agree">AGREE</a>
-					<a href="#" class="btn-disagree">DISAGREE</a>
-				</div> 
-				<a href="#" class="link-comments mobile-hide">24 Comments</a>
-				<p class="info"><strong>87%</strong> of 120 people <strong class="blue">AGREE</strong></p>
-				<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
-			</footer>
-		</article>
-		<div class="r-comments">
-			<img src="<?php echo TDU; ?>/images/temp-r-comments.png" alt="">
-		</div>
-		<article class="r-box">
-			<header class="cf">
-				<h1>Recommendation Title</h1>
-				<a href="#" class="link-view">View Full Recommendation</a>
-			</header>
-			<div class="content">
-				<div class="holder cf">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Background</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Criteria</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-				</div>
-			</div>
-			<footer class="cf">
-				<div class="buttons cf">
-					<a href="#" class="btn-agree">AGREE</a>
-					<a href="#" class="btn-disagree">DISAGREE</a>
-				</div> 
-				<a href="#" class="link-comments mobile-hide">24 Comments</a>
-				<p class="info"><strong>87%</strong> of 120 people <strong class="blue">AGREE</strong></p>
-				<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
-			</footer>
-		</article>
-		<div class="r-comments">
-			<img src="<?php echo TDU; ?>/images/temp-r-comments.png" alt="">
-		</div>
-		<article class="r-box">
-			<header class="cf">
-				<h1>Recommendation Title</h1>
-				<a href="#" class="link-view">View Full Recommendation</a>
-			</header>
-			<div class="content">
-				<div class="holder cf">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Background</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Criteria</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-				</div>
-			</div>
-			<footer class="cf">
-				<div class="buttons cf">
-					<a href="#" class="btn-agree">AGREE</a>
-					<a href="#" class="btn-disagree">DISAGREE</a>
-				</div> 
-				<a href="#" class="link-comments mobile-hide">24 Comments</a>
-				<p class="info"><strong>87%</strong> of 120 people <strong class="blue">AGREE</strong></p>
-				<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
-			</footer>
-		</article>
-		<div class="r-comments">
-			<img src="<?php echo TDU; ?>/images/temp-r-comments.png" alt="">
-		</div>
-		<article class="r-box">
-			<header class="cf">
-				<h1>Recommendation Title</h1>
-				<a href="#" class="link-view">View Full Recommendation</a>
-			</header>
-			<div class="content">
-				<div class="holder cf">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Background</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h2>Recommendation Criteria</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-				</div>
-			</div>
-			<footer class="cf">
-				<div class="buttons cf">
-					<a href="#" class="btn-agree">AGREE</a>
-					<a href="#" class="btn-disagree">DISAGREE</a>
-				</div> 
-				<a href="#" class="link-comments mobile-hide">24 Comments</a>
-				<p class="info"><strong>87%</strong> of 120 people <strong class="blue">AGREE</strong></p>
-				<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
-			</footer>
-		</article>
-		<div class="r-comments">
-			<img src="<?php echo TDU; ?>/images/temp-r-comments.png" alt="">
-		</div>
+				<footer class="cf">
+					<div class="buttons cf" data-ip="<?php echo getIP(); ?>">
+						<a href="#" class="btn-agree">AGREE</a>
+						<a href="#" class="btn-disagree">DISAGREE</a>
+					</div>
+					<a href="#" class="link-comments mobile-hide">24 Comments</a>
+					<p class="info"><strong>87%</strong> of 120 people <strong class="blue">AGREE</strong></p>
+					<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
+				</footer>
+			</article>
+			<?php	
+		}
+		?>
+		
 	</div>
 	<?php get_sidebar('assessment'); ?>
 </div>
