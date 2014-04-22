@@ -366,4 +366,4 @@ class Assessment{
 // =========================================================
 // LAUNCH
 // =========================================================
-$GLOBALS['Assessment'] = new Assessment();
+$GLOBALS['assessment'] = new Assessment();

@@ -17,6 +17,7 @@ require_once 'includes/widget_news_feed.php';
 require_once 'includes/widget_category_feed.php';
 require_once 'includes/widget_text.php';
 require_once 'includes/widget_subscribe.php';
+require_once 'includes/widget_social_share.php';
 require_once 'includes/meta_box_featured_post.php';
 require_once 'includes/social_feed_options.php';
 require_once 'includes/social_feed.php';

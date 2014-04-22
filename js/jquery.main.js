@@ -86,6 +86,57 @@
 			e.preventDefault();
 		});
 		// =========================================================
+		// AGREE AJAX
+		// =========================================================
+		$('.btn-agree').click(function(e){	
+			var info = $(this).parent().parent().find('.info');						
+			jQuery.ajax({
+    			type: "POST",
+    			url: default_settings.ajaxurl + '?action=agreeDisagree',
+    			dataType: 'json',    	
+    			data: {
+    				type: 'agree',
+    				post_id: $(this).parent().data('postId'),
+    				recommendation_id: $(this).parent().data('id')
+    			},		
+    			success: function(data){       				
+    				info.html('<p class="info"><strong>' + data.percent + '%</strong> of ' + data.sum + ' people <strong class="blue">AGREE</strong></p>');    				
+    				alert(data.msg);
+    			}
+    		});
+			e.preventDefault();
+		});
+		// =========================================================
+		// DISAGREE AJAX
+		// =========================================================
+		$('.btn-disagree').click(function(e){
+			var info = $(this).parent().parent().find('.info');						
+			jQuery.ajax({
+    			type: "POST",
+    			url: default_settings.ajaxurl + '?action=agreeDisagree',
+    			dataType: 'json',    
+    			data: {
+    				type: 'disagree',
+    				post_id: $(this).parent().data('postId'),
+    				recommendation_id: $(this).parent().data('id')
+    			},					
+    			success: function(data){  
+    				info.html('<p class="info"><strong>' + data.percent + '%</strong> of ' + data.sum + ' people <strong class="blue">AGREE</strong></p>');    				
+    				alert(data.msg); 				
+    			}
+    		});
+			e.preventDefault();
+		});
+
+		// =========================================================
+		// OPEN IN NEW WINDOW SOCIAL SHARE
+		// =========================================================
+		$('.social-share-buttons li a').click(function(e){
+			window.open($(this).attr('href'),'displayWindow', 'width=700,height=400,left=200,top=100,location=no, directories=no,status=no,toolbar=no,menubar=no');
+			e.preventDefault();
+		});
+
+		// =========================================================
 		// MASONRY BRICS
 		// =========================================================		
 		$(window).load(function(){ 

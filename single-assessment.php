@@ -2,7 +2,7 @@
 	get_header(); 
 	the_post();
 	$meta            = get_post_meta(get_the_id(), 'meta', true);
-	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);
+	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);	
 	$size            = getFileSize($meta['pdf_url']);
 ?>
 <div class="data-section">
@@ -10,10 +10,17 @@
 		<div class="center-wrap">
 			<h1><?php the_title(); ?></h1>
 			<div class="block cf">
-				<div class="video-box">
-					<img src="<?php echo TDU; ?>/images/img-6.jpg" alt="">
-					<a href="#" class="ico-video"></a>
-				</div>
+				<?php
+				if(has_post_thumbnail())
+				{
+					?>
+					<div class="video-box">
+						<?php the_post_thumbnail('assessment-image'); ?>
+						<a href="<?php echo $meta['video_url']; ?>" class="ico-video"></a>
+					</div>
+					<?php
+				}
+				?>
 				<div class="quotes-holder">
 					<blockquote class="box-quote">
 						<q>“<?php echo $meta['quote_first']; ?>”</q>
@@ -60,9 +67,13 @@
 		</div>
 		<h2 class="title-blue">Recommendations</h2>
 		<?php 		
-		foreach ($recommendations as $recommendation) 
+		foreach ($recommendations as $id => $recommendation) 
 		{
-			$star = (intval($recommendation['featured'])) ? 'star' : '';
+			$star     = (intval($recommendation['featured'])) ? 'star' : '';
+			$agree    = intval($recommendation['agree']);
+			$disagree = intval($recommendation['disagree']);
+			$sum      = $agree + $disagree;
+			$percent  = ($agree > 0 && $sum > 0) ? intval($agree/($sum/100)) : 0;
 			?>
 			<article class="r-box">
 				<header class="cf">
@@ -75,12 +86,12 @@
 					</div>
 				</div>
 				<footer class="cf">
-					<div class="buttons cf" data-ip="<?php echo getIP(); ?>">
+					<div class="buttons cf" data-id="<?php echo $id; ?>" data-post-id="<?php echo get_the_id(); ?>">
 						<a href="#" class="btn-agree">AGREE</a>
 						<a href="#" class="btn-disagree">DISAGREE</a>
 					</div>
 					<a href="#" class="link-comments mobile-hide">24 Comments</a>
-					<p class="info"><strong>87%</strong> of 120 people <strong class="blue">AGREE</strong></p>
+					<p class="info"><strong><?php echo $percent; ?>%</strong> of <?php echo $sum; ?> people <strong class="blue">AGREE</strong></p>
 					<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
 				</footer>
 			</article>
@@ -89,6 +100,6 @@
 		?>
 		
 	</div>
-	<?php get_sidebar('assessment'); ?>
+	<?php get_sidebar(); ?>
 </div>
 <?php get_footer(); ?>

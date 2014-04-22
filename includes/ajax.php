@@ -94,6 +94,35 @@ class AJAX{
 		echo json_encode($json);
 	}
 
+	/**
+	 * Agree/Disagree recomendation
+	 */
+	public function agreeDisagree()
+	{
+		$post_id                    = $_POST['post_id'];
+		$id                         = $_POST['recommendation_id'];
+		$type                       = $_POST['type'];
+		$types                      = array('agree', 'disagree');
+		$recommendations            = get_post_meta($post_id, 'recommendations', true);
+		$key                        = in_array(strtolower($type), $types) ? $type : 'agree';
+		$count                      = isset($recommendations[$id][$key]) ? intval($recommendations[$id][$key]) : 0;
+		$recommendations[$id][$key] = $count + 1;
+		$agree                      = intval($recommendations[$id]['agree']);
+		$disagree                   = intval($recommendations[$id]['disagree']);
+		$sum                        = $agree + $disagree;
+		$percent                    = ($agree > 0 && $sum > 0) ? intval($agree/($sum/100)) : 0;
+		$res                        = array(
+			'msg'      => sprintf('Thank\'s for %s!', $key),
+			'agree'    => $agree,
+			'disagree' => $disagree,
+			'sum'      => $sum,
+			'percent'  => $percent);
+
+		update_post_meta($post_id, 'recommendations', $recommendations);
+
+		echo json_encode($res);
+	}
+
 
 	// =========================================================
 	// OLD! MAYBE IN FUTURE I WILL REMOVE THIS CODE
