@@ -53,46 +53,51 @@
 			}
 			e.preventDefault();
 		});
-		// =========================================================
-		// ADD TWITTER ACCOUNT
-		// =========================================================
-		$('.add-twitter-account').click(function(e){
-			var count = $('.twitter-accounts-table').data('count') + 1;
-			var name  = $('.twitter-accounts-table').data('name');
-			var numb  = $(this).parent().parent().find('.widget_number').val();
-			name      = name.replace('__i__', numb);
-			
-			$('.twitter-accounts-table tbody').append(
-				'<tr>' +	
-				'<td><input class="w100" type="text" name="' + name + '[' + count + '][account]" value=""></td>' +
-				'<td><input class="w100" type="text" name="' + name + '[' + count + '][first_name]" value=""></td>' +
-				'<td><input class="w100" type="text" name="' + name + '[' + count + '][last_name]" value=""></td>' +
-				'<td><input class="w100" type="text" name="' + name + '[' + count + '][picture_name]" value=""></td>' +							
-				'</tr>');
-
-			$('.twitter-accounts-table').data('count', count);
-			e.preventDefault();
-		});
-		// =========================================================
-		// ADD EMAIL ACCOUNT
-		// =========================================================
-		$('.add-email-account').click(function(e){
-			var count = $('.email-accounts-table').data('count') + 1;
-			var name  = $('.email-accounts-table').data('name');
-			var numb  = $(this).parent().parent().find('.widget_number').val();
-			name      = name.replace('__i__', numb);
-			
-			$('.email-accounts-table tbody').append(
-				'<tr>' +	
-				'<td><input class="w100" type="text" name="' + name + '[' + count + '][account]" value=""></td>' +
-				'<td><input class="w100" type="text" name="' + name + '[' + count + '][first_name]" value=""></td>' +
-				'<td><input class="w100" type="text" name="' + name + '[' + count + '][last_name]" value=""></td>' +
-				'<td><input class="w100" type="text" name="' + name + '[' + count + '][picture_name]" value=""></td>' +							
-				'</tr>');
-
-			$('.email-accounts-table').data('count', count);
-			e.preventDefault();
-		});
+		
 		
 	});	
 })(jQuery);
+
+/**
+ * Add twitter account
+ */
+function addTwitterAccount(obj)
+{	
+	var count = parseInt(jQuery(obj).parent().find('.twitter-accounts-table').data('count')) + 1;
+	var name  = jQuery('.twitter-accounts-table').data('name');
+	var numb  = jQuery(obj).parent().parent().find('.widget_number').val();
+	name      = name.replace('__i__', numb);
+	
+	jQuery('.twitter-accounts-table tbody').append(
+		'<tr>' +	
+		'<td><input class="w100" type="text" name="' + name + '[' + count + '][account]" value=""></td>' +
+		'<td><input class="w100" type="text" name="' + name + '[' + count + '][first_name]" value=""></td>' +
+		'<td><input class="w100" type="text" name="' + name + '[' + count + '][last_name]" value=""></td>' +
+		'<td><input class="w100" type="text" name="' + name + '[' + count + '][picture_name]" value=""></td>' +							
+		'</tr>');
+
+	jQuery('.twitter-accounts-table').data('count', count);
+	return false;
+}
+
+/**
+ * Add email account
+ */
+function addEmailAccount(obj)
+{
+	var count = parseInt(jQuery(obj).parent().find('.email-accounts-table').data('count')) + 1;
+	var name  = jQuery('.email-accounts-table').data('name');
+	var numb  = jQuery(obj).parent().parent().find('.widget_number').val();
+	name      = name.replace('__i__', numb);
+	
+	jQuery('.email-accounts-table tbody').append(
+		'<tr>' +	
+		'<td><input class="w100" type="text" name="' + name + '[' + count + '][account]" value=""></td>' +
+		'<td><input class="w100" type="text" name="' + name + '[' + count + '][first_name]" value=""></td>' +
+		'<td><input class="w100" type="text" name="' + name + '[' + count + '][last_name]" value=""></td>' +
+		'<td><input class="w100" type="text" name="' + name + '[' + count + '][picture_name]" value=""></td>' +							
+		'</tr>');
+
+	jQuery('.email-accounts-table').data('count', count);
+	return false;	
+}

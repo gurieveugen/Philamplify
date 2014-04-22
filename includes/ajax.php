@@ -123,6 +123,33 @@ class AJAX{
 		echo json_encode($res);
 	}
 
+	public function disqusCounts()
+	{	
+		$url = 'https://disqus.com/api/3.0/threads/set.json?'.http_build_query($_POST);
+		$url = preg_replace('/%5B.*?%5D/', '[]', $url);		
+		$json_string = $this->file_get_contents_curl($url);
+		echo $json_string;
+	}
+
+	/**
+	 * Get contents 
+	 * @param  string $url
+	 * @return string
+	 */
+	public function file_get_contents_curl($url) 
+	{
+	    $ch = curl_init();
+
+	    curl_setopt($ch, CURLOPT_HEADER, 0);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	    curl_setopt($ch, CURLOPT_URL, $url);
+
+	    $data = curl_exec($ch);
+	    curl_close($ch);
+
+	    return $data;
+	}
+
 
 	// =========================================================
 	// OLD! MAYBE IN FUTURE I WILL REMOVE THIS CODE

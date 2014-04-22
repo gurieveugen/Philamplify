@@ -69,13 +69,15 @@
 		<?php 		
 		foreach ($recommendations as $id => $recommendation) 
 		{
-			$star     = (intval($recommendation['featured'])) ? 'star' : '';
-			$agree    = intval($recommendation['agree']);
-			$disagree = intval($recommendation['disagree']);
-			$sum      = $agree + $disagree;
-			$percent  = ($agree > 0 && $sum > 0) ? intval($agree/($sum/100)) : 0;
+			$star       = (intval($recommendation['featured'])) ? 'star' : '';
+			$agree      = intval($recommendation['agree']);
+			$disagree   = intval($recommendation['disagree']);
+			$sum        = $agree + $disagree;
+			$percent    = ($agree > 0 && $sum > 0) ? intval($agree/($sum/100)) : 0;
+			$identifier = intval((get_the_id()*1000000)  + $id);
+			$data_url   = get_permalink().'#!/'.$identifier;
 			?>
-			<article class="r-box">
+			<article class="r-box" id="r-box-<?php echo $id; ?>">
 				<header class="cf">
 					<h1 class="<?php echo $star; ?>"><?php echo $recommendation['title']; ?></h1>
 					<a href="#" class="link-view">View Full Recommendation</a>
@@ -90,11 +92,13 @@
 						<a href="#" class="btn-agree">AGREE</a>
 						<a href="#" class="btn-disagree">DISAGREE</a>
 					</div>
-					<a href="#" class="link-comments mobile-hide">24 Comments</a>
+					<a href="#" class="link-comments mobile-hide"  data-id="<?php echo $id; ?>" data-identifier="<?php echo $identifier; ?>" data-url="<?php echo $data_url; ?>">0 Comments</a>
 					<p class="info"><strong><?php echo $percent; ?>%</strong> of <?php echo $sum; ?> people <strong class="blue">AGREE</strong></p>
-					<a href="#" class="link-comments mobile-visible-dib">24 Comments</a>
+					<a href="#" class="link-comments mobile-visible-dib" data-id="<?php echo $id; ?>" data-identifier="<?php echo $identifier; ?>" data-url="<?php echo $data_url; ?>">0 Comments</a>
 				</footer>
 			</article>
+			<div id="r-comments-<?php echo $id; ?>" class="r-comments">				
+			</div>
 			<?php	
 		}
 		?>

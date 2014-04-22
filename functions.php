@@ -200,6 +200,8 @@ function scripts_method()
 	wp_enqueue_script('masonry', TDU.'/js/masonry.min.js', array('jquery'));
 	wp_enqueue_script('masonry-filter', TDU.'/js/multipleFilterMasonry.js', array('jquery'));
 	wp_enqueue_script('jmain', TDU.'/js/jquery.main.js', array('jquery'));
+	// wp_enqueue_script('disqus', '//philamplify.disqus.com/embed.js', array('jquery'));
+	// wp_enqueue_script('disqus-count', '//disqus.com/forums/philamplify/count.js', array('jquery'));	
 	wp_localize_script('jmain', 'default_settings', array( 
 			'ajaxurl'           => get_bloginfo('template_url').'/includes/ajax.php',
 			'redirecturl'       => get_bloginfo('url'),
