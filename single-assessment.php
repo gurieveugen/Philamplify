@@ -42,17 +42,14 @@
 <div id="main" class="center-wrap cf">
 	<div id="content" class="main-content content-1 cf">
 		<h2 class="title-blue">Executive Summary</h2>
-		<?php 
-			global $more;    
-			$more = 0;       
-			the_content(' ');
+		<?php      
+			the_excerpt();
 		?>
 		<div class="data-box">
 			<a href="#" class="btn-box">View Full Summary and Key Findings <i class="arrow"></i></a>
 			<div class="content">
 				<div class="holder cf">
-					<?php 
-						$more = 1;       
+					<?php 						     
 						the_content();
 					?>
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>

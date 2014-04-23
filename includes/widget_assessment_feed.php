@@ -2,10 +2,10 @@
 /**
  * Register new widget
  */
-add_action('widgets_init', create_function('', 'register_widget( "CategoryFeed" );'));
+add_action('widgets_init', create_function('', 'register_widget( "AssessmentFeed" );'));
 
 
-class CategoryFeed extends WP_Widget {
+class AssessmentFeed extends WP_Widget {
 	//                    __  __              __    
 	//    ____ ___  ___  / /_/ /_  ____  ____/ /____
 	//   / __ `__ \/ _ \/ __/ __ \/ __ \/ __  / ___/
@@ -13,8 +13,8 @@ class CategoryFeed extends WP_Widget {
 	// /_/ /_/ /_/\___/\__/_/ /_/\____/\__,_/____/  
 	public function __construct() 
 	{
-		$widget_ops     = array('classname' => '', 'description' => 'Category feed widget' );		
-		parent::__construct('categoryfeed', 'Category feed widget', $widget_ops);
+		$widget_ops     = array('classname' => '', 'description' => 'Assessment feed widget' );		
+		parent::__construct('Assessmentfeed', 'Assessment feed widget', $widget_ops);
 	}
 
 	function widget($args, $instance) 
@@ -22,8 +22,7 @@ class CategoryFeed extends WP_Widget {
 		extract($args);
 		$title     = strip_tags($instance['title']);
 		$title_url = strip_tags($instance['title_url']);
-		$count     = intval($instance['count']);
-		$category  = ($instance['category'] == 0) ? '' :  $instance['category'];
+		$count     = intval($instance['count']);		
 
 		echo $before_widget;		
 		// =========================================================
@@ -31,8 +30,7 @@ class CategoryFeed extends WP_Widget {
 		// =========================================================
 		$args = array(
 			'posts_per_page'   => $count,
-			'offset'           => 0,
-			'cat'         	   => $category,
+			'offset'           => 0,			
 			'orderby'          => 'post_date',
 			'order'            => 'DESC',
 			'include'          => '',
@@ -86,52 +84,9 @@ class CategoryFeed extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Count'); ?>: 
 				<input class="widefat" id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" type="text" value="<?php echo intval($count); ?>" />
 			</label>
-		</p>			
-		<p>
-			<label for="<?php echo $this->get_field_id('category'); ?>"><?php _e('Category'); ?>: 
-				<?php echo $this->getCategoriesControl($this->get_field_name('category'), $this->get_field_id('category'), $category); ?>				
-			</label>
 		</p>		
+		
 		<?php
-	}
-
-	/**
-	 * Get Categories select control
-	 * @param  string  $name    
-	 * @param  string  $id      
-	 * @param  integer $current 
-	 * @return string
-	 */
-	function getCategoriesControl($name, $id, $current = 0)
-	{
-		$out  = '';
-		$args = array(
-			'type'                     => 'post',
-			'child_of'                 => 0,
-			'parent'                   => '',
-			'orderby'                  => 'name',
-			'order'                    => 'ASC',
-			'hide_empty'               => 0,
-			'hierarchical'             => 1,
-			'exclude'                  => '',
-			'include'                  => '',
-			'number'                   => '',
-			'taxonomy'                 => 'category',
-			'pad_counts'               => false); 
-
-		$categories = get_categories($args);
-
-		if($categories)
-		{
-			$out = '<select name="'.$name.'" id="'.$id.'">';			
-			foreach ($categories as &$cat) 
-			{
-				$selected = $this->selected($current == $cat->term_id);
-				$out.= sprintf('<option value="%s" %s>%s</option>', $cat->term_id, $selected, $cat->name);
-			}
-			$out.= '</select>';
-		}
-		return $out;
 	}
 
 	/**
@@ -156,7 +111,6 @@ class CategoryFeed extends WP_Widget {
 		$instance['title']     = strip_tags($new_instance['title']);		
 		$instance['title_url'] = strip_tags($new_instance['title_url']);		
 		$instance['count']     = intval($new_instance['count']);				
-		$instance['category']  = intval($new_instance['category']);	
 		
 		return $instance;
 	}

@@ -97,10 +97,14 @@
     			data: {
     				type: 'agree',
     				post_id: $(this).parent().data('postId'),
-    				recommendation_id: $(this).parent().data('id')
+    				recommendation_id: $(this).parent().data('id'),
+    				id: default_settings.ip
     			},		
-    			success: function(data){       				
-    				info.html('<p class="info"><strong>' + data.percent + '%</strong> of ' + data.sum + ' people <strong class="blue">AGREE</strong></p>');    				
+    			success: function(data){       
+    				if(data.success)
+    				{
+    					info.html('<p class="info"><strong>' + data.percent + '%</strong> of ' + data.sum + ' people <strong class="blue">AGREE</strong></p>'); 	
+    				}
     				alert(data.msg);
     			}
     		});
@@ -118,10 +122,14 @@
     			data: {
     				type: 'disagree',
     				post_id: $(this).parent().data('postId'),
-    				recommendation_id: $(this).parent().data('id')
+    				recommendation_id: $(this).parent().data('id'),
+    				id: default_settings.ip
     			},					
     			success: function(data){  
-    				info.html('<p class="info"><strong>' + data.percent + '%</strong> of ' + data.sum + ' people <strong class="blue">AGREE</strong></p>');    				
+    				if(data.success)
+    				{
+    					info.html('<p class="info"><strong>' + data.percent + '%</strong> of ' + data.sum + ' people <strong class="blue">AGREE</strong></p>');    					
+    				}
     				alert(data.msg); 				
     			}
     		});
@@ -207,7 +215,7 @@
 		$('.link-comments').each(function () {
 			var url = $(this).attr('data-url');
 			urlArray.push('link:' + url);
-		});
+		});		
 		getAllCounts();
 	});
 	
@@ -251,6 +259,7 @@ function loadDisqus(source, identifier, url)
 
 function getAllCounts()
 {
+	if(urlArray <= 0) return;
 	$.ajax({
 		type: 'POST',
 		url: default_settings.ajaxurl + '?action=disqusCounts',

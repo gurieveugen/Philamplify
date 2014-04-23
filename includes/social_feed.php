@@ -85,7 +85,7 @@ class SocialFeed{
 						echo $this->getTweets($tweets); 	
 					}
 				?>						
-				<article class="box-social green feed-philamplify feed-all">
+				<!-- <article class="box-social green feed-philamplify feed-all">
 					<header class="cf">
 						<div class="ico">
 							<img src="<?php echo TDU; ?>/images/ico-assessment.png" alt="">
@@ -136,8 +136,10 @@ class SocialFeed{
 					<div class="content">
 						<p>User Name AGREES with the <a href="#">Winthrop Rockefeller Foundation assessment</a>.</p>
 					</div>
-				</article>
+				</article> -->
 				<?php 
+					echo $this->getAssessmentFeed($this->options['count']);	
+					
 					if(isset($this->options['facebook']) && strlen($this->options['facebook']))
 					{
 						echo $this->getFacebookFeed($this->options['facebook'], $this->options['count']);	
@@ -218,6 +220,68 @@ class SocialFeed{
 		$this->setCache($user.$count, $tweets, 3600, self::TWITTER_CACHE_LABEL);
 
 		return $tweets;
+	}
+
+	/**
+	 * Get Facebook HTML feed
+	 * @param  string $user  
+	 * @param  integer $count 
+	 * @return string
+	 */
+	public function getAssessmentFeed($count)
+	{
+		$out   = '';
+		$first = true;
+		$class = array('box-social', 'green', 'feed-philamplify');
+
+		$args = array(
+			'posts_per_page'   => $count,
+			'offset'           => 0,
+			'category'         => '',
+			'orderby'          => 'post_date',
+			'order'            => 'DESC',
+			'include'          => '',
+			'exclude'          => '',
+			'meta_key'         => '',
+			'meta_value'       => '',
+			'post_type'        => 'assessment',
+			'post_mime_type'   => '',
+			'post_parent'      => '',
+			'post_status'      => 'publish',
+			'suppress_filters' => true );
+		$assesments = get_posts($args);
+
+		if($assesments)
+		{
+			foreach ($assesments as $value) 
+			{
+				if($first)
+				{
+					$first    = false;
+					$feed_all = ' feed-all';
+				}
+				else
+				{
+					$feed_all = '';	
+				}
+				
+				$classes = implode(' ', $class).$feed_all;
+				$msg     = explode('<!--more-->', $value->post_content);
+				$msg     = $msg[0];
+				$user    = get_userdata($value->post_author);
+
+				$out.= sprintf('<article class="%s">', $classes);
+				$out.= '<header class="cf">';
+				$out.= '<div class="ico"><img src="'.TDU.'/ico-assessment.png" alt=""></div>';
+				$out.= sprintf('<h4>%s</h4>', $user->display_name);
+				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value->post_date)));
+				$out.= sprintf('<a href="%s" class="link-arrow mobile-hide-dibb">View the Assessment</a>', get_permalink($value->ID));
+				$out.= '</header>';
+				$out.= sprintf('<div class="content"><p>%s</p></div>', $msg);				
+				$out.= '</article>';
+			}
+		}
+		return $out;
 	}
 
 	/**
@@ -364,7 +428,7 @@ class SocialFeed{
 		}
 
 		$out         = array();
-		$dest        = sprintf('https://www.googleapis.com/plus/v1/people/%s/activities/public?maxResults=%s&key=%s', $id, $count, self::GOOGLE_PLUS_KEY);
+		$dest        = sprintf('https://www.googleapis.com/plus/v1/people/%s/activities/public?maxResults=%s&key=%s', $id, $count, self::GOOGLE_PLUS_KEY);		
 		$json_string = file_get_contents($dest);
 		$json        = json_decode($json_string, true);
 
@@ -421,7 +485,7 @@ class SocialFeed{
 	 */
 	public function formatDate($time)
 	{
-		$d = date('j/n/y', $time);
+		$d = date('n/j/y', $time);
 		$t = date('g:ia', $time);
 		return $d.' at '.$t;
 	}

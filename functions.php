@@ -14,7 +14,7 @@ require_once 'includes/post_type_mainslider.php';
 require_once 'includes/post_type_stories.php';
 require_once 'includes/post_type_assessment.php';
 require_once 'includes/widget_news_feed.php';
-require_once 'includes/widget_category_feed.php';
+require_once 'includes/widget_assessment_feed.php';
 require_once 'includes/widget_text.php';
 require_once 'includes/widget_subscribe.php';
 require_once 'includes/widget_social_share.php';
@@ -207,7 +207,8 @@ function scripts_method()
 			'redirecturl'       => get_bloginfo('url'),
 			'stories_count'     => $options['stories_count'], 
 			'stories_container' => '.stories-list',
-			'more_count'        => 1));
+			'more_count'        => 1,
+			'ip'				=> getIp()));
 }
 
 

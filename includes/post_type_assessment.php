@@ -61,7 +61,7 @@ class Assessment{
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
-			'supports'           => array( 'title', 'editor', 'thumbnail'));
+			'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt'));
 
 		register_post_type('assessment', $post_args);
 	}
@@ -169,7 +169,9 @@ class Assessment{
 	 */
 	public function metaBoxRecommendationsRender($post)
 	{
-		$recommendations = get_post_meta($post->ID, 'recommendations', true);		
+		$recommendations  = get_post_meta($post->ID, 'recommendations', true);		
+		$twitter_accounts = get_post_meta($post->ID, 'twitter_accounts', true);	
+		$email_accounts   = get_post_meta($post->ID, 'email_accounts', true);	
 		?>
 		<table class="gctable recommendation-table" data-count="<?php echo count($recommendations); ?>">
 			<thead>
@@ -210,6 +212,64 @@ class Assessment{
 			</tbody>
 		</table>
 		<button type="button" class="button add-recommendation"><?php _e('Add recommendation'); ?></button>
+
+		<h1>Twitter accounts</h1>
+		<table class="gctable twitter-accounts-table" data-count="<?php echo count($twitter_accounts); ?>">
+			<thead>
+				<tr>
+					<th>Account</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Picture URL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					if($twitter_accounts)
+					{
+						foreach ($twitter_accounts as $key => $t_account) 
+						{
+							echo '<tr>';
+							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][account]" value="%s"></td>', $key, $t_account['account']);
+							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][first_name]" value="%s"></td>', $key, $t_account['first_name']);
+							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][last_name]" value="%s"></td>', $key, $t_account['last_name']);
+							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][picture_name]" value="%s"></td>', $key, $t_account['picture_name']);
+							echo '</tr>';
+						}
+					}
+				?>				
+			</tbody>
+		</table>	
+		<button type="button" class="button add-twitter-account"><?php _e('Add twitter account'); ?></button>		
+
+		<h1>Email accounts</h1>			
+		<table class="gctable email-accounts-table" data-count="<?php echo count($email_accounts); ?>">
+			<thead>
+				<tr>
+					<th>Account</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Picture URL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					if($email_accounts)
+					{
+						foreach ($email_accounts as $key => $e_account) 
+						{
+							echo '<tr>';
+							printf('<td><input class="w100" type="text" name="email_accounts[%s][account]" value="%s"></td>', $key, $e_account['account']);
+							printf('<td><input class="w100" type="text" name="email_accounts[%s][first_name]" value="%s"></td>', $key, $e_account['first_name']);
+							printf('<td><input class="w100" type="text" name="email_accounts[%s][last_name]" value="%s"></td>', $key, $e_account['last_name']);
+							printf('<td><input class="w100" type="text" name="email_accounts[%s][picture_name]" value="%s"></td>', $key, $e_account['picture_name']);
+							echo '</tr>';
+						}
+					}
+				?>				
+			</tbody>
+		</table>	
+		<button type="button" class="button add-email-account"><?php _e('Add email account'); ?></button>
 		<?php
 	}
 
@@ -272,12 +332,26 @@ class Assessment{
 				update_post_meta($post_id, 'recommendations', $new_recommendations);
 			}			
 		}		
+		if(isset($_POST['twitter_accounts']))
+		{
+			if(is_array($_POST['twitter_accounts']))
+			{
+				$new_twitter_accounts = $this->clearEmptyItems($_POST['twitter_accounts'], array('account'));				
+				update_post_meta($post_id, 'twitter_accounts', $new_twitter_accounts);
+			}			
+		}		
+		if(isset($_POST['email_accounts']))
+		{
+			if(is_array($_POST['email_accounts']))
+			{
+				$new_email_accounts = $this->clearEmptyItems($_POST['email_accounts'], array('account'));				
+				update_post_meta($post_id, 'email_accounts', $new_email_accounts);
+			}			
+		}	
 		if(isset($_POST['meta']))
 		{
 			update_post_meta($post_id, 'meta', $_POST['meta']);
 		}
-
-
 
 		return $post_id;
 	}
@@ -287,12 +361,22 @@ class Assessment{
 	 * @param  array $arr 
 	 * @return array      
 	 */
-	public function clearEmptyItems($arr)
+	public function clearEmptyItems($arr, $fields = array('title', 'content'))
 	{
 		$new_arr = array();
 		foreach ($arr as $el) 
 		{
-			if($el['title'] != '' && $el['content'] != '') $new_arr[] = $el;
+			$empty = false;
+			foreach ($fields as $field) 
+			{
+				if(isset($el[$field]))
+				{
+					if($el[$field] == '') $empty = true; 	
+				}
+				else $empty = true;
+				
+			}
+			if(!$empty) $new_arr[] = $el;
 		}
 		return $new_arr;
 	}
