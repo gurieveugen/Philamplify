@@ -261,6 +261,10 @@ class Stories{
 				$first_name    = $item->meta['first_name'];
 				$last_name     = $item->meta['last_name'];
 				$date          = $this->formatDate(strtotime($item->post_date));
+				$media         = '';
+				$media_title   = '';
+				$media_content = '';
+				$youtube_id    = '';
 
 				if($item->image)
 				{					
@@ -278,7 +282,18 @@ class Stories{
 
 				if($item->meta['media_link'])
 				{
-					$media         = sprintf('<a href="%s" style="margin-left: 10px;">%s</a>', $item->meta['media_link'], $item->meta['media_title']);
+					if(strpos($item->meta['media_link'], 'youtube'))
+					{
+						$youtube_id = explode('watch?v=', $item->meta['media_link']);
+						$youtube_id = $youtube_id[1];
+						$media      = sprintf('<iframe width="352" height="250" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe>', $youtube_id);	
+					}
+					else
+					{
+						$media = sprintf('<a href="%s">%s</a>', $item->meta['media_link'], $item->meta['media_title']);	
+					}
+					
+					$media_title   = $item->meta['media_title'];
 					$media_content = $item->meta['media_description'];
 				}
 
@@ -286,7 +301,7 @@ class Stories{
 
 				$out.= $this->wrapMediaBlock($img, $img_title, $img_content);				
 				$out.= $this->wrapMediaBlock($video, $video_title, $video_content);
-				$out.= $this->wrapMediaBlock($media, '', $media_content);
+				$out.= $this->wrapMediaBlock($media, $media_title, $media_content);
 
 				$out.= '<div class="text-media">';
 				$out.= (strlen($content)) ? sprintf('<p>%s</p>', $content) : '';				

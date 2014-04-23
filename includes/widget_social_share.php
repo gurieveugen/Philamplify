@@ -19,6 +19,7 @@ class SocialShare extends WP_Widget {
 
 	function widget($args, $instance) 
 	{
+		global $post;
 		extract($args);
 		$url              = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 		$title            = strip_tags($instance['title']);	
@@ -30,9 +31,9 @@ class SocialShare extends WP_Widget {
 		$twitter_btn      = ($twitter != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-twitter-1.png"></a></li>', $twitter) : '';
 		$facebook_btn     = ($facebook != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-facebook-1.png"></a></li>', $facebook) : '';
 		$google_plus_btn  = ($google_plus != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-google-1.png"></a></li>', $google_plus) : '';
-		$linkedin_btn     = ($linkedin != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-in-1.png"></a></li>', $linkedin) : '';
-		$twitter_accounts = $instance['twitter_accounts'];
-		$email_accounts   = $instance['email_accounts'];
+		$linkedin_btn     = ($linkedin != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-in-1.png"></a></li>', $linkedin) : '';		
+		$twitter_accounts = get_post_meta($post->ID, 'twitter_accounts', true);	
+		$email_accounts   = get_post_meta($post->ID, 'email_accounts', true);	
 
 		echo $before_widget;		
 		// =========================================================
@@ -187,9 +188,7 @@ class SocialShare extends WP_Widget {
 		$twitter          = $instance['twitter'];
 		$facebook         = $instance['facebook'];
 		$google_plus      = $instance['google_plus'];
-		$linkedin         = $instance['linkedin'];
-		$twitter_accounts = $instance['twitter_accounts'];
-		$email_accounts   = $instance['email_accounts'];
+		$linkedin         = $instance['linkedin'];		
 
 		?>		
 		<p>
@@ -216,64 +215,7 @@ class SocialShare extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('linkedin'); ?>"><?php _e('Linkedin show'); ?>: 
 				<input class="widefat" id="<?php echo $this->get_field_id('linkedin'); ?>" name="<?php echo $this->get_field_name('linkedin'); ?>" type="checkbox" <?php echo $this->checked($linkedin); ?> />
 			</label>
-		</p>	
-		<h1>Twitter accounts</h1>
-		<table class="gctable twitter-accounts-table" data-count="<?php echo count($twitter_accounts)-1; ?>" data-name="<?php echo $this->get_field_name('twitter_accounts'); ?>">
-			<thead>
-				<tr>
-					<th>Account</th>
-					<th>First name</th>
-					<th>Last name</th>
-					<th>Picture URL</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-					if($twitter_accounts)
-					{
-						foreach ($twitter_accounts as $key => $t_account) 
-						{
-							echo '<tr>';
-							printf('<td><input class="w100" type="text" name="%s[%s][account]" value="%s"></td>', $this->get_field_name('twitter_accounts'), $key, $t_account['account']);
-							printf('<td><input class="w100" type="text" name="%s[%s][first_name]" value="%s"></td>', $this->get_field_name('twitter_accounts'), $key, $t_account['first_name']);
-							printf('<td><input class="w100" type="text" name="%s[%s][last_name]" value="%s"></td>', $this->get_field_name('twitter_accounts'), $key, $t_account['last_name']);
-							printf('<td><input class="w100" type="text" name="%s[%s][picture_name]" value="%s"></td>', $this->get_field_name('twitter_accounts'), $key, $t_account['picture_name']);
-							echo '</tr>';
-						}
-					}
-				?>				
-			</tbody>
-		</table>	
-		<button type="button" class="add-twitter-account button" onclick="addTwitterAccount(this);">Add twitter account</button>
-
-		<h1>Email accounts</h1>			
-		<table class="gctable email-accounts-table" data-count="<?php echo count($email_accounts)-1; ?>" data-name="<?php echo $this->get_field_name('email_accounts'); ?>">
-			<thead>
-				<tr>
-					<th>Account</th>
-					<th>First name</th>
-					<th>Last name</th>
-					<th>Picture URL</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-					if($email_accounts)
-					{
-						foreach ($email_accounts as $key => $e_account) 
-						{
-							echo '<tr>';
-							printf('<td><input class="w100" type="text" name="%s[%s][account]" value="%s"></td>', $this->get_field_name('email_accounts'), $key, $e_account['account']);
-							printf('<td><input class="w100" type="text" name="%s[%s][first_name]" value="%s"></td>', $this->get_field_name('email_accounts'), $key, $e_account['first_name']);
-							printf('<td><input class="w100" type="text" name="%s[%s][last_name]" value="%s"></td>', $this->get_field_name('email_accounts'), $key, $e_account['last_name']);
-							printf('<td><input class="w100" type="text" name="%s[%s][picture_name]" value="%s"></td>', $this->get_field_name('email_accounts'), $key, $e_account['picture_name']);
-							echo '</tr>';
-						}
-					}
-				?>				
-			</tbody>
-		</table>	
-		<button type="button" class="add-email-account button" onclick="addEmailAccount(this);">Add email account</button>			
+		</p>
 		<?php
 	}
 
