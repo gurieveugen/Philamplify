@@ -34,7 +34,7 @@ class ShareStory{
 	private $post;
 	private $files;
 	private $errors;
-	private $fields_meta       = array('first_name', 'last_name', 'email', 'zip', 'industry', 'media_title', 'media_description', 'media_link', 'video_title', 'video_description');
+	private $fields_meta       = array('first_name', 'last_name', 'email', 'zip', 'industry', 'media_title', 'media_description', 'media_link', 'video_title', 'video_description', 'state');
 	private $fields_required   = array('first_name', 'last_name', 'email', 'story');
 	private $fields_files      = array('video', 'photo');
 	private $fields_photo_file = array('file' => 'photo', 'title' => 'photo_title', 'description' => 'photo_description');

@@ -38,14 +38,35 @@
 				<div class="column width-125">
 					<input type="text" placeholder="ZIP Code (Optional)" name="zip">
 				</div>
+				<div class="column width-125">
+					<?php $states = getStates(); ?>
+					<select name="state" id="state">
+						<?php
+						foreach ($states as $key => $value) 
+						{
+							?>
+							<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+							<?php
+						}
+						?>
+					</select>
+				</div>
 				<div class="column width-238">
-					<select name="Industry">
-						<option value="0">Your Industry (Optional)</option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-						<option value="4">Option 4</option>
-						<option value="5">Option 5</option>
+					<select name="industry">
+						<option value="-1">Your Industry (Optional)</option>
+						<?php 
+						$assessments_options = $GLOBALS['assessments_options']->getAll();
+						$industry            = $assessments_options['industry'];
+						if($industry)
+						{
+							foreach ($industry as $key => &$value) 
+							{
+								?>
+								<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+								<?php
+							}
+						}
+						?>
 					</select>
 				</div>
 			</div>

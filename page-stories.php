@@ -40,22 +40,35 @@
 		</div>
 		<div class="item">
 			<label class="mobile-hide-dib">State:</label>
+			<?php $states = array_merge(array('ALL' => 'ALL'), getStates()); ?>
 			<select name="state" class="select-state">
-				<option value="NY">NY</option>
-				<option value="NY">NY</option>
-				<option value="NY">NY</option>
-				<option value="NY">NY</option>
-				<option value="NY">NY</option>
+				<?php
+				foreach ($states as $key => $value) 
+				{
+					?>
+					<option value="<?php echo $key; ?>"><?php echo $key; ?></option>
+					<?php
+				}
+				?>
 			</select>
 		</div>
 		<div class="item">
 			<label class="mobile-hide-dib">Industry:</label>
 			<select name="industry" class="select-industry">
-				<option value="Education">Education</option>
-				<option value="Education">Education</option>
-				<option value="Education">Education</option>
-				<option value="Education">Education</option>
-				<option value="Education">Education</option>
+				<option value="-1">Your Industry</option>
+				<?php 
+				$assessments_options = $GLOBALS['assessments_options']->getAll();
+				$industry            = $assessments_options['industry'];
+				if($industry)
+				{
+					foreach ($industry as $key => &$value) 
+					{
+						?>
+						<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+						<?php
+					}
+				}
+				?>
 			</select>
 		</div>
 	</div>

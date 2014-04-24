@@ -1,3 +1,10 @@
+var disqus_shortname = 'philamplify'; // required: replace example with your forum shortname
+var disqus_identifier; //made of post id and guid
+var disqus_url;
+var urlArray         = [];
+var disqusPublicKey  = "OQayG6vSjiJn3lHkJ7th2geCSHpphVduQXc5TC0jk10xiYfFq1o19mvEWS7l8OJ1";
+var msnry            = null;
+
 (function($){
 	$(function() {
 		
@@ -79,7 +86,11 @@
     					default_settings.more_count++;   
 
     					$(default_settings.stories_container).append(append_html);
-    					setTimeout(function() { $(default_settings.stories_container).masonry('appended', append_html, true); }, 1000);
+    					$(default_settings.stories_container).masonry('appended', append_html, true); 
+    					setTimeout(function() { 
+    						$(default_settings.stories_container).masonry('layout');
+    					}, 1000);
+    					
     				} 				    				
     			}
     		});
@@ -148,10 +159,7 @@
 		// MASONRY BRICS
 		// =========================================================		
 		$(window).load(function(){ 
-			$('.stories-list').multipleFilterMasonry({
-			  itemSelector: '.box-story',
-			  filtersGroupSelector:'.filters'
-			});
+			$(default_settings.stories_container).masonry({ itemSelector: '.box-story', columnWidth: 160 });			
 		});
 		// =========================================================
 		// FILTER CLICK
@@ -160,10 +168,11 @@
 			var id          = '#' + $(this).data('id');
 			var selected    = $(this).data('selected');
 			var notselected = $(this).data('notselected');
-			
-			$(id).trigger('click');
+			var selector    = id.replace('#filter-', '.');
+
 			$(this).toggleClass('selected');
-			
+			$(selector).toggleClass('hide');
+			$(default_settings.stories_container).masonry('layout');
 			if($(this).hasClass('selected'))
 			{
 				$(this).html('<img src="' + selected + '" alt="" />');
@@ -172,6 +181,7 @@
 			{
 				$(this).html('<img src="' + notselected + '" alt="" />');
 			}
+			
 			e.preventDefault();
 		});
 		// =========================================================
@@ -217,15 +227,74 @@
 			urlArray.push('link:' + url);
 		});		
 		getAllCounts();
+		// =========================================================
+		// SELECT STATE CHANGE
+		// =========================================================
+		$('select.select-state').change(function(){
+			var state = $('.state-' + $(this).val());
+
+			if(state.selector != '.ALL')
+			{
+				$(default_settings.stories_container).find('.box-story').each(function(){
+					if(!$(this).hasClass('hide')) $(this).addClass('hide');
+				});
+				if(typeof(state) != 'undefined')
+				{
+					state.each(function(){
+						$(this).removeClass('hide');
+					});		
+				}
+				
+			}
+			else
+			{
+				$(default_settings.stories_container).find('.box-story').removeClass('hide');
+			}
+			$(default_settings.stories_container).masonry('layout');
+
+			$('.filter-icons li a').each(function(){
+				if(!$(this).hasClass('selected')) $(this).addClass('selected');
+				$(this).html('<img src="' + $(this).data('selected') + '" alt="" />');
+			});
+		});
+		// =========================================================
+		// SELECT INDUSTRY CHANGE
+		// =========================================================
+		$('select.select-industry').change(function(e){			
+			var state = $('.industry-' + $(this).val());			
+			
+			if(state.selector != '.industry--1')
+			{
+				$(default_settings.stories_container).find('.box-story').each(function(){
+					if(!$(this).hasClass('hide')) $(this).addClass('hide');
+				});
+				if(typeof(state) != 'undefined')
+				{
+					state.each(function(){
+						$(this).removeClass('hide');
+					});		
+				}
+			}
+			else
+			{				
+				$(default_settings.stories_container).find('.box-story').each(function(){
+					$(this).removeClass('hide');
+				});
+			}
+			$(default_settings.stories_container).masonry('layout');
+
+			$('.filter-icons li a').each(function(){
+				if(!$(this).hasClass('selected')) $(this).addClass('selected');
+				$(this).html('<img src="' + $(this).data('selected') + '" alt="" />');
+			});
+		});
+
+
 	});
 	
 })(jQuery);
 
-var disqus_shortname = 'philamplify'; // required: replace example with your forum shortname
-var disqus_identifier; //made of post id and guid
-var disqus_url;
-var urlArray = [];
-var disqusPublicKey = "OQayG6vSjiJn3lHkJ7th2geCSHpphVduQXc5TC0jk10xiYfFq1o19mvEWS7l8OJ1";
+
 
 function loadDisqus(source, identifier, url) 
 {

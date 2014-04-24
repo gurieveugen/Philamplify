@@ -75,6 +75,33 @@
 			e.preventDefault();
 		});
 		// =========================================================
+		// ADD INDUSTRY
+		// =========================================================
+		$('.add-industry').click(function(e){
+			var count = $('.industry-table').data('count') + 1;
+			$('.industry-table tbody').append(
+				'<tr>' +	
+				'<td>' + count + '</td>' +
+				'<td><input type="text" name="assessments_options[industry][' + count + ']" value="" class="w100"></td>' +
+				'<td></td>' +									
+				'</tr>');
+
+			$('.industry-table').data('count', count);
+			e.preventDefault();
+		});
+		// =========================================================
+		// REMOVE INDUSTRY
+		// =========================================================
+		$('.remove-industry').click(function(e){
+			var result = confirm("Are you sure want to delete this item?");
+			if (result == true) 
+			{
+				$(this).parent().parent().remove();
+			}
+			e.preventDefault();
+		});
+		
+		// =========================================================
 		// Remove recommendation
 		// =========================================================
 		$('.remove-recommendation').click(function(e){
@@ -85,7 +112,6 @@
 			}
 			e.preventDefault();
 		});
-		
 		
 	});	
 })(jQuery);

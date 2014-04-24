@@ -251,7 +251,7 @@ class Stories{
 		if($items)
 		{
 			foreach ($items as &$item) 
-			{						
+			{					
 				$title         = '';
 				$content       = $item->post_content;
 				$img           = '';
@@ -265,12 +265,16 @@ class Stories{
 				$media_title   = '';
 				$media_content = '';
 				$youtube_id    = '';
+				$type          = 'text';
+				$industry      = ($item->meta['industry'] != '') ? 'industry-'.$item->meta['industry'] : '';
+				$state         = ($item->meta['state'] != '') ? 'state-'.$item->meta['state'] : '';
 
 				if($item->image)
 				{					
 					$img_title   = $item->image_meta['post_title'];					
 					$img_content = $item->image_meta['post_content'];
-					$img    .= sprintf('<img src="%s" alt="%s">', $item->image, $title);
+					$img        .= sprintf('<img src="%s" alt="%s">', $item->image, $title);
+					$type        = 'photo';
 				}
 
 				if($item->meta['video'])
@@ -278,6 +282,7 @@ class Stories{
 					$video         = sprintf('<iframe width="352" height="250" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe>', $item->meta['video']);
 					$video_title   = $item->meta['video_title'];
 					$video_content = $item->meta['video_description'];
+					$type          = 'video';
 				}
 
 				if($item->meta['media_link'])
@@ -287,6 +292,7 @@ class Stories{
 						$youtube_id = explode('watch?v=', $item->meta['media_link']);
 						$youtube_id = $youtube_id[1];
 						$media      = sprintf('<iframe width="352" height="250" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe>', $youtube_id);	
+						$type       = 'video';
 					}
 					else
 					{
@@ -297,7 +303,7 @@ class Stories{
 					$media_content = $item->meta['media_description'];
 				}
 
-				$out.= '<article class="box-story '.$type.'">';
+				$out.= '<article class="box-story '.$type.' '.$state.' '.$industry.'">';
 
 				$out.= $this->wrapMediaBlock($img, $img_title, $img_content);				
 				$out.= $this->wrapMediaBlock($video, $video_title, $video_content);

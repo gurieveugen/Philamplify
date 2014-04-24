@@ -429,7 +429,7 @@ class SocialFeed{
 
 		$out         = array();
 		$dest        = sprintf('https://www.googleapis.com/plus/v1/people/%s/activities/public?maxResults=%s&key=%s', $id, $count, self::GOOGLE_PLUS_KEY);		
-		$json_string = file_get_contents($dest);
+		$json_string = $this->file_get_contents_curl($dest);
 		$json        = json_decode($json_string, true);
 
 		if($json['items'])
@@ -488,6 +488,25 @@ class SocialFeed{
 		$d = date('n/j/y', $time);
 		$t = date('g:ia', $time);
 		return $d.' at '.$t;
+	}
+
+	/**
+	 * Get contents 
+	 * @param  string $url
+	 * @return string
+	 */
+	public function file_get_contents_curl($url) 
+	{
+	    $ch = curl_init();
+
+	    curl_setopt($ch, CURLOPT_HEADER, 0);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	    curl_setopt($ch, CURLOPT_URL, $url);
+
+	    $data = curl_exec($ch);
+	    curl_close($ch);
+
+	    return $data;
 	}
 }
 
