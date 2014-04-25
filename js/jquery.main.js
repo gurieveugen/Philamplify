@@ -159,7 +159,7 @@ var msnry            = null;
 		// MASONRY BRICS
 		// =========================================================		
 		$(window).load(function(){ 
-			$(default_settings.stories_container).masonry({ itemSelector: '.box-story', columnWidth: 160 });			
+			$(default_settings.stories_container).masonry({ itemSelector: '.box-story' });			
 		});
 		// =========================================================
 		// FILTER CLICK
