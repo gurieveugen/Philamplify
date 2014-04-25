@@ -10,8 +10,8 @@
 	$socials['twitter']  = (isset($options['twitter_url']) && strlen($options['twitter_url'])) ? $options['twitter_url'] : '';
 	$socials['youtube']  = (isset($options['youtube_url']) && strlen($options['youtube_url'])) ? $options['youtube_url'] : '';
 	$socials['rss']      = (isset($options['rss_url']) && strlen($options['rss_url'])) ? $options['rss_url'] : '';
-	$donate_url          = (isset($options['donate_url']) && strlen($options['donate_url'])) ? $options['donate_url'] : '';
-	$ncrp_url            = (isset($options['ncrp_url']) && strlen($options['ncrp_url'])) ? $options['ncrp_url'] : '';
+	$donate_url          = (isset($options['donate_url']) && strlen($options['donate_url'])) ? htmlspecialchars($options['donate_url'], ENT_QUOTES) : '';
+	$ncrp_url            = (isset($options['ncrp_url']) && strlen($options['ncrp_url'])) ? htmlspecialchars($options['ncrp_url'], ENT_QUOTES) : '';
 ?>
 		<footer id="footer">
 			<div class="holder">

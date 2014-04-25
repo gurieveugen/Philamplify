@@ -76,6 +76,9 @@ body{
 	font-size: 14px;
 	line-height: 25px;
 }
+.home #footer > .holder{
+	background: url(../images/bg-6.jpg) no-repeat 50% 55px;
+}
 #footer .column{
 	float: none;
 	margin: 30px 0 0;
@@ -530,11 +533,14 @@ body{
 	background-position: 0 -14px;
 }
 .slider-area .slides{
-	height: 574px;
+	height: auto;
+	min-height: 574px;
 }
 .slider-area .slides .slide{
+	height: auto !important;
+}
+.slider-area .slides .slide > .holder{
 	padding: 5px 0 0;
-	height: 574px !important;
 }
 .slider-area .text{
 	padding: 0 20px;
@@ -559,9 +565,6 @@ body{
 	line-height: 35px;
 }
 .slider-area .btn-blue{
-	position: relative;
-	left: auto;
-	bottom: auto;
 	display: block;
 	margin: 0 20px;
 }

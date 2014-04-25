@@ -31,7 +31,7 @@ class Subscribe extends WP_Widget {
 		<form action="#" class="form-signup form-subscribe-ajax">
 			<input type="email" placeholder="EMAIL ADDRESS" name="email" required>
 			<input type="hidden" value="<?php echo getIP(); ?>" name="ip">
-			<?php wp_nonce_field(AJAX::SUBSCRIBE_NONCE, 'security'); ?>
+			<?php wp_nonce_field(AJAX::SUBSCRIBE_NONCE, 'security_subscribe'); ?>
 			<input type="submit" class="btn-dark-green" value="Subscribe">			
 		</form>
 		<?php

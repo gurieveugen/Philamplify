@@ -465,7 +465,7 @@ body{
 }
 .section-media > .holder{
 	background: url(../images/bg-3.jpg) no-repeat 50% 0;
-	padding: 13px 0 33px;
+	padding: 13px 0;
 }
 .section-media .center-wrap{
 	margin: 0;
@@ -489,7 +489,7 @@ body{
 .section-media .quotes-holder{
 	float: right;
 	width: 247px;
-	margin: 0 0 -32px;
+	margin: 0;
 }
 .section-media .box-quote{
 	padding: 27px 28px 16px;
@@ -537,15 +537,20 @@ body{
 .slider-area .slides{
 	margin: 0;
 }
-.slider-area .slides .slide{
-	padding: 68px 30px 0;
+.slider-area .slides .slide > .holder{
+	padding: 65px 30px 0;
 }
 .slider-area .image{
-	width: 375px;
-	margin: -7px -74px 0 0;
+	width: 47%;
+	margin: -5px -30px 0 0;
+}
+.slider-area .text{
+	padding-top: 4px;
+	width: 56%;
 }
 .slider-area .btn-blue{
-	left: 30px;
+	position: relative;
+	bottom: auto;
 }
 .section-socials > .holder{
 	background: url(../images/bg-5.jpg) no-repeat 50% 0;

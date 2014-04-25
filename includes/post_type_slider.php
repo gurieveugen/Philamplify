@@ -228,6 +228,7 @@ class Slider{
 			{
 				$lm     = isset($item->meta['learn_more']) ? $item->meta['learn_more'] : '#';
 				$output.= '<div class="slide">';
+				$output.= '<div class="holder cf">';
 
 				$output.= '<div class="text">';
 				$output.= '<h3>'.$item->post_title.'</h3>';
@@ -239,6 +240,7 @@ class Slider{
 				$output.= '</div>';
 
 				$output.= '<a href="'.$lm.'" class="btn-blue">Read More and Decide</a>';
+				$output.= '</div>';
 				$output.= sprintf('</div><!-- slide (%d) -->', $item->ID);
 			}
 		}

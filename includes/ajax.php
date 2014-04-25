@@ -32,7 +32,7 @@ class AJAX{
 	 */
 	public function subscribe()
 	{
-		check_ajax_referer(self::SUBSCRIBE_NONCE, 'security');
+		check_ajax_referer(self::SUBSCRIBE_NONCE, 'security_subscribe');
 
 		$email       = trim(strtolower($_POST['email']));
 		$subscribers = get_option(self::SUBSCRIBE_OPTION);

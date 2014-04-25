@@ -33,7 +33,7 @@ class SocialFeedOptions{
      */
     public function add_plugin_page()
     {
-        add_menu_page(__(self::CAPTION), __(self::CAPTION), 'administrator', __CLASS__, array($this, 'create_admin_page'), 'favicon.ico'); 
+        add_menu_page(__(self::CAPTION), __(self::CAPTION), 'administrator', __CLASS__, array($this, 'create_admin_page'), ''); 
     }
 
     /**

@@ -85,58 +85,6 @@ class SocialFeed{
 						echo $this->getTweets($tweets); 	
 					}
 				?>						
-				<!-- <article class="box-social green feed-philamplify feed-all">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-assessment.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow mobile-hide-dib">View the Assessment</a>
-					</header>
-					<div class="content">
-						<p>User Name AGREES with the <a href="#">Winthrop Rockefeller Foundation assessment</a>.</p>
-					</div>
-				</article>
-				<article class="box-social green feed-philamplify">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-assessment.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow mobile-hide-dib">View the Assessment</a>
-					</header>
-					<div class="content">
-						<p>User Name AGREES with the <a href="#">Winthrop Rockefeller Foundation assessment</a>.</p>
-					</div>
-				</article>
-				<article class="box-social green feed-philamplify">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-assessment.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow mobile-hide-dib">View the Assessment</a>
-					</header>
-					<div class="content">
-						<p>User Name AGREES with the <a href="#">Winthrop Rockefeller Foundation assessment</a>.</p>
-					</div>
-				</article>
-				<article class="box-social green feed-philamplify">
-					<header class="cf">
-						<div class="ico">
-							<img src="<?php echo TDU; ?>/images/ico-assessment.png" alt="">
-						</div>
-						<h4>User Name</h4>
-						<strong class="date">1/1/14 at 11:43am</strong>
-						<a href="#" class="link-arrow mobile-hide-dib">View the Assessment</a>
-					</header>
-					<div class="content">
-						<p>User Name AGREES with the <a href="#">Winthrop Rockefeller Foundation assessment</a>.</p>
-					</div>
-				</article> -->
 				<?php 
 					echo $this->getAssessmentFeed($this->options['count']);	
 					
@@ -190,9 +138,11 @@ class SocialFeed{
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
 				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-twitter-2.png" alt=""></div>';
+				$out.= sprintf('<a href="%s" class="link-arrow-blue mobile-hide-dib">View on Twitter</a>', $url);
+				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $tweet->user->name);
 				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($tweet->created_at)));
-				$out.= sprintf('<a href="%s" class="link-arrow-blue mobile-hide-dib">View on Twitter</a>', $url);
+				$out.= '</div>';
 				$out.= '</header>';
 				$out.= sprintf('<div class="content"><p>%s</p></div>', $tweet->text);				
 				$out.= '</article>';
@@ -272,10 +222,12 @@ class SocialFeed{
 
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
-				$out.= '<div class="ico"><img src="'.TDU.'/ico-assessment.png" alt=""></div>';
+				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-assessment.png" alt=""></div>';
+				$out.= sprintf('<a href="%s" class="link-arrow mobile-hide-dibb">View the Assessment</a>', get_permalink($value->ID));
+				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $user->display_name);
 				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value->post_date)));
-				$out.= sprintf('<a href="%s" class="link-arrow mobile-hide-dibb">View the Assessment</a>', get_permalink($value->ID));
+				$out.= '</div>';
 				$out.= '</header>';
 				$out.= sprintf('<div class="content"><p>%s</p></div>', $msg);				
 				$out.= '</article>';
@@ -316,9 +268,11 @@ class SocialFeed{
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
 				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-facebook-2.png" alt=""></div>';
+				$out.= sprintf('<a href="%s" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>', $value['url']);
+				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $value['name']);
 				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value['created_time'])));
-				$out.= sprintf('<a href="%s" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>', $value['url']);
+				$out.= '</div>';
 				$out.= '</header>';
 				$out.= sprintf('<div class="content"><p>%s</p></div>', $value['msg']);				
 				$out.= '</article>';
@@ -402,9 +356,11 @@ class SocialFeed{
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
 				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-google-2.png" alt=""></div>';
+				$out.= sprintf('<a href="%s" class="link-arrow-red mobile-hide-dib">View on Facebook</a>', $value['url']);
+				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $value['name']);
 				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value['created_time'])));
-				$out.= sprintf('<a href="%s" class="link-arrow-red mobile-hide-dib">View on Facebook</a>', $value['url']);
+				$out.= '</div>';
 				$out.= '</header>';
 				$out.= sprintf('<div class="content"><p>%s</p></div>', $value['msg']);				
 				$out.= '</article>';

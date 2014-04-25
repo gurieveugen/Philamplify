@@ -18,7 +18,7 @@ class SubscribersPage{
      */
     public function add_plugin_page()
     {
-        add_menu_page( __('Subscribers report'), __('Subscribers'), 'administrator', __CLASS__, array($this, 'create_admin_page'), 'favicon.ico');
+        add_menu_page( __('Subscribers report'), __('Subscribers'), 'administrator', __CLASS__, array($this, 'create_admin_page'), '');
     }
 
     /**

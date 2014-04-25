@@ -241,7 +241,7 @@ class MainSlider{
 		{
 			foreach ($this->items as &$item) 
 			{
-				$output.= '<div class="mainslide">';
+				$output.= '<div class="mainslide cf">';
 				$output.= '<div class="text pc-hide">';
 				$output.= '<h1>'.$item->post_title.'</h1>';
 				$output.= '<p>'.$item->post_content.'</p>';

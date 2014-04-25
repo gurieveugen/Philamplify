@@ -31,7 +31,7 @@ class AssessmentsOptionsPage{
      */
     public function add_plugin_page()
     {
-        add_submenu_page(self::PARENT_PAGE, __('Assessments options'), __('Assessments options'), 'administrator', __FILE__, array($this, 'create_admin_page'), 'favicon.ico'); 
+        add_submenu_page(self::PARENT_PAGE, __('Assessments options'), __('Assessments options'), 'administrator', __FILE__, array($this, 'create_admin_page'), ''); 
     }
 
     /**
