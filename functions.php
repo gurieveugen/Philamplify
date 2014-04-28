@@ -75,7 +75,7 @@ if(is_admin())
 {
 	wp_enqueue_style('font-awesome', TDU.'/css/font-awesome.min.css');
 	wp_enqueue_style('admin-styles', TDU.'/css/admin-styles.css');	
-	wp_enqueue_script('jmain-admin', TDU.'/js/jquery.main.admin.js', array('jquery'));
+	//wp_enqueue_script('jmain-admin', TDU.'/js/jquery.main.admin.js', array('jquery'));
 	wp_localize_script('jmain-admin', 'default_settings', array( 
 			'ajaxurl'     => get_bloginfo('template_url').'/includes/ajax.php',
 			'redirecturl' => get_bloginfo('url')));

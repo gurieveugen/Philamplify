@@ -5,6 +5,7 @@
 */
 ?>
 <?php get_header(); ?>
+<?php the_post(); ?>
 <header class="page-title">
 	<div class="holder">
 		<div class="center-wrap">
@@ -17,6 +18,7 @@
 		<img src="<?php echo TDU; ?>/images/ico-story.png" alt="">
 		Submit your own stories!
 	</a>
+	
 	<div class="filters-area">
 		<strong class="title">Filter</strong>
 		<div class="item">
@@ -71,6 +73,9 @@
 				?>
 			</select>
 		</div>
+	</div>
+	<div class="row">
+		<?php the_content(); ?>
 	</div>
 	<div class="stories-list cf">
 		<?php 

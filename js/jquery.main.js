@@ -17,10 +17,20 @@ var msnry            = null;
 		
 		$('.form-poll input[type="radio"], .yop-poll-widget input[type="radio"], .filters-area select, .form-story select, .select-socials-filter').styler();
 		
-		$('.data-box .btn-box').click(function(){
+		$('.data-box .btn-box').click(function(e){
 			$(this).toggleClass('open');
 			$(this).parent().find('.content').slideToggle(200);
-			return false;
+			
+			$('.r-comments').each(function(){
+				if($(this).hasClass("open")) $(this).removeClass('open');
+			});			
+
+			var comments   = $('.data-box .content .holder');
+			var identifier = $(this).data('identifier');
+			var url        = $(this).data('url');
+
+			loadDisqus(comments, identifier, url);			
+			e.preventDefault();
 		});
 
 		$('.r-box .cf .link-view').click(function(e){
@@ -205,6 +215,11 @@ var msnry            = null;
 		// COMMENTS CLICK
 		// =========================================================
 		$('.link-comments').click(function(e){
+			if($('.data-box .btn-box').hasClass('open'))
+			{
+				$('.data-box .btn-box').removeClass('open');
+				$('.data-box .btn-box').parent().find('.content').slideToggle(200);
+			}
 
 			$('.r-comments').each(function(){
 				if($(this).hasClass("open")) $(this).removeClass('open');
@@ -348,7 +363,7 @@ function getAllCounts()
 				var countText = " comments";
 				var count = result.response[i].posts;
 				if (count == 1) countText = " Comment";
-				$('a[data-url="' + result.response[i].link + '"]').html(count + countText);
+				$('a.link-comments[data-url="' + result.response[i].link + '"]').html(count + countText);
 			}
 		}
 	});

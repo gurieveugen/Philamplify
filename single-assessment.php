@@ -1,7 +1,8 @@
 <?php 
 	get_header(); 
 	the_post();
-	$meta            = get_post_meta(get_the_id(), 'meta', true);
+
+	$meta            = get_post_meta(get_the_id(), 'meta', true);	
 	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);	
 	$size            = getFileSize($meta['pdf_url']);
 ?>
@@ -16,7 +17,7 @@
 					?>
 					<div class="video-box">
 						<?php the_post_thumbnail('assessment-image'); ?>
-						<a href="<?php echo $meta['video_url']; ?>" class="ico-video"></a>
+						<a href="<?php echo $meta['video_url']; ?>" class="ico-video fancybox-media"></a>
 					</div>
 					<?php
 				}
@@ -46,7 +47,11 @@
 			the_excerpt();
 		?>
 		<div class="data-box">
-			<a href="#" class="btn-box">View Full Summary and Key Findings <i class="arrow"></i></a>
+			<?php 
+			$identifier = intval((get_the_id()*1000000));
+			$data_url   = get_permalink().'#!/'.$identifier;
+			?>
+			<a href="#" class="btn-box" data-identifier="<?php echo $identifier; ?>" data-url="<?php echo $data_url; ?>" >View Full Summary and Key Findings <i class="arrow"></i></a>
 			<div class="content">
 				<div class="holder cf">
 					<?php 						     

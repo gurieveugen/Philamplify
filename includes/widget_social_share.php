@@ -88,7 +88,7 @@ class SocialShare extends WP_Widget {
 		{			
 			?>
 			<div class="w-block">
-				<h3>Tweet At Foundation Leadership</h3>
+				<h3>Email Foundation Leadership</h3>
 				<ul class="social-feed">
 					<?php 
 					foreach ($email_accounts as $e_account) 

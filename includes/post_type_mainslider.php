@@ -250,31 +250,37 @@ class MainSlider{
 		{
 			foreach ($this->items as &$item) 
 			{
-				$output.= '<div class="mainslide cf">';
-				$output.= '<div class="text pc-hide">';
-				$output.= '<h1>'.$item->post_title.'</h1>';
-				$output.= '<p>'.$item->post_content.'</p>';
-				$output.= '</div>';
+				if(has_post_thumbnail($item->ID))
+				{
+					$post_thumbnail_id = get_post_thumbnail_id($item->ID);
+					$img = wp_get_attachment_image_src($post_thumbnail_id ,'mainslide-image', false);
+					$img = $img[0];
+					$output.= '<div class="mainslide cf">';
+					$output.= '<div class="text pc-hide">';
+					$output.= '<h1>'.$item->post_title.'</h1>';
+					$output.= '<p>'.$item->post_content.'</p>';
+					$output.= '</div>';
 
-				$output.= '<div class="video-box">';
-				$output.= '<img src="'.TDU.'/images/img-7.jpg" alt="">';
-				$output.= '<a href="'.$item->meta['video_url'].'" class="ico-video fancybox-media">play</a>';
-				$output.= '</div>';
+					$output.= '<div class="video-box">';					
+					$output.= '<img src="'.$img.'" alt="">';
+					$output.= '<a href="'.$item->meta['video_url'].'" class="ico-video fancybox-media">play</a>';
+					$output.= '</div>';
 
-				$output.= '<div class="text">';
-				$output.= '<div class="pc-visible">';
-				$output.= '<h1>'.$item->post_title.'</h1>';
-				$output.= '<p>'.$item->post_content.'</p>';
-				$output.= '</div>';
-				$output.= '<div class="quotes-holder">';
-				$output.= '<blockquote class="box-quote q1 cf">';
-				$output.= '<q>“'.$item->meta['quote'].'”</q>';
-				$output.= '<cite>-- '.$item->meta['quote_source'].'</cite>';
-				$output.= '<a href="'.$item->meta['destination_url'].'" class="link-arrow">Share Your Stories</a>';
-				$output.= '</blockquote>';
-				$output.= '</div>';
-				$output.= '</div>';		
-				$output.= '</div>';	
+					$output.= '<div class="text">';
+					$output.= '<div class="pc-visible">';
+					$output.= '<h1>'.$item->post_title.'</h1>';
+					$output.= '<p>'.$item->post_content.'</p>';
+					$output.= '</div>';
+					$output.= '<div class="quotes-holder">';
+					$output.= '<blockquote class="box-quote q1 cf">';
+					$output.= '<q>“'.$item->meta['quote'].'”</q>';
+					$output.= '<cite>-- '.$item->meta['quote_source'].'</cite>';
+					$output.= '<a href="'.$item->meta['destination_url'].'" class="link-arrow">Share Your Stories</a>';
+					$output.= '</blockquote>';
+					$output.= '</div>';
+					$output.= '</div>';		
+					$output.= '</div>';		
+				}
 			}
 		}
 		
