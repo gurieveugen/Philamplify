@@ -53,9 +53,9 @@
 			</select>
 		</div>
 		<div class="item">
-			<label class="mobile-hide-dib">Industry:</label>
+			<label class="mobile-hide-dib">Issue:</label>
 			<select name="industry" class="select-industry">
-				<option value="-1">Your Industry</option>
+				<option value="-1">Your Issue</option>
 				<?php 
 				$assessments_options = $GLOBALS['assessments_options']->getAll();
 				$industry            = $assessments_options['industry'];

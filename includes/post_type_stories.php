@@ -279,7 +279,7 @@ class Stories{
 
 				if($item->meta['video'])
 				{
-					$video         = sprintf('<iframe width="352" height="250" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe>', $item->meta['video']);
+					$video         = sprintf('<div class="media-container"><iframe width="300" height="225" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe></div>', $item->meta['video']);
 					$video_title   = $item->meta['video_title'];
 					$video_content = $item->meta['video_description'];
 					$type          = 'video';
@@ -291,7 +291,7 @@ class Stories{
 					{
 						$youtube_id = explode('watch?v=', $item->meta['media_link']);
 						$youtube_id = $youtube_id[1];
-						$media      = sprintf('<iframe width="352" height="250" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe>', $youtube_id);	
+						$media      = sprintf('<div class="media-container"><iframe width="300" height="225" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe></div>', $youtube_id);	
 						$type       = 'video';
 					}
 					else
@@ -303,12 +303,11 @@ class Stories{
 					$media_content = $item->meta['media_description'];
 				}
 
-				$out.= '<article class="box-story '.$type.' '.$state.' '.$industry.'">';
-
+				$out.= '<article class="box-story '.$type.' '.$state.' '.$industry.'">';				
 				$out.= $this->wrapMediaBlock($img, $img_title, $img_content);				
 				$out.= $this->wrapMediaBlock($video, $video_title, $video_content);
 				$out.= $this->wrapMediaBlock($media, $media_title, $media_content);
-
+				
 				$out.= '<div class="text-media">';
 				$out.= (strlen($content)) ? sprintf('<p>%s</p>', $content) : '';				
 				$out.= sprintf('<em class="meta">Shared by %s %s on %s</em>', $first_name, $last_name, $date);
@@ -331,7 +330,7 @@ class Stories{
 	{
 		$res 		  = '';
 		$default_args = array(
-			'before'            => '<div class="text-media">', 
+			'before'            => '<div class="media-description">', 
 			'after'             => '</div>',
 			'container_title'   => 'h1',
 			'container_content' => 'p');

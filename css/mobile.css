@@ -275,7 +275,7 @@ body{
 }
 .box-story{
 	float: none;
-	width: auto;
+	width: 100%;
 	padding: 20px 9px 0;
 	margin: 0;
 	border-bottom: 3px solid #cfcfcf;

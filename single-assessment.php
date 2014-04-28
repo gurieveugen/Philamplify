@@ -41,7 +41,7 @@
 </div>
 <div id="main" class="center-wrap cf">
 	<div id="content" class="main-content content-1 cf">
-		<h2 class="title-blue">Executive Summary</h2>
+		<h2 class="title-blue">Overview</h2>
 		<?php      
 			the_excerpt();
 		?>

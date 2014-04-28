@@ -41,7 +41,7 @@ body{
 	position: absolute;
 	left: 20;
 	top: 80px;
-	z-index: 100;
+	z-index: 150;
 	width: 267px;
 	background: #fff url(../images/bg-box.png) repeat-y;
 	-webkit-box-shadow:0 0 10px #999;
@@ -333,15 +333,34 @@ body{
 .btn-more-holder .btn-green{
 	padding: 0 20px;
 }
-
+.filters-area .title{
+	margin: 0 18px 10px;
+}
+.filters-area .item{
+	margin: 0 17px 10px;
+}
 .filters-area{
 	margin-left: -18px;
 	margin-right: -18px;
+	padding: 0 0 15px;
 }
-
+.stories-list{
+	padding: 0 0 10px;
+	margin: 0 -20px 0 0;
+}
 .box-story{
-	width: 352px;
-	margin: 0 23px 23px 0;
+	width: 47%;
+	margin: 0 3% 23px 0;
+}
+.box-story .media-container{
+	padding: 70% 0 0;
+	position: relative;
+}
+.box-story iframe,
+.box-story object{
+	height: 100%;
+	position: absolute;
+	top: 0;
 }
 .box-story .text{
 	font-size: 14px;
@@ -483,12 +502,12 @@ body{
 }
 .section-media .video-box{
 	float: left;
-	width: 500px;
+	width: 65%;
 	margin: 0;
 }
 .section-media .quotes-holder{
 	float: right;
-	width: 247px;
+	width: 32%;
 	margin: 0;
 }
 .section-media .box-quote{

@@ -21,7 +21,7 @@ class SocialShare extends WP_Widget {
 	{
 		global $post;
 		extract($args);
-		$url              = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
+		$url              = 'http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 		$title            = strip_tags($instance['title']);	
 		
 		$twitter          = (isset($instance['twitter']) && $instance['twitter'] != '') ? 'https://twitter.com/share?via='.$instance['twitter'].'&text='.$url : '';

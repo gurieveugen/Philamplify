@@ -225,11 +225,14 @@ class SocialFeed{
 				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-assessment.png" alt=""></div>';
 				$out.= sprintf('<a href="%s" class="link-arrow mobile-hide-dibb">View the Assessment</a>', get_permalink($value->ID));
 				$out.= '<div class="h-text">';
-				$out.= sprintf('<h4>%s</h4>', $user->display_name);
+				//$out.= sprintf('<h4>%s</h4>', $user->display_name);
+				$out.= sprintf('<h4>%s</h4>',$value ->post_title);
 				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value->post_date)));
 				$out.= '</div>';
 				$out.= '</header>';
-				$out.= sprintf('<div class="content"><p>%s</p></div>', $msg);				
+				//$out.= sprintf('<div class="content"><p>%s</p></div>', $msg);
+				$out.= sprintf('<div class="content"><p>%s</p></div>', $value->post_excerpt);
+								
 				$out.= '</article>';
 			}
 		}

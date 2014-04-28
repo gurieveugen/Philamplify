@@ -21,7 +21,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link rel="stylesheet" media="(max-width: 970px)" href="<?php echo TDU; ?>/css/tablet.css" />
-	<link rel="stylesheet" media="(max-width: 500px)" href="<?php echo TDU; ?>/css/mobile.css" />
+	<link rel="stylesheet" media="(max-width: 600px)" href="<?php echo TDU; ?>/css/mobile.css" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); 
 		wp_head(); ?>

@@ -76,6 +76,7 @@ class MainSlider{
 		return array_merge($columns, array(
 			'thumb'           => __('Image'),			
 			'quote'           => __('Quote'),
+			'quote_source'    => __('Quote source'),
 			'video_url'       => __('YouTube url'),
 			'destination_url' => __('destination_url')));
 	}
@@ -93,6 +94,10 @@ class MainSlider{
 			case 'quote':				
 				$quote = isset($meat['quote']) ? $meat['quote'] : '';
 				echo $quote;
+				break;
+			case 'quote_source':				
+				$quote_source = isset($meat['quote_source']) ? $meat['quote_source'] : '';
+				echo $quote_source;
 				break;
 			case 'video_url':				
 				$video_url = isset($meat['video_url']) ? $meat['video_url'] : '';
@@ -137,7 +142,11 @@ class MainSlider{
 			</p>			
 			<p>
 				<label for="mainslider_quote"><?php _e('Quote'); ?>:</label>
-				<textarea name="meta[quote]" id="mainslider_quote" cols="30" rows="10" class="w100"><?php echo $meta['quote']; ?></textarea>				
+				<textarea name="meta[quote]" id="mainslider_quote" cols="30" rows="10" class="w100" maxlength="230"><?php echo $meta['quote']; ?></textarea>				
+			</p>			
+			<p>
+				<label for="mainslider_quote_source"><?php _e('Quote source'); ?>:</label>
+				<input type="text" name="meta[quote_source]" id="mainslider_quote_source" value="<?php echo $meta['quote_source']; ?>" class="w100">
 			</p>			
 		</div>	
 		<?php
@@ -249,7 +258,7 @@ class MainSlider{
 
 				$output.= '<div class="video-box">';
 				$output.= '<img src="'.TDU.'/images/img-7.jpg" alt="">';
-				$output.= '<a href="'.$item->meta['video_url'].'" target="_blank" class="ico-video">play</a>';
+				$output.= '<a href="'.$item->meta['video_url'].'" class="ico-video fancybox-media">play</a>';
 				$output.= '</div>';
 
 				$output.= '<div class="text">';
@@ -260,7 +269,7 @@ class MainSlider{
 				$output.= '<div class="quotes-holder">';
 				$output.= '<blockquote class="box-quote q1 cf">';
 				$output.= '<q>“'.$item->meta['quote'].'”</q>';
-				$output.= '<cite>-- Quote Source</cite>';
+				$output.= '<cite>-- '.$item->meta['quote_source'].'</cite>';
 				$output.= '<a href="'.$item->meta['destination_url'].'" class="link-arrow">Share Your Stories</a>';
 				$output.= '</blockquote>';
 				$output.= '</div>';
@@ -279,6 +288,7 @@ class MainSlider{
 	public function getSwitcher()
 	{		
 		if(!$this->items) return '';
+		if(count($this->items) == 1) return '';
 
 		$output = '<ul class="switcher">';
 		for ($i=1; $i <= count($this->items); $i++) 

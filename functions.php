@@ -201,8 +201,20 @@ function scripts_method()
 	wp_enqueue_script('masonry', TDU.'/js/masonry.min.js', array('jquery'));
 	wp_enqueue_script('masonry-filter', TDU.'/js/multipleFilterMasonry.js', array('jquery'));
 	wp_enqueue_script('jmain', TDU.'/js/jquery.main.js', array('jquery'));
-	// wp_enqueue_script('disqus', '//philamplify.disqus.com/embed.js', array('jquery'));
-	// wp_enqueue_script('disqus-count', '//disqus.com/forums/philamplify/count.js', array('jquery'));	
+	wp_enqueue_script('mousewheel', TDU.'/fancybox/lib/jquery.mousewheel-3.0.6.pack.js', array('jquery'));
+	wp_enqueue_script('fancybox', TDU.'/fancybox/source/jquery.fancybox.pack.js', array('jquery'));
+	wp_enqueue_script('fancybox-buttons', TDU.'/fancybox/source/helpers/jquery.fancybox-buttons.js', array('jquery'));
+	wp_enqueue_script('fancybox-media', TDU.'/fancybox/source/helpers/jquery.fancybox-media.js', array('jquery'));
+	wp_enqueue_script('fancybox-thumbs', TDU.'/fancybox/source/helpers/jquery.fancybox-thumbs.js', array('jquery'));
+	wp_enqueue_style('fancybox_style', TDU.'/fancybox/source/jquery.fancybox.css');
+	wp_enqueue_style('fancybox-buttons_style', TDU.'/fancybox/source/helpers/jquery.fancybox-buttons.css');
+	wp_enqueue_style('fancybox-thumbs_style', TDU.'/fancybox/source/helpers/jquery.fancybox-thumbs.css');
+	
+	
+	
+	
+	
+
 	wp_localize_script('jmain', 'default_settings', array( 
 			'ajaxurl'           => get_bloginfo('template_url').'/includes/ajax.php',
 			'redirecturl'       => get_bloginfo('url'),

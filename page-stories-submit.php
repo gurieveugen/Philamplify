@@ -5,6 +5,7 @@
 */
 ?>
 <?php get_header(); ?>
+<?php the_post(); ?>
 <header class="page-title">
 	<div class="holder">
 		<div class="center-wrap">
@@ -15,7 +16,7 @@
 <div id="main" class="center-wrap cf">
 	<div class="content-box cf">
 		<h2>Share Your Story and Upload Media</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
+		<p><?php the_content(); ?></p>
 		<form action="<?php bloginfo('template_url'); ?>/includes/share_story.php" class="form-story form-share-story-ajax" method="POST" enctype="multipart/form-data">
 			
 			<h4>
@@ -53,7 +54,7 @@
 				</div>
 				<div class="column width-238">
 					<select name="industry">
-						<option value="-1">Your Industry (Optional)</option>
+						<option value="-1">Your issue (Optional)</option>
 						<?php 
 						$assessments_options = $GLOBALS['assessments_options']->getAll();
 						$industry            = $assessments_options['industry'];
