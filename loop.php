@@ -14,10 +14,23 @@
 		
 		<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 		<div class="holder cf">
-			<a href="<?php the_permalink(); ?>" class="image">
-				<img src="<?php echo TDU; ?>/images/img-2.jpg" class="tablet-hide" alt="">
-				<img src="<?php echo TDU; ?>/images/img-2-tablet.jpg" class="tablet-visible" alt="">
-			</a>
+			<?php 
+			if(has_post_thumbnail(get_the_ID()))
+			{
+				$post_thumbnail_id = get_post_thumbnail_id(get_the_ID());
+				$news_image        = wp_get_attachment_image_src($post_thumbnail_id ,'news-image', false);
+				$news_tablet_image = wp_get_attachment_image_src($post_thumbnail_id ,'news-tablet-image', false);
+				$news_image        = $news_image[0];
+				$news_tablet_image = $news_tablet_image[0];
+				?>
+				<a href="<?php the_permalink(); ?>" class="image">
+					<img src="<?php echo $news_image; ?>" class="tablet-hide" alt="">
+					<img src="<?php echo $news_tablet_image; ?>" class="tablet-visible" alt="">
+				</a>
+				<?php
+			}
+			?>
+			
 			<div class="content">
 				<?php the_excerpt(); ?>
 			</div>

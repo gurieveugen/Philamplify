@@ -42,6 +42,8 @@ add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list'
 add_filter( 'use_default_gallery_style', '__return_false' );
 add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 604, 270, true );
+add_image_size('news-image', 92, 92, true);
+add_image_size('news-tablet-image', 173, 115, true);
 // =========================================================
 // Register sidebars and menus
 // =========================================================
