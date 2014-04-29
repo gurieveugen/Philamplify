@@ -625,3 +625,67 @@ body{
 	padding: 0 10px;
 	margin: 0 0 10px;
 }
+.lightbox{
+	margin: 0;
+	left: 0;
+	right: 0;
+	width: auto;
+	font-size: 16px;
+	line-height: 23px;
+}
+.lightbox > .holder{
+	padding: 22px 20px 20px;
+}
+.lightbox h2{
+	font-size: 17px;
+	line-height: 23px;
+}
+.form-efl{
+	padding: 0;
+}
+.form-efl .right-column{
+	width: 71%;
+	float: right;
+}
+.form-efl label{
+	font-size: 17px;
+	line-height: 21px;
+}
+.form-efl .label-left{
+	margin: 7px 0;
+}
+
+.form-efl input[type="text"],
+.form-efl input[type="email"],
+.form-efl textarea{
+	padding: 6px 4px;
+	font-size: 17px;
+}
+.form-efl .t-col{
+	float: none;
+}
+.form-efl .t-col.width-140{
+	width: 100% !important;
+}
+.form-efl input[type="text"],
+.form-efl input[type="email"],
+.form-efl .t-col{
+	margin: 0 0 20px !important;
+}
+.form-efl input[type="text"]:last-child,
+.form-efl input[type="email"]:last-child,
+.form-efl .t-col:last-child{
+	margin: 0 !important;
+}
+.form-efl label.width-70{
+	margin-left: 0;
+}
+.form-efl .width-282{
+	width: 100% !important;
+}
+.form-efl .row-radio{
+	padding: 0 0 11px 7%;
+}
+.lb1 h2{
+	font-size: 20px;
+}

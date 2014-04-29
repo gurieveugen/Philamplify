@@ -6,7 +6,16 @@
 // =========================================================
 // REQUIRE
 // =========================================================
-require_once 'includes/ajax.php';
+if(!is_admin())
+{
+	require_once 'includes/ajax.php';	
+}
+if(isset($_GET['page'])  && $_GET['page'] == 'SubscribersPage') 
+{
+	require_once 'includes/ajax.php';
+}
+
+
 require_once 'includes/page_subscribers.php';
 require_once 'includes/page_theme_options.php';
 require_once 'includes/page_assessments_options.php';

@@ -5,6 +5,7 @@
 	$meta            = get_post_meta(get_the_id(), 'meta', true);	
 	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);	
 	$size            = getFileSize($meta['pdf_url']);
+	$options 		 = $GLOBALS['gcoptions']->getAll();
 ?>
 <div class="data-section">
 	<div class="holder">
@@ -56,14 +57,7 @@
 				<div class="holder cf">
 					<?php 						     
 						the_content();
-					?>
-					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra. commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
-					<h3>Key Findings</h3>
-					<ol>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo.      Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra.       commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</li>
-					</ol> -->
+					?>					
 				</div>
 			</div>
 		</div>
@@ -99,7 +93,8 @@
 					<a href="#" class="link-comments mobile-visible-dib" data-id="<?php echo $id; ?>" data-identifier="<?php echo $identifier; ?>" data-url="<?php echo $data_url; ?>">0 Comments</a>
 				</footer>
 			</article>
-			<div id="r-comments-<?php echo $id; ?>" class="r-comments">				
+			<div id="r-comments-<?php echo $id; ?>" class="r-comments">	
+				<?php echo $options['comments_instructions']; ?>
 			</div>
 			<?php	
 		}
@@ -108,4 +103,89 @@
 	</div>
 	<?php get_sidebar(); ?>
 </div>
+
+<div class="lightbox">
+	<div class="holder">
+		<h2>Email Foundation Leadership</h2>
+		<form action="#" class="form-efl">
+			<div class="row cf">
+				<label class="label-left">From:</label>
+				<div class="right-column">
+					<input type="text" placeholder="First Name" class="width-140 t-col">
+					<input type="text" placeholder="Last Name" class="width-140 t-col">
+				</div>
+			</div>
+			<div class="row cf">
+				<label class="label-left">Email:</label>
+				<div class="right-column">
+					<input type="email" placeholder="Email Address" class="width-217">
+				</div>
+			</div>
+			<div class="row cf">
+				<label>Tell us what best describes you:</label>
+				<div class="row-radio">
+					<input type="radio" id="r1" name="n1"><label for="r1">I work at a nonprofit company</label>
+				</div>
+				<div class="row-radio">
+					<input type="radio" id="r2" name="n1"><label for="r2">I work at a foundation</label>
+				</div>
+				<div class="row-radio">
+					<input type="radio" id="r3" name="n1"><label for="r3">I work at a for profit company</label>
+				</div>
+				<div class="row-radio">
+					<input type="radio" id="r4" name="n1"><label for="r4">I work for a news outlet</label>
+				</div>
+				<div class="row-radio">
+					<input type="radio" id="r5" name="n1"><label for="r5">I am a student</label>
+				</div>
+			</div>
+			<div class="row cf">
+				<label class="label-left width-70">Subject:</label>
+				<div class="right-column width-282">
+					<input type="text">
+				</div>
+			</div>
+			<div class="row cf">
+				<label class="label-left width-70">Messsage:</label>
+				<div class="right-column width-282">
+					<textarea cols="30" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="button-holder">
+				<input type="submit" value="Submit" class="btn-green">
+			</div>
+		</form>
+	</div>
+</div>
+<div class="lightbox lb1">
+	<div class="holder">
+		<h2>Thank you</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
+		<form action="#" class="form-efl efl-1">
+			<div class="row cf">
+				<label>Tell us what best describes you:</label>
+				<div class="row-radio">
+					<input type="radio" id="r1" name="n1"><label for="r1">I work at a nonprofit company</label>
+				</div>
+				<div class="row-radio">
+					<input type="radio" id="r2" name="n1"><label for="r2">I work at a foundation</label>
+				</div>
+				<div class="row-radio">
+					<input type="radio" id="r3" name="n1"><label for="r3">I work at a for profit company</label>
+				</div>
+				<div class="row-radio">
+					<input type="radio" id="r4" name="n1"><label for="r4">I work for a news outlet</label>
+				</div>
+				<div class="row-radio">
+					<input type="radio" id="r5" name="n1"><label for="r5">I am a student</label>
+				</div>
+			</div>
+			<div class="button-holder">
+				<input type="submit" value="Submit" class="btn-green">
+			</div>
+		</form>
+	</div>
+</div>
+<div class="lightbox-mask"></div>
+
 <?php get_footer(); ?>

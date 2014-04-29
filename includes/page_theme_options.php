@@ -78,6 +78,7 @@ class GCOptionsPage{
         add_settings_field('donate_url', __('Donate URL'), array($this, 'donate_url_callback'), __FILE__, 'default_settings');
         add_settings_field('ncrp_url', __('NCRP URL'), array($this, 'ncrp_url_callback'), __FILE__, 'default_settings');
         add_settings_field('stories_count', __('Stories show at most'), array($this, 'stories_count_callback'), __FILE__, 'default_settings');
+        add_settings_field('comments_instructions', __('Comments - instructional text'), array($this, 'comments_instructions_callback'), __FILE__, 'default_settings');
         
     }
 
@@ -90,13 +91,14 @@ class GCOptionsPage{
     {
         $new_input = array();     
 
-        if(isset($input['facebook_url'])) $new_input['facebook_url']   = strip_tags($input['facebook_url']);
-        if(isset($input['twitter_url'])) $new_input['twitter_url']     = strip_tags($input['twitter_url']);
-        if(isset($input['youtube_url'])) $new_input['youtube_url']     = strip_tags($input['youtube_url']);
-        if(isset($input['rss_url'])) $new_input['rss_url']             = strip_tags($input['rss_url']);
-        if(isset($input['donate_url'])) $new_input['donate_url']       = strip_tags($input['donate_url']);
-        if(isset($input['ncrp_url'])) $new_input['ncrp_url']           = strip_tags($input['ncrp_url']);
-        if(isset($input['stories_count'])) $new_input['stories_count'] = strip_tags($input['stories_count']);
+        if(isset($input['facebook_url'])) $new_input['facebook_url']                   = strip_tags($input['facebook_url']);
+        if(isset($input['twitter_url'])) $new_input['twitter_url']                     = strip_tags($input['twitter_url']);
+        if(isset($input['youtube_url'])) $new_input['youtube_url']                     = strip_tags($input['youtube_url']);
+        if(isset($input['rss_url'])) $new_input['rss_url']                             = strip_tags($input['rss_url']);
+        if(isset($input['donate_url'])) $new_input['donate_url']                       = strip_tags($input['donate_url']);
+        if(isset($input['ncrp_url'])) $new_input['ncrp_url']                           = strip_tags($input['ncrp_url']);
+        if(isset($input['stories_count'])) $new_input['stories_count']                 = strip_tags($input['stories_count']);
+        if(isset($input['comments_instructions'])) $new_input['comments_instructions'] = $input['comments_instructions'];
 
         return $new_input;
     }
@@ -155,6 +157,14 @@ class GCOptionsPage{
     public function stories_count_callback()
     {
         printf('<input type="text" class="regular-text" id="stories_count" name="gcoptions[stories_count]" value="%s" />', isset($this->options['stories_count']) ? intval($this->options['stories_count']) : 1);
+    }
+
+    /** 
+     * Get the settings option array and print one of its values
+     */
+    public function comments_instructions_callback()
+    {
+        printf('<textarea id="comments_instructions" name="gcoptions[comments_instructions]" cols="37" rows="15">%s</textarea>', isset($this->options['comments_instructions']) ? $this->options['comments_instructions'] : '');
     }
     
 }
