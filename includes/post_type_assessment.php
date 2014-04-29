@@ -159,6 +159,14 @@ class Assessment{
 			<p>
 				<label for="mainslider_qs_source_url"><?php _e('Quote second - Source URL'); ?>:</label>
 				<input type="text" name="meta[qs_source_url]" id="mainslider_qs_source_url" value="<?php echo $meta['qs_source_url']; ?>" class="w100">
+			</p>	
+			<p>
+				<label for="mainslider_form_subject"><?php _e('Form subject'); ?>:</label>
+				<input type="text" name="meta[form_subject]" id="mainslider_form_subject" value="<?php echo $meta['form_subject']; ?>" class="w100">
+			</p>						
+			<p>
+				<label for="mainslider_form_message"><?php _e('Form message'); ?>:</label>
+				<textarea name="meta[form_message]" id="mainslider_form_message" cols="30" rows="10" class="w100"><?php echo $meta['form_message']; ?></textarea>				
 			</p>						
 		</div>	
 		<?php

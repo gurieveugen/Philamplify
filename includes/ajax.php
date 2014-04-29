@@ -147,6 +147,27 @@ class AJAX{
 		$json_string = $this->file_get_contents_curl($url);
 		echo $json_string;
 	}
+	
+	/**
+	 * Show user information Lightbox only once 
+	 */
+	public function showUserInformation()
+	{
+		$all_ips = get_option('user_information_ips');
+		if(is_array($all_ips) && in_array($_POST['ip'], $all_ips))
+		{
+			$json['show'] = false;
+		}
+		else
+		{
+			$json['show'] = true;
+			$all_ips[]    = $_POST['ip'];
+		}
+		update_option('user_information_ips', $all_ips);
+		
+		echo json_encode($json);
+	}
+
 
 	/**
 	 * Get contents 

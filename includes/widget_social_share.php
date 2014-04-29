@@ -48,11 +48,7 @@ class SocialShare extends WP_Widget {
 				echo $facebook_btn;
 				echo $google_plus_btn;
 				echo $linkedin_btn;
-				?>
-				<!-- <li><a href="<?php echo $twitter; ?>"><img alt="" src="<?php echo TDU; ?>/images/ico-twitter-1.png"></a></li>
-				<li><a href="<?php echo $facebook; ?>"><img alt="" src="<?php echo TDU; ?>/images/ico-facebook-1.png"></a></li>
-				<li><a href="<?php echo $google_plus; ?>"><img alt="" src="<?php echo TDU; ?>/images/ico-google-1.png"></a></li>
-				<li><a href="<?php echo $linkedin; ?>"><img alt="" src="<?php echo TDU; ?>/images/ico-in-1.png"></a></li> -->
+				?>				
 			</ul>
 		</div>
 		<?php
@@ -99,8 +95,7 @@ class SocialShare extends WP_Widget {
 							<div class="cell">
 								<a href="<?php echo $mail; ?>"><img alt="" src="<?php echo $e_account['picture_name']; ?>"></a>
 							</div>
-							<div class="cell">
-								<strong class="name"><a href="<?php echo $mail; ?>"><?php echo $e_account['account']; ?></a></strong>
+							<div class="cell">								
 								<p><?php echo $e_account['first_name']; ?> <?php echo $e_account['last_name']; ?></p>
 							</div>
 						</li>

@@ -131,8 +131,9 @@ var msnry            = null;
     				id: default_settings.ip
     			},		
     			success: function(data){       
+    				showUserInformation();
     				if(data.success)
-    				{
+    				{    					
     					info.html('<p class="info"><strong>' + data.percent + '%</strong> of ' + data.sum + ' people <strong class="blue">AGREE</strong></p>'); 	
     				}
     				alert(data.msg);
@@ -312,8 +313,26 @@ var msnry            = null;
 				$(this).html('<img src="' + $(this).data('selected') + '" alt="" />');
 			});
 		});
+		// =========================================================
+		// SET DEGAULT TEXT TO ASSESSMENT FORM
+		// =========================================================		
+		if(form_defaults !== undefined)
+		{			
+			$("input[name='subject']").val(form_defaults.subject);		
+			$("textarea[name='msg']").text(form_defaults.message);
+		}
+		// =========================================================
+		// CLOSE LIGHTBOX IF CLICK MASK
+		// =========================================================
+		$('.lightbox-mask').click(function(e){
+			$('.lightbox').each(function(){
+				if(!$(this).hasClass('hide')) $(this).addClass('hide');
+			});
+			$(this).addClass('hide');
+			e.preventDefault();
+		});		
 
-
+		disqus_config();
 	});
 	
 })(jQuery);
@@ -367,4 +386,29 @@ function getAllCounts()
 			}
 		}
 	});
+}
+
+function showUserInformation()
+{
+	$.ajax({
+		type: 'POST',
+		url: default_settings.ajaxurl + '?action=showUserInformation',
+		data: { ip: default_settings.ip },
+		dataType: 'json',
+		success: function (result) {
+			if(result.show) 
+			{
+				var top = $(document).scrollTop() + 100;
+				$('.lightbox-mask').removeClass('hide');
+				$('#thank-you-lightbox').removeClass('hide');				
+				$('#thank-you-lightbox').css({ top: top + 'px'});
+			}
+		}
+	});
+}
+
+function disqus_config() {
+    this.callbacks.onNewComment = [function(comment) { 
+      showUserInformation();
+    }];
 }

@@ -53,6 +53,7 @@ add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 604, 270, true );
 add_image_size('news-image', 92, 92, true);
 add_image_size('news-tablet-image', 173, 115, true);
+add_filter('wpcf7_form_class_attr', 'stylizeCSSClass');
 // =========================================================
 // Register sidebars and menus
 // =========================================================
@@ -205,6 +206,7 @@ function theme_entry_meta()
 function scripts_method() 
 {
 	$options = $GLOBALS['gcoptions']->getAll();
+	$meta    = get_post_meta(get_the_id(), 'meta', true);
 
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', TDU.'/js/jquery-1.11.0.min.js');
@@ -222,17 +224,19 @@ function scripts_method()
 	wp_enqueue_style('fancybox-thumbs_style', TDU.'/fancybox/source/helpers/jquery.fancybox-thumbs.css');
 	
 	
-	
-	
-	
 
 	wp_localize_script('jmain', 'default_settings', array( 
-			'ajaxurl'           => get_bloginfo('template_url').'/includes/ajax.php',
-			'redirecturl'       => get_bloginfo('url'),
-			'stories_count'     => $options['stories_count'], 
-			'stories_container' => '.stories-list',
-			'more_count'        => 1,
-			'ip'				=> getIp()));
+		'ajaxurl'           => get_bloginfo('template_url').'/includes/ajax.php',
+		'redirecturl'       => get_bloginfo('url'),
+		'stories_count'     => $options['stories_count'], 
+		'stories_container' => '.stories-list',
+		'more_count'        => 1,
+		'ip'				=> getIp()));
+
+	
+	wp_localize_script('jmain', 'form_defaults', array( 
+		'subject' => isset($meta['form_subject']) ? $meta['form_subject'] : '',
+		'message' => isset($meta['form_message']) ? $meta['form_message'] : ''));
 }
 
 
@@ -309,3 +313,13 @@ function getStates()
 		'WV' => 'West Virginia', 'WI' => 'Wisconsin', 'WY' => 'Wyoming');
 }
 
+/**
+ * Stylize contact form 7
+ * @param  string $class 
+ * @return string        
+ */
+function stylizeCSSClass($class) 
+{
+	$class .= ' form-efl';
+	return $class;
+}

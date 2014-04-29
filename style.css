@@ -2678,6 +2678,14 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 .form-efl .t-col:last-child{
 	margin: 0 !important;
 }
+.form-efl .firstname,
+.form-efl .lasttname{
+	float: left;
+	margin: 0 20px 0 0;
+}
+.form-efl .lasttname{
+	margin: 0;
+}
 .width-70{
 	width: 70px !important;
 }
@@ -2693,10 +2701,20 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 .form-efl .row-radio{
 	padding: 0 0 11px 11%;
 }
-.form-efl .row-radio .jq-radio{
+.form-efl .wpcf7-form-control-wrap{
+	display: block;
+}
+.form-efl span.wpcf7-list-item{
+	display: block;
+	padding: 0 0 11px 11%;
+	margin: 0;
+}
+.form-efl .row-radio .jq-radio,
+.form-efl span.wpcf7-list-item .jq-radio{
 	margin: 0 10px 0 0;
 }
-.form-efl .row-radio label{
+.form-efl .row-radio label,
+.form-efl span.wpcf7-list-item .wpcf7-list-item-label{
 	color: #414141;
 	font-size: 14px;
 	line-height: 20px;
@@ -2705,7 +2723,6 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	vertical-align: middle;
 	text-transform: none;
 	margin: 0;
-	cursor: pointer;
 }
 .form-efl label.width-70{
 	margin-left: -10px;
