@@ -331,8 +331,20 @@ var msnry            = null;
 			$(this).addClass('hide');
 			e.preventDefault();
 		});		
-
+		// =========================================================
+		// SHOW EMAIL LIGHTBOX
+		// =========================================================
+		$('.show-email-lightbox').click(function(e){
+			var email = $(this).attr('href');
+			var top   = $(document).scrollTop() + 100;
+			$("#email-lightbox input[name='email']").val(email);
+			$('#email-lightbox').removeClass('hide');
+			$('.lightbox-mask').removeClass('hide');
+			$('#email-lightbox').css({ top: top + 'px'});
+			e.preventDefault();
+		});
 		disqus_config();
+
 	});
 	
 })(jQuery);

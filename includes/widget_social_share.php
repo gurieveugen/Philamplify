@@ -89,14 +89,14 @@ class SocialShare extends WP_Widget {
 					<?php 
 					foreach ($email_accounts as $e_account) 
 					{
-						$mail = sprintf('mailto:%s', $e_account['account']);
+						$mail = $e_account['account'];
 						?>
 						<li>
 							<div class="cell">
-								<a href="<?php echo $mail; ?>"><img alt="" src="<?php echo $e_account['picture_name']; ?>"></a>
+								<a href="<?php echo $mail; ?>" class="show-email-lightbox"><img alt="" src="<?php echo $e_account['picture_name']; ?>"></a>
 							</div>
 							<div class="cell">								
-								<p><?php echo $e_account['first_name']; ?> <?php echo $e_account['last_name']; ?></p>
+								<p><a href="<?php echo $mail; ?>" class="show-email-lightbox"><?php echo $e_account['first_name']; ?> <?php echo $e_account['last_name']; ?></a></p>
 							</div>
 						</li>
 						<?php
