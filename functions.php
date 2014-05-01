@@ -86,8 +86,10 @@ register_nav_menus( array(
 if(is_admin())
 {
 	wp_enqueue_style('font-awesome', TDU.'/css/font-awesome.min.css');
-	wp_enqueue_style('admin-styles', TDU.'/css/admin-styles.css');	
-	//wp_enqueue_script('jmain-admin', TDU.'/js/jquery.main.admin.js', array('jquery'));
+	wp_enqueue_style('admin-styles', TDU.'/css/admin-styles.css');
+    //donot know why this was commented out
+    //Uncommented on APR 30, 2014 BKG-YS
+	wp_enqueue_script('jmain-admin', TDU.'/js/jquery.main.admin.js', array('jquery'));
 	wp_localize_script('jmain-admin', 'default_settings', array( 
 			'ajaxurl'     => get_bloginfo('template_url').'/includes/ajax.php',
 			'redirecturl' => get_bloginfo('url')));
@@ -211,6 +213,7 @@ function scripts_method()
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', TDU.'/js/jquery-1.11.0.min.js');
 	wp_enqueue_script('jquery');
+    wp_enqueue_script('jquery-migrate', 'http://code.jquery.com/jquery-migrate-1.2.1.js', array('jquery'));
 	wp_enqueue_script('masonry', TDU.'/js/masonry.min.js', array('jquery'));
 	wp_enqueue_script('masonry-filter', TDU.'/js/multipleFilterMasonry.js', array('jquery'));
 	wp_enqueue_script('jmain', TDU.'/js/jquery.main.js', array('jquery'));

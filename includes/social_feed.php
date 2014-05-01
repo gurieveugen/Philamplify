@@ -359,7 +359,7 @@ class SocialFeed{
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
 				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-google-2.png" alt=""></div>';
-				$out.= sprintf('<a href="%s" class="link-arrow-red mobile-hide-dib">View on Facebook</a>', $value['url']);
+				$out.= sprintf('<a href="%s" class="link-arrow-red mobile-hide-dib">View on Google +</a>', $value['url']);
 				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $value['name']);
 				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value['created_time'])));

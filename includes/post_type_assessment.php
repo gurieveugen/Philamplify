@@ -129,6 +129,10 @@ class Assessment{
 		?>	
 		<div class="gcAssessment">
 			<p>
+				<label for="mainslider_tweet_text"><?php _e('Tweet text'); ?>:</label>
+				<input type="text" name="meta[tweet_text]" id="mainslider_tweet_text" value="<?php echo $meta['tweet_text']; ?>" class="w100">
+			</p>	
+			<p>
 				<label for="mainslider_video_url"><?php _e('YouTube URL'); ?>:</label>
 				<input type="text" name="meta[video_url]" id="mainslider_video_url" value="<?php echo $meta['video_url']; ?>" class="w100">
 			</p>			
@@ -167,8 +171,8 @@ class Assessment{
 			<p>
 				<label for="mainslider_form_message"><?php _e('Form message'); ?>:</label>
 				<textarea name="meta[form_message]" id="mainslider_form_message" cols="30" rows="10" class="w100"><?php echo $meta['form_message']; ?></textarea>				
-			</p>						
-		</div>	
+			</p>
+        </div>
 		<?php
 	}
 
@@ -180,6 +184,7 @@ class Assessment{
 		$recommendations  = get_post_meta($post->ID, 'recommendations', true);		
 		$twitter_accounts = get_post_meta($post->ID, 'twitter_accounts', true);	
 		$email_accounts   = get_post_meta($post->ID, 'email_accounts', true);	
+		$email_picture    = get_post_meta($post->ID, 'email_picture', true);	
 		?>
 		<table class="gctable recommendation-table" data-count="<?php echo count($recommendations); ?>">
 			<thead>
@@ -199,18 +204,21 @@ class Assessment{
 					if($recommendations)
 					{
 						foreach ($recommendations as $key => $recommendation) 
-						{						
+						{	
+                            $order         = sprintf('recommendations[%s][%s]', $key, 'order');
 							$title_name    = sprintf('recommendations[%s][%s]', $key, 'title');
 							$content_name  = sprintf('recommendations[%s][%s]', $key, 'content');
 							$featured_name = sprintf('recommendations[%s][%s]', $key, 'featured');
+                            $agree         = sprintf('recommendations[%s][%s]', $key, 'agree');
+                            $disagree      = sprintf('recommendations[%s][%s]', $key, 'disagree');
 							$last_key      = $key;
 							echo '<tr>';
-							printf('<td>%s</td>', $key);
+							printf('<td><input type="text" name="%s" value="%s" class="w100" style="width:20px;"></td>', $order, $recommendation['order']);
 							printf('<td><input type="text" name="%s" value="%s" class="w100"></td>', $title_name, $recommendation['title']);
 							printf('<td><textarea name="%s" class="w100">%s</textarea></td>', $content_name, $recommendation['content']);
 							printf('<td><input type="hidden" name="%s" value="0"><input type="checkbox" name="%s" value="1" %s></td>', $featured_name, $featured_name, $this->checked($recommendation['featured']));
-							printf('<td>%s</td>', (int)$recommendation['agree']);
-							printf('<td>%s</td>', (int)$recommendation['disagree']);
+							printf('<td><input type="hidden" name="%s" value="%s">%s</td>', $agree, (int)$recommendation['agree'], (int)$recommendation['agree']);
+							printf('<td><input type="hidden" name="%s" value="%s">%s</td>', $disagree, (int)$recommendation['disagree'], (int)$recommendation['disagree']);
 							printf('<td>%s</td>', (int)$recommendation['agree'] + (int)$recommendation['disagree']);
 							printf('<td><button type="button" class="button button-red remove-recommendation">%s</button></td>', __('Remove item'));
 							echo '</tr>';
@@ -228,7 +236,7 @@ class Assessment{
 					<th>Account</th>
 					<th>First name</th>
 					<th>Last name</th>
-					<th>Picture URL</th>
+					<th>Picture URL</th>                    
 				</tr>
 			</thead>
 			<tbody>
@@ -241,7 +249,7 @@ class Assessment{
 							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][account]" value="%s"></td>', $key, $t_account['account']);
 							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][first_name]" value="%s"></td>', $key, $t_account['first_name']);
 							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][last_name]" value="%s"></td>', $key, $t_account['last_name']);
-							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][picture_name]" value="%s"></td>', $key, $t_account['picture_name']);
+							printf('<td><input class="w100" type="text" name="twitter_accounts[%s][picture_name]" value="%s"></td>', $key, $t_account['picture_name']);                            
 							echo '</tr>';
 						}
 					}
@@ -256,8 +264,7 @@ class Assessment{
 				<tr>
 					<th>Account</th>
 					<th>First name</th>
-					<th>Last name</th>
-					<th>Picture URL</th>
+					<th>Last name</th>					                    
 				</tr>
 			</thead>
 			<tbody>
@@ -269,14 +276,17 @@ class Assessment{
 							echo '<tr>';
 							printf('<td><input class="w100" type="text" name="email_accounts[%s][account]" value="%s"></td>', $key, $e_account['account']);
 							printf('<td><input class="w100" type="text" name="email_accounts[%s][first_name]" value="%s"></td>', $key, $e_account['first_name']);
-							printf('<td><input class="w100" type="text" name="email_accounts[%s][last_name]" value="%s"></td>', $key, $e_account['last_name']);
-							printf('<td><input class="w100" type="text" name="email_accounts[%s][picture_name]" value="%s"></td>', $key, $e_account['picture_name']);
+							printf('<td><input class="w100" type="text" name="email_accounts[%s][last_name]" value="%s"></td>', $key, $e_account['last_name']);							
 							echo '</tr>';
 						}
 					}
 				?>				
 			</tbody>
 		</table>	
+		<p>
+			<label for="email_picture"><?php _e('Picture section emails'); ?></label>
+			<input type="text" class="w100" name="email_picture" value="<?php echo $email_picture; ?>">
+		</p>
 		<button type="button" class="button add-email-account"><?php _e('Add email account'); ?></button>
 		<?php
 	}
@@ -330,7 +340,11 @@ class Assessment{
 
 		// =========================================================
 		// Save
-		// =========================================================			
+		// =========================================================	
+		if(isset($_POST['email_picture']))
+		{
+			update_post_meta($post_id, 'email_picture', $_POST['email_picture']);
+		}				
 		if(isset($_POST['recommendations']))
 		{
 			if(is_array($_POST['recommendations']))
@@ -396,22 +410,13 @@ class Assessment{
 	 */
 	public function sort($arr)
 	{
-		$new_arr = array();
-		$res_arr = array();
-
-		if($arr)
-		{
-			foreach ($arr as $key => $el) 
-			{
-				$new_arr[$key] = $el['featured'];
-			}
-			arsort($new_arr, SORT_NUMERIC);
-			foreach ($new_arr as $key => $value) 
-			{
-				$res_arr[$key] = $arr[$key];
-			}
-		}
-		return $res_arr;
+        $new_arr = array();
+        foreach ($arr as $key => $row)
+        {
+            $new_arr[$key] = $row['order'];
+        }
+        array_multisort($new_arr, SORT_ASC, $arr);		
+		return $arr;
 	}
 
 	/**

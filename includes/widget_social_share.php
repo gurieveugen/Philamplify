@@ -23,8 +23,9 @@ class SocialShare extends WP_Widget {
 		extract($args);
 		$url              = 'http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 		$title            = strip_tags($instance['title']);	
-		
-		$twitter          = (isset($instance['twitter']) && $instance['twitter'] != '') ? 'https://twitter.com/share?via='.$instance['twitter'].'&text='.$url : '';
+		$meta             = get_post_meta($post->ID, 'meta', true);		
+		$share_text       = (isset($meta['tweet_text']) && $meta['tweet_text'] != '') ? $meta['tweet_text'] : $instance['share_text'];
+		$twitter          = (isset($instance['twitter']) && $instance['twitter'] != '') ? 'https://twitter.com/share?via='.$instance['twitter'].'&text='.$share_text : '';
 		$facebook         = ($instance['facebook'] == true) ? 'https://www.facebook.com/sharer/sharer.php?u='.$url : '';		
 		$google_plus      = ($instance['google_plus'] == true) ? 'https://plus.google.com/share?url='.$url : '';
 		$linkedin         = ($instance['linkedin'] == true) ? 'http://www.linkedin.com/shareArticle?mini=true&url='.$url : '';	
@@ -34,6 +35,7 @@ class SocialShare extends WP_Widget {
 		$linkedin_btn     = ($linkedin != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-in-1.png"></a></li>', $linkedin) : '';		
 		$twitter_accounts = get_post_meta($post->ID, 'twitter_accounts', true);	
 		$email_accounts   = get_post_meta($post->ID, 'email_accounts', true);	
+		$email_picture    = get_post_meta($post->ID, 'email_picture', true);	
 
 		echo $before_widget;		
 		// =========================================================
@@ -86,22 +88,23 @@ class SocialShare extends WP_Widget {
 			<div class="w-block">
 				<h3>Email Foundation Leadership</h3>
 				<ul class="social-feed">
-					<?php 
-					foreach ($email_accounts as $e_account) 
-					{
-						$mail = $e_account['account'];
-						?>
-						<li>
+					<li>
 							<div class="cell">
-								<a href="<?php echo $mail; ?>" class="show-email-lightbox"><img alt="" src="<?php echo $e_account['picture_name']; ?>"></a>
+								<a class="show-email-lightbox" href="#"><img alt="" src="<?php echo $email_picture; ?>"></a>
 							</div>
-							<div class="cell">								
-								<p><a href="<?php echo $mail; ?>" class="show-email-lightbox"><?php echo $e_account['first_name']; ?> <?php echo $e_account['last_name']; ?></a></p>
+							<div class="cell">	
+								<?php 
+								foreach ($email_accounts as $e_account) 
+								{
+									$mail = $e_account['account'];
+									?>
+									<p><a class="show-email-lightbox" href="#"><?php echo $e_account['first_name']; ?> <?php echo $e_account['last_name']; ?></a></p>
+									<br>
+									<?php
+								}
+								?>
 							</div>
-						</li>
-						<?php
-					}
-					?>
+					</li>
 				</ul>
 			</div>
 			<?php
@@ -181,6 +184,7 @@ class SocialShare extends WP_Widget {
 	{		
 		$title            = $instance['title'];     		
 		$twitter          = $instance['twitter'];
+        $share_text       = $instance['share_text'];
 		$facebook         = $instance['facebook'];
 		$google_plus      = $instance['google_plus'];
 		$linkedin         = $instance['linkedin'];		
@@ -195,7 +199,12 @@ class SocialShare extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('twitter'); ?>"><?php _e('Twitter account'); ?>: 
 				<input class="widefat" id="<?php echo $this->get_field_id('twitter'); ?>" name="<?php echo $this->get_field_name('twitter'); ?>" type="text" value="<?php echo esc_attr($twitter); ?>" />
 			</label>
-		</p>				
+		</p>
+        <p>
+			<label for="<?php echo $this->get_field_id('share_text'); ?>"><?php _e('Share Text'); ?>: 
+				<textarea class="widefat" id="<?php echo $this->get_field_id('share_text'); ?>" name="<?php echo $this->get_field_name('share_text'); ?>"><?php echo esc_attr($share_text); ?></textarea>
+			</label>
+		</p>			
 		<p>
 			<label for="<?php echo $this->get_field_id('facebook'); ?>"><?php _e('Facebook show'); ?>: 
 				<input class="widefat" id="<?php echo $this->get_field_id('facebook'); ?>" name="<?php echo $this->get_field_name('facebook'); ?>" type="checkbox" <?php echo $this->checked($facebook); ?> />
@@ -225,6 +234,7 @@ class SocialShare extends WP_Widget {
 		$instance                     = $old_instance;		
 		$instance['title']            = strip_tags($new_instance['title']);				
 		$instance['twitter']          = strip_tags($new_instance['twitter']);
+        $instance['share_text']          = strip_tags($new_instance['share_text']);
 		$instance['facebook']         = ($new_instance['facebook'] == 'on') ? true : false;
 		$instance['google_plus']      = ($new_instance['google_plus'] == 'on') ? true : false;
 		$instance['linkedin']         = ($new_instance['linkedin'] == 'on') ? true : false;

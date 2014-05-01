@@ -318,8 +318,8 @@ var msnry            = null;
 		// =========================================================		
 		if(form_defaults !== undefined)
 		{			
-			$("input[name='subject']").val(form_defaults.subject);		
-			$("textarea[name='msg']").text(form_defaults.message);
+			//$("input[name='subject']").val(form_defaults.subject);
+			//$("textarea[name='msg']").text(form_defaults.message);
 		}
 		// =========================================================
 		// CLOSE LIGHTBOX IF CLICK MASK
@@ -337,7 +337,8 @@ var msnry            = null;
 		$('.show-email-lightbox').click(function(e){
 			var email = $(this).attr('href');
 			var top   = $(document).scrollTop() + 100;
-			$("#email-lightbox input[name='email']").val(email);
+      //commented on April 30, 2014 BG-YS-DEV
+			//$("#email-lightbox input[name='email']").val(email);
 			$('#email-lightbox').removeClass('hide');
 			$('.lightbox-mask').removeClass('hide');
 			$('#email-lightbox').css({ top: top + 'px'});
@@ -420,7 +421,9 @@ function showUserInformation()
 }
 
 function disqus_config() {
-    this.callbacks.onNewComment = [function(comment) { 
+  if(typeof this.callbacks != 'undefined'){
+    this.callbacks.onNewComment = [function(comment) {
       showUserInformation();
     }];
+  }
 }

@@ -31,7 +31,7 @@
 			var count = $('.recommendation-table').data('count') + 1;
 			$('.recommendation-table tbody').append(
 				'<tr>' +
-				'<td>' + count + '</td>' +
+				'<td><input type="text" style="width:20px;" class="w100" value="" name="recommendations[' + count + '][order]"></td>' +
 				'<td><input type="text" name="recommendations[' + count + '][title]" value="" class="w100">' + '</td>' +
 				'<td><textarea name="recommendations[' + count + '][content]" class="w100"></textarea>' + '</td>' +
 				'<td>0</td>' +
@@ -52,7 +52,8 @@
 				'<td><input class="w100" type="text" name="twitter_accounts[' + count + '][account]" value=""></td>' +
 				'<td><input class="w100" type="text" name="twitter_accounts[' + count + '][first_name]" value=""></td>' +
 				'<td><input class="w100" type="text" name="twitter_accounts[' + count + '][last_name]" value=""></td>' +
-				'<td><input class="w100" type="text" name="twitter_accounts[' + count + '][picture_name]" value=""></td>' +							
+				'<td><input class="w100" type="text" name="twitter_accounts[' + count + '][picture_name]" value=""></td>' +	
+                '<td><input class="w100" type="text" name="twitter_accounts[' + count + '][share_text]" value=""></td>' +						
 				'</tr>');
 
 			$('.twitter-accounts-table').data('count', count);
@@ -67,8 +68,7 @@
 				'<tr>' +	
 				'<td><input class="w100" type="text" name="email_accounts[' + count + '][account]" value=""></td>' +
 				'<td><input class="w100" type="text" name="email_accounts[' + count + '][first_name]" value=""></td>' +
-				'<td><input class="w100" type="text" name="email_accounts[' + count + '][last_name]" value=""></td>' +
-				'<td><input class="w100" type="text" name="email_accounts[' + count + '][picture_name]" value=""></td>' +							
+				'<td><input class="w100" type="text" name="email_accounts[' + count + '][last_name]" value=""></td>' +						
 				'</tr>');
 
 			$('.email-accounts-table').data('count', count);

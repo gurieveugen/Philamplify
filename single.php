@@ -5,7 +5,11 @@
  * @subpackage Base_Theme
  */
 ?>
-<?php get_header(); ?>
+<?php
+    get_header();
+
+    $options 		 = $GLOBALS['gcoptions']->getAll();
+?>
 <div class="page-title">
 	<div class="holder">
 		<div class="center-wrap">
@@ -35,7 +39,7 @@
 			Posted on <?php the_date(); echo $cats_links; ?><!-- <a href="#">Category Name</a> -->
 		</p>
 		<?php the_content(); ?>
-		<div class="comments-section">
+        <div class="comments-section">
 			<?php comments_template(); ?>
 			<!-- <img src="<?php echo TDU; ?>/images/temp-comments.png" alt=""> -->
 		</div>

@@ -664,8 +664,14 @@ body{
 .form-efl .t-col{
 	float: none;
 }
-.form-efl .t-col.width-140{
+.form-efl .t-col.width-140,
+.form-efl .width-217{
 	width: 100% !important;
+}
+.form-efl .firstname,
+.form-efl .lasttname{
+	float: none;
+	margin: 0 0 20px;
 }
 .form-efl input[type="text"],
 .form-efl input[type="email"],
@@ -683,7 +689,8 @@ body{
 .form-efl .width-282{
 	width: 100% !important;
 }
-.form-efl .row-radio{
+.form-efl .row-radio,
+.form-efl span.wpcf7-list-item{
 	padding: 0 0 11px 7%;
 }
 .lb1 h2{

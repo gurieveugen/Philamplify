@@ -3,14 +3,17 @@
 	the_post();
 
 	$meta            = get_post_meta(get_the_id(), 'meta', true);	
-	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);	
+	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);
 	$size            = getFileSize($meta['pdf_url']);
 	$options 		 = $GLOBALS['gcoptions']->getAll();
 ?>
 <div class="data-section">
 	<div class="holder">
 		<div class="center-wrap">
-			<h1><?php the_title(); ?></h1>
+			<h1>
+            <?php the_title(); ?> 
+            <?php if (get_field('subtitle')) the_field('subtitle'); ?>
+            </h1>
 			<div class="block cf">
 				<?php
 				if(has_post_thumbnail())
@@ -35,7 +38,7 @@
 				</div>
 			</div>
 			<div class="btn-download-row">
-				<a href="<?php echo $meta['pdf_url']; ?>" class="btn-green-big">Download the Full Assessment</a>
+				<a href="<?php echo $meta['pdf_url']; ?>" class="btn-green-big" target="_blank">Download the Full Assessment</a>
 				<span class="file-info"><?php echo $size; ?>kb PDF Document</span>
 			</div>
 		</div>
@@ -57,7 +60,10 @@
 				<div class="holder cf">
 					<?php 						     
 						the_content();
-					?>					
+					?>
+                    <div>
+                        <?php echo $options['comments_instructions']; ?>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -103,5 +109,41 @@
 	</div>
 	<?php get_sidebar(); ?>
 </div>
-<?php get_template_part('lightbox', 'assessment'); ?>
+<?php
+//added lighbox code to the same page
+?>
+    <div class="lightbox hide" id="email-lightbox">
+        <div class="holder">
+            <h2>Email Foundation Leadership</h2>
+            <?php
+            $contact = get_field('contact_form');
+            $contact_shortcode = '[contact-form-7 id="'.$contact->ID.'" title="'.$contact->post_title.'"]';
+            if(!empty($contact->ID)):?>
+                <?php echo do_shortcode($contact_shortcode); ?>
+            <?php else:?>
+                <?php echo do_shortcode('[contact-form-7 class:form-efl id="470" title="Untitled"]'); ?>
+            <?php endif;?>
+        </div>
+    </div>
+    <div class="lightbox lb1 hide" id="thank-you-lightbox">
+        <div class="holder">
+            <h2>Thank you</h2>
+            <?php echo do_shortcode('[contact-form-7 id="471" title="Thank you"]'); ?>
+        </div>
+    </div>
+    <div class="lightbox-mask hide"></div>
+<?php //get_template_part('lightbox', 'assessment'); ?>
+
+
+    <script type="text/javascript">
+        jQuery(function($){
+            var msgSelect = $('#email-lightbox textarea[name="msg"]');
+            $('body').on('keyup', '#email-lightbox input[name="firstname"]', function(){
+                msgSelect.val(msgSelect.val().replace('{{fname}}', $(this).val()));
+            });
+            $('body').on('keyup', '#email-lightbox input[name="lastname"]', function(){
+                msgSelect.val(msgSelect.val().replace('{{lname}}', $(this).val()));
+            });
+        });
+    </script>
 <?php get_footer(); ?>

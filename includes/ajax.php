@@ -116,14 +116,16 @@ class AJAX{
 		if(is_array($recommendations[$id]['ips']) && in_array($ip, $recommendations[$id]['ips']))
 		{
 			$res = array(
-				'msg'     => sprintf('You have already agree/disagree this recommendation!', $key),
+				//'msg'     => sprintf('You have already agree/disagree this recommendation!', $key),
+                'msg'     => 'You already weighed in!',
 				'success' => false);
 		}
 		else
 		{
 			$recommendations[$id]['ips'][] = $ip;
 			$res = array(
-				'msg'      => sprintf('Thank\'s for %s!', $key),
+				//'msg'      => sprintf('Thank\'s for %s!', $key),
+                'msg'      => 'Thanks for weighing in!',
 				'agree'    => $agree,
 				'disagree' => $disagree,
 				'sum'      => $sum,

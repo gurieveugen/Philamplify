@@ -32,6 +32,8 @@ class MetaBoxFeaturedPost{
 	public function metaBoxFeaturedPostRender($post)
 	{
 		$meta = $this->getMeta($post->ID);
+		$url  = get_post_meta($post->ID, 'destination_url', true);
+
 		wp_nonce_field( 'featured_post_box', 'featured_post_box_nonce' );
 		?>	
 		<div class="gcslider">
@@ -39,7 +41,10 @@ class MetaBoxFeaturedPost{
 				<label for="featured_post_featured_post"><?php _e('Featured post ( on the front page )'); ?>:</label>
 				<input type="hidden" name="featured_post"  value="off">
 				<input type="checkbox" name="featured_post" id="featured_post_featured_post" <?php echo $this->checked($meta); ?> >				
-				
+			</p>			
+			<p>
+				<label for="destination_url"><?php _e('Destination url'); ?>:</label>
+				<input type="text" name="destination_url" value="<?php echo $url; ?>">	
 			</p>			
 		</div>	
 		<?php
@@ -99,6 +104,10 @@ class MetaBoxFeaturedPost{
 			$featured_post = ($_POST['featured_post'] == 'on') ? true : false;
 			update_post_meta($post_id, 'featured_post', $featured_post);
 		}
+		if(isset($_POST['destination_url']))
+		{			
+			update_post_meta($post_id, 'destination_url', $_POST['destination_url']);
+		}
 
 		return $post_id;
 	}
@@ -134,6 +143,7 @@ class MetaBoxFeaturedPost{
 				$img         = wp_get_attachment_image_src($id ,'featured-image', false);					
 				$post->image = $img[0];
 			}
+			$post->destination_url = get_post_meta($post->ID, 'destination_url', true);
 			$post->permalink = get_permalink($post->ID);
 			$items[] = $post;
 		}
@@ -156,14 +166,15 @@ class MetaBoxFeaturedPost{
 			{ 				
 				$index = $i + $j;
 				if(isset($items[$index]))
-				{					
+				{	
+					$url = ($items[$index]->destination_url != '') ? $items[$index]->destination_url : $items[$index]->permalink;
 					$out.= '<div class="column">';
 					$out.= '<div class="image">';
-					$out.= '<a href="'.$items[$index]->permalink.'"><img src="'.$items[$index]->image.'" alt=""></a>';
+					$out.= '<a href="'.$url.'"><img src="'.$items[$index]->image.'" alt=""></a>';
 					$out.= '</div>';
 
 					$out.= '<p>'.$this->getAnons($items[$index]->post_content).'</p>';
-					$out.= '<a href="'.$items[$index]->permalink.'" class="link-arrow-big pc-visible">Learn More</a>';
+					$out.= '<a href="'.$url.'" class="link-arrow-big pc-visible">Learn More</a>';
 					$out.= '</div>';	
 				}
 			}

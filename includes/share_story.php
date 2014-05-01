@@ -88,7 +88,7 @@ class ShareStory{
 				// =========================================================
 				$p = array(
 					'post_content' => $this->post['story'],
-					'post_status'  => 'publish',
+					'post_status'  => 'Pending',
 					'post_type'    => 'story',
 					'post_author'  => $user_id);
 

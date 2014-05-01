@@ -356,7 +356,7 @@ class Stories{
 	 */
 	private function formatDate($time)
 	{
-		return date('j/n/y', $time);
+		return date('m/d/Y', $time);
 	}
 }
 // =========================================================
