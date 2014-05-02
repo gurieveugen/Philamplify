@@ -82,7 +82,11 @@ var msnry            = null;
     			url: default_settings.ajaxurl + '?action=subscribe',
     			dataType: 'json',
     			data: $(this).serialize(),    			
-    			success: function(data){    				
+    			success: function(data){  
+    				if(data.add_subscriber)  				
+    				{
+    					window.location.href = default_settings.redirecturl + '/subscribe-ncrp-newsletter/';
+    				}
     				alert(data.msg);
     			}
     		});

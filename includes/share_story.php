@@ -23,7 +23,7 @@ class ShareStory{
 	const META_KEY      = 'meta';
 	const GOOGLE_CLIENT = '639351240322-13da8o4p2hpq935e1t20806lbcj7qd1d.apps.googleusercontent.com';
 	const GOOGLE_SECRET = '-dPE4AxfuZPWwg5f3xZwLLfB';
-	const REDIRECT_PAGE = '/thank-you-for-submit-sotry';
+	const REDIRECT_PAGE = '/thank-you-for-submitting-your-story';
 
 	//                __  _                 
 	//   ____  ____  / /_(_)___  ____  _____

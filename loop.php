@@ -5,7 +5,17 @@
  */
 ?>
 
-<?php if ( have_posts() ) : ?>
+<?php
+if(is_page('newsroom')){
+    echo 'test';
+}
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$args= array(
+    'category_name' => 'news',
+    'paged' => $paged
+);
+query_posts($args);
+if ( have_posts() ) : ?>
 
 <div class="posts-holder">
 <?php while ( have_posts() ) : the_post(); ?>

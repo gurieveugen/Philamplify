@@ -32,7 +32,7 @@ class AJAX{
 	 */
 	public function subscribe()
 	{
-		check_ajax_referer(self::SUBSCRIBE_NONCE, 'security_subscribe');
+		//check_ajax_referer(self::SUBSCRIBE_NONCE, 'security_subscribe');
 
 		$email       = trim(strtolower($_POST['email']));
 		$subscribers = get_option(self::SUBSCRIBE_OPTION);
@@ -137,6 +137,40 @@ class AJAX{
 		
 
 		echo json_encode($res);
+	}
+
+	/**
+	 * DEBUG FUNCITON
+	 * JUST FOR DEBUG
+	 */
+	public function agreeDisagreeClear()
+	{
+		if($_GET['p'] = 'debug')
+		{
+			$all = array(
+				'posts_per_page' => -1,
+				'offset'         => 0,			
+				'orderby'        => 'post_date',
+				'order'          => 'DESC',
+				'post_type'      => 'assessment',
+				'post_status'    => 'publish',
+				'fields'         => 'ids');
+			$posts = get_posts($all);
+			foreach ($posts as $id) 
+			{
+				$recommendations = get_post_meta($id, 'recommendations', true);
+				if(is_array($recommendations))
+				{
+					foreach ($recommendations as &$rec) 
+					{
+						$rec['agree']    = 0;
+						$rec['disagree'] = 0;
+					}
+					update_post_meta($id, 'recommendations', $recommendations);
+				}
+			}
+			echo "DONE";
+		}
 	}
 
 	/**
