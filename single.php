@@ -39,6 +39,7 @@
 			Posted on <?php the_date(); echo $cats_links; ?><!-- <a href="#">Category Name</a> -->
 		</p>
 		<?php the_content(); ?>
+		<?php echo $options['comments_instructions']; ?>
         <div class="comments-section">
 			<?php comments_template(); ?>
 			<!-- <img src="<?php echo TDU; ?>/images/temp-comments.png" alt=""> -->

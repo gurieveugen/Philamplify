@@ -161,7 +161,7 @@ class MetaBoxFeaturedPost{
 		
 		for ($i=0; $i < count($items); $i+=3) 
 		{ 
-			$out.= '<div class="columns cf">';
+			$out.= '<div class="columns cf relative">';
 			for ($j=0; $j < 3; $j++) 
 			{ 				
 				$index = $i + $j;
@@ -174,7 +174,7 @@ class MetaBoxFeaturedPost{
 					$out.= '</div>';
 
 					$out.= '<p>'.$this->getAnons($items[$index]->post_content).'</p>';
-					$out.= '<a href="'.$url.'" class="link-arrow-big pc-visible">Learn More</a>';
+					$out.= '<a href="'.$url.'" class="link-arrow-big pc-visible learn-more-bottom">Learn More</a>';
 					$out.= '</div>';	
 				}
 			}

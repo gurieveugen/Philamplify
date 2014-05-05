@@ -9,12 +9,20 @@
 if(is_page('newsroom')){
     echo 'test';
 }
+
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$args= array(
+$args  = array(
     'category_name' => 'news',
     'paged' => $paged
 );
-query_posts($args);
+
+if(is_search())
+{
+	global $wp_query;
+	$args  = array_merge( $wp_query->query_vars, array( 'post_type' => array('assessment', 'post', 'page') ) );	
+}
+
+query_posts( $args );
 if ( have_posts() ) : ?>
 
 <div class="posts-holder">
