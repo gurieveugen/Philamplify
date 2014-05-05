@@ -260,9 +260,8 @@ var msnry            = null;
 		// SELECT STATE CHANGE
 		// =========================================================
 		$('select.select-state').change(function(){
-			var state = $('.state-' + $(this).val());
-
-			if(state.selector != '.ALL')
+			var state = $('.state-' + $(this).val());			
+			if(state.selector != '.state-ALL')
 			{
 				$(default_settings.stories_container).find('.box-story').each(function(){
 					if(!$(this).hasClass('hide')) $(this).addClass('hide');

@@ -100,8 +100,8 @@ class AJAX{
 	public function agreeDisagree()
 	{
 		$post_id                    = $_POST['post_id'];
-		$id                         = $_POST['recommendation_id'];
-		$ip                         = $_POST['ip'];
+		$id                         = $_POST['recommendation_id'];		
+		$cookie_name 				= sprintf('agree_disagree_%s_%s', $post_id, $id);
 		$type                       = $_POST['type'];
 		$types                      = array('agree', 'disagree');
 		$recommendations            = get_post_meta($post_id, 'recommendations', true);
@@ -113,18 +113,16 @@ class AJAX{
 		$sum                        = $agree + $disagree;
 		$percent                    = ($agree > 0 && $sum > 0) ? intval($agree/($sum/100)) : 0;
 
-		if(is_array($recommendations[$id]['ips']) && in_array($ip, $recommendations[$id]['ips']))
-		{
-			$res = array(
-				//'msg'     => sprintf('You have already agree/disagree this recommendation!', $key),
+		if(isset($_COOKIE[$cookie_name]) && $_COOKIE[$cookie_name] == true)
+		{			
+			$res = array(				
                 'msg'     => 'You already weighed in!',
 				'success' => false);
 		}
 		else
 		{
-			$recommendations[$id]['ips'][] = $ip;
-			$res = array(
-				//'msg'      => sprintf('Thank\'s for %s!', $key),
+			setcookie($cookie_name, true, time()+31536000);			
+			$res = array(				
                 'msg'      => 'Thanks for weighing in!',
 				'agree'    => $agree,
 				'disagree' => $disagree,

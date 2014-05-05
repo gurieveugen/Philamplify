@@ -95,8 +95,8 @@ class ShareStory{
 				$post_id = wp_insert_post($p);
 				if($post_id)
 				{
-					$meta = $this->fillMeta($this->fields_meta);
-					update_post_meta($post_id, self::META_KEY, $meta);
+					$meta = $this->fillMeta($this->fields_meta);					
+					update_post_meta($post_id, self::META_KEY, $meta);					
 					// =========================================================
 					// INSERT THUMBNAIL
 					// =========================================================
@@ -118,7 +118,7 @@ class ShareStory{
 			            $photot_attach_id  = wp_insert_attachment($photo_attachment, $photo_upload['file']);	 	            
 			            $photo_attach_data = wp_generate_attachment_metadata($photot_attach_id, $photo_upload['file']);	            
 			            wp_update_attachment_metadata($photot_attach_id, $photo_attach_data);
-			            set_post_thumbnail($post_id,  $photot_attach_id);
+			            set_post_thumbnail($post_id,  $photot_attach_id);			            
 					}
 		            // =========================================================
 		            // INSERT VIDEO YOUTUBE
@@ -155,14 +155,14 @@ class ShareStory{
 				}
 			}
 		}
-
+		
 		if($this->errors)
 		{
 			unset($_SESSION['token']);
 			$this->displayErrorPage();
 		}
 		else
-		{
+		{			
 			wp_redirect(get_bloginfo('url').self::REDIRECT_PAGE);
 		}
 	}

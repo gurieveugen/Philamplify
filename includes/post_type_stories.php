@@ -180,7 +180,17 @@ class Stories{
 		// =========================================================		
 		if(isset($_POST['meta']))
 		{
-			update_post_meta($post_id, 'meta', $_POST['meta']);
+			$old_meta = get_post_meta($post_id, 'meta', true);
+			if($old_meta)
+			{
+				$new_meta = array_merge($old_meta, $_POST['meta']);
+				update_post_meta($post_id, 'meta', $new_meta);	
+			}
+			else
+			{
+				update_post_meta($post_id, 'meta', $_POST['meta']);	
+			}
+			
 		}
 
 		return $post_id;
