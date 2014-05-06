@@ -15,13 +15,23 @@
 	$thumb_id            = get_post_thumbnail_id();
 	$image_src           = $thumb_id != '' ? wp_get_attachment_image_src($thumb_id, 'thumb') : '';
 	$image               = $image_src != '' ? $image_src[0] : '';
+	$meta                = get_post_meta($post->ID, 'meta', true);
+	$google_title        = isset($meta['google_title']) ? htmlentities($meta['google_title']) : '';
+	$google_description  = isset($meta['google_description']) ?htmlentities($meta['google_description']) : '';
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<!-- <html <?php language_attributes(); ?> itemscope itemtype="http://schema.org/Other"> -->
+<html itemscope itemtype="http://schema.org/Blog">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 
 	<title><?php echo $title; ?></title>
+
+
+	<!-- GOOGLE SNIPPET -->
+	<meta itemprop="name" content="<?php echo $google_title; ?>">
+	<meta itemprop="description" content="<?php echo $google_description; ?>">	
+	<!-- GOOGLE SNIPPET END -->
 
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,6 +62,7 @@
 	<![endif]-->
 </head>
 <body <?php body_class(); ?>>
+
 	<div id="wrapper">
 		<header id="header">
 			<div class="center-wrap">

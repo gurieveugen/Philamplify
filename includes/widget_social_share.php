@@ -21,21 +21,25 @@ class SocialShare extends WP_Widget {
 	{
 		global $post;
 		extract($args);
-		$url              = 'http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
-		$title            = strip_tags($instance['title']);	
-		$meta             = get_post_meta($post->ID, 'meta', true);		
-		$share_text       = (isset($meta['tweet_text']) && $meta['tweet_text'] != '') ? $meta['tweet_text'] : $instance['share_text'];
-		$twitter          = (isset($instance['twitter']) && $instance['twitter'] != '') ? 'https://twitter.com/share?via='.$instance['twitter'].'&text='.$share_text : '';
-		$facebook         = ($instance['facebook'] == true) ? 'https://www.facebook.com/sharer/sharer.php?u='.$url : '';		
-		$google_plus      = ($instance['google_plus'] == true) ? 'https://plus.google.com/share?url='.$url : '';
-		$linkedin         = ($instance['linkedin'] == true) ? 'http://www.linkedin.com/shareArticle?mini=true&url='.$url : '';	
-		$twitter_btn      = ($twitter != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-twitter-1.png"></a></li>', $twitter) : '';
-		$facebook_btn     = ($facebook != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-facebook-1.png"></a></li>', $facebook) : '';
-		$google_plus_btn  = ($google_plus != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-google-1.png"></a></li>', $google_plus) : '';
-		$linkedin_btn     = ($linkedin != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-in-1.png"></a></li>', $linkedin) : '';		
-		$twitter_accounts = get_post_meta($post->ID, 'twitter_accounts', true);	
-		$email_accounts   = get_post_meta($post->ID, 'email_accounts', true);	
-		$email_picture    = get_post_meta($post->ID, 'email_picture', true);	
+		$url                  = 'http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
+		$title                = strip_tags($instance['title']);	
+		$meta                 = get_post_meta($post->ID, 'meta', true);		
+		$linkedin_title       = isset($meta['linkedin_title']) ? htmlentities($meta['linkedin_title']) : '';
+		$linkedin_description = isset($meta['linkedin_description']) ? htmlentities($meta['linkedin_description']) : '';
+		$facebook_title       = isset($meta['facebook_title']) ? htmlentities($meta['facebook_title']) : '';
+		$facebook_description = isset($meta['facebook_description']) ? htmlentities($meta['facebook_description']) : '';
+		$share_text           = (isset($meta['tweet_text']) && $meta['tweet_text'] != '') ? $meta['tweet_text'] : $instance['share_text'];
+		$twitter              = (isset($instance['twitter']) && $instance['twitter'] != '') ? 'https://twitter.com/share?via='.$instance['twitter'].'&text='.$share_text : '';
+		$facebook             = ($instance['facebook'] == true) ? sprintf('https://www.facebook.com/dialog/feed?app_id=1423814364535515&redirect_uri=%s&link=%s&caption=%s&description=%s', $url, $url, $facebook_title, $facebook_description) : '';		
+		$google_plus          = ($instance['google_plus'] == true) ? 'https://plus.google.com/share?url='.$url : '';
+		$linkedin             = ($instance['linkedin'] == true) ? 'http://www.linkedin.com/shareArticle?mini=true&url='.$url.'&title='.$linkedin_title.'&summary='.$linkedin_description : '';	
+		$twitter_btn          = ($twitter != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-twitter-1.png"></a></li>', $twitter) : '';
+		$facebook_btn         = ($facebook != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-facebook-1.png"></a></li>', $facebook) : '';
+		$google_plus_btn      = ($google_plus != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-google-1.png"></a></li>', $google_plus) : '';
+		$linkedin_btn         = ($linkedin != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-in-1.png"></a></li>', $linkedin) : '';		
+		$twitter_accounts     = get_post_meta($post->ID, 'twitter_accounts', true);	
+		$email_accounts       = get_post_meta($post->ID, 'email_accounts', true);	
+		$email_picture        = get_post_meta($post->ID, 'email_picture', true);	
 
 		echo $before_widget;		
 		// =========================================================

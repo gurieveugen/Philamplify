@@ -132,6 +132,34 @@ class Assessment{
 				<label for="mainslider_tweet_text"><?php _e('Tweet text'); ?>:</label>
 				<input type="text" name="meta[tweet_text]" id="mainslider_tweet_text" value="<?php echo $meta['tweet_text']; ?>" class="w100">
 			</p>	
+
+			<p>
+				<label for="mainslider_google_title"><?php _e('Google share title'); ?>:</label>
+				<input type="text" name="meta[google_title]" id="mainslider_google_title" value="<?php echo $meta['google_title']; ?>" class="w100">
+			</p>	
+			<p>
+				<label for="mainslider_google_description"><?php _e('Google share description'); ?>:</label>
+				<input type="text" name="meta[google_description]" id="mainslider_google_description" value="<?php echo $meta['google_description']; ?>" class="w100">
+			</p>	
+
+			<p>
+				<label for="mainslider_linkedin_title"><?php _e('Linkedin share title'); ?>:</label>
+				<input type="text" name="meta[linkedin_title]" id="mainslider_linkedin_title" value="<?php echo $meta['linkedin_title']; ?>" class="w100">
+			</p>	
+			<p>
+				<label for="mainslider_linkedin_description"><?php _e('Linkedin share description'); ?>:</label>
+				<input type="text" name="meta[linkedin_description]" id="mainslider_linkedin_description" value="<?php echo $meta['linkedin_description']; ?>" class="w100">
+			</p>	
+
+			<p>
+				<label for="mainslider_facebook_title"><?php _e('Facebook share title'); ?>:</label>
+				<input type="text" name="meta[facebook_title]" id="mainslider_facebook_title" value="<?php echo $meta['facebook_title']; ?>" class="w100">
+			</p>	
+			<p>
+				<label for="mainslider_facebook_description"><?php _e('Facebook share description'); ?>:</label>
+				<input type="text" name="meta[facebook_description]" id="mainslider_facebook_description" value="<?php echo $meta['facebook_description']; ?>" class="w100">
+			</p>	
+
 			<p>
 				<label for="mainslider_video_url"><?php _e('YouTube URL'); ?>:</label>
 				<input type="text" name="meta[video_url]" id="mainslider_video_url" value="<?php echo $meta['video_url']; ?>" class="w100">
