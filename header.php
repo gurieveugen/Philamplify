@@ -16,12 +16,13 @@
 	$image_src           = $thumb_id != '' ? wp_get_attachment_image_src($thumb_id, 'thumb') : '';
 	$image               = $image_src != '' ? $image_src[0] : '';
 	$meta                = get_post_meta($post->ID, 'meta', true);
-	$google_title        = isset($meta['google_title']) ? htmlentities($meta['google_title']) : '';
-	$google_description  = isset($meta['google_description']) ?htmlentities($meta['google_description']) : '';
+	$google_title        = isset($meta['google_title']) ? $meta['google_title'] : '';
+	$google_description  = isset($meta['google_description']) ?$meta['google_description'] : '';
+	$google_picture      = isset($meta['google_picture']) ?$meta['google_picture'] : '';
 ?>
 <!DOCTYPE html>
 <!-- <html <?php language_attributes(); ?> itemscope itemtype="http://schema.org/Other"> -->
-<html itemscope itemtype="http://schema.org/Blog">
+<html itemscope itemtype="http://schema.org/Blog" >
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 

@@ -140,7 +140,7 @@ class Assessment{
 			<p>
 				<label for="mainslider_google_description"><?php _e('Google share description'); ?>:</label>
 				<input type="text" name="meta[google_description]" id="mainslider_google_description" value="<?php echo $meta['google_description']; ?>" class="w100">
-			</p>	
+			</p>
 
 			<p>
 				<label for="mainslider_linkedin_title"><?php _e('Linkedin share title'); ?>:</label>
@@ -149,7 +149,7 @@ class Assessment{
 			<p>
 				<label for="mainslider_linkedin_description"><?php _e('Linkedin share description'); ?>:</label>
 				<input type="text" name="meta[linkedin_description]" id="mainslider_linkedin_description" value="<?php echo $meta['linkedin_description']; ?>" class="w100">
-			</p>	
+			</p>				
 
 			<p>
 				<label for="mainslider_facebook_title"><?php _e('Facebook share title'); ?>:</label>
@@ -158,7 +158,7 @@ class Assessment{
 			<p>
 				<label for="mainslider_facebook_description"><?php _e('Facebook share description'); ?>:</label>
 				<input type="text" name="meta[facebook_description]" id="mainslider_facebook_description" value="<?php echo $meta['facebook_description']; ?>" class="w100">
-			</p>	
+			</p>
 
 			<p>
 				<label for="mainslider_video_url"><?php _e('YouTube URL'); ?>:</label>

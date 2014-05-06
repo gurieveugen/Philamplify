@@ -25,5 +25,20 @@
 			
 			e.preventDefault();
 		});
+
+		$('.select-socials-filter').change(function(){
+			var social = $(this).val();
+
+			$('.socials-filter').find('.active').removeClass('active');
+			$(this).parent().addClass('active');
+			
+			$('.socials-holder article').each(function(){
+				$(this).addClass('hide');
+			});
+
+			$('.feed-' + social).each(function(){
+				$(this).removeClass('hide');
+			});
+		});
 	});	
 })(jQuery);

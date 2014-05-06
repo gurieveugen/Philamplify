@@ -81,7 +81,7 @@
 			var count = $('.industry-table').data('count') + 1;
 			$('.industry-table tbody').append(
 				'<tr>' +	
-				'<td>' + count + '</td>' +
+				'<td><input type="text" name="assessments_options[industry_keys][' + count + ']" value="' + (parseInt(count)-1) + '" class="w100"></td>' +
 				'<td><input type="text" name="assessments_options[industry][' + count + ']" value="" class="w100"></td>' +
 				'<td></td>' +									
 				'</tr>');

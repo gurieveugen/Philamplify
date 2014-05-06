@@ -21,16 +21,19 @@ class SocialShare extends WP_Widget {
 	{
 		global $post;
 		extract($args);
+		$post_thumbnail_id    = get_post_thumbnail_id($post->ID);
 		$url                  = 'http://'.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 		$title                = strip_tags($instance['title']);	
 		$meta                 = get_post_meta($post->ID, 'meta', true);		
-		$linkedin_title       = isset($meta['linkedin_title']) ? htmlentities($meta['linkedin_title']) : '';
-		$linkedin_description = isset($meta['linkedin_description']) ? htmlentities($meta['linkedin_description']) : '';
-		$facebook_title       = isset($meta['facebook_title']) ? htmlentities($meta['facebook_title']) : '';
-		$facebook_description = isset($meta['facebook_description']) ? htmlentities($meta['facebook_description']) : '';
+		$linkedin_title       = isset($meta['linkedin_title']) ? urlencode($meta['linkedin_title']) : '';
+		$linkedin_description = isset($meta['linkedin_description']) ? urlencode($meta['linkedin_description']) : '';
+		$facebook_title       = isset($meta['facebook_title']) ? urlencode($meta['facebook_title']) : '';
+		$facebook_description = isset($meta['facebook_description']) ? urlencode($meta['facebook_description']) : '';
+		$picture              = has_post_thumbnail($post->ID) ? wp_get_attachment_image_src($post_thumbnail_id,'assessment-image', false) : TDU.'/images/logo.png';
+		if(is_array($picture)) $picture = $picture[0];
 		$share_text           = (isset($meta['tweet_text']) && $meta['tweet_text'] != '') ? $meta['tweet_text'] : $instance['share_text'];
 		$twitter              = (isset($instance['twitter']) && $instance['twitter'] != '') ? 'https://twitter.com/share?via='.$instance['twitter'].'&text='.$share_text : '';
-		$facebook             = ($instance['facebook'] == true) ? sprintf('https://www.facebook.com/dialog/feed?app_id=1423814364535515&redirect_uri=%s&link=%s&caption=%s&description=%s', $url, $url, $facebook_title, $facebook_description) : '';		
+		$facebook             = ($instance['facebook'] == true) ? sprintf('https://www.facebook.com/dialog/feed?app_id=1423814364535515&redirect_uri=%s&link=%s&caption=%s&description=%s&picture=%s', $url, $url, $facebook_title, $facebook_description, $picture) : '';		
 		$google_plus          = ($instance['google_plus'] == true) ? 'https://plus.google.com/share?url='.$url : '';
 		$linkedin             = ($instance['linkedin'] == true) ? 'http://www.linkedin.com/shareArticle?mini=true&url='.$url.'&title='.$linkedin_title.'&summary='.$linkedin_description : '';	
 		$twitter_btn          = ($twitter != '') ? sprintf('<li><a href="%s"><img alt="" src="'.TDU.'/images/ico-twitter-1.png"></a></li>', $twitter) : '';
@@ -113,73 +116,7 @@ class SocialShare extends WP_Widget {
 			</div>
 			<?php
 		}
-		?>
-		<!-- <div class="w-block">
-
-			<h3>Tweet At Foundation Leadership</h3>
-			<ul class="social-feed">
-
-				<li>
-					<div class="cell">
-						<a href="#"><img alt="" src="<?php echo TDU; ?>/images/temp-avatar.png"></a>
-					</div>
-					<div class="cell">
-						<strong class="name"><a href="#">@UserName</a></strong>
-						<p>Firstname Lastname</p>
-					</div>
-				</li>
-				<li>
-					<div class="cell">
-						<a href="#"><img alt="" src="<?php echo TDU; ?>/images/temp-avatar.png"></a>
-					</div>
-					<div class="cell">
-						<strong class="name"><a href="#">@UserName</a></strong>
-						<p>Firstname Lastname</p>
-					</div>
-				</li>
-				<li>
-					<div class="cell">
-						<a href="#"><img alt="" src="<?php echo TDU; ?>/images/temp-avatar.png"></a>
-					</div>
-					<div class="cell">
-						<strong class="name"><a href="#">@UserName</a></strong>
-						<p>Firstname Lastname</p>
-					</div>
-				</li>
-			</ul>
-		</div> -->
-		<!-- <div class="w-block">
-			<h3>Email Foundation Leadership</h3>
-			<ul class="social-feed">
-				<li>
-					<div class="cell">
-						<a href="#"><img alt="" src="<?php echo TDU; ?>/images/temp-avatar.png"></a>
-					</div>
-					<div class="cell">
-						<strong class="name"><a href="#">name@website.com</a></strong>
-						<p>Firstname Lastname,  CEO</p>
-					</div>
-				</li>
-				<li>
-					<div class="cell">
-						<a href="#"><img alt="" src="<?php echo TDU; ?>/images/temp-avatar.png"></a>
-					</div>
-					<div class="cell">
-						<strong class="name"><a href="#">name@website.com</a></strong>
-						<p>Board of Trustees</p>
-					</div>
-				</li>
-				<li>
-					<div class="cell">
-						<a href="#"><img alt="" src="<?php echo TDU; ?>/images/temp-avatar.png"></a>
-					</div>
-					<div class="cell">
-						<strong class="name"><a href="#">name@website.com</a></strong>
-						<p>Firstname Lastname</p>
-					</div>
-				</li>
-			</ul>
-		</div> -->
+		?>		
 		<?php
 		echo $after_widget;
 	}

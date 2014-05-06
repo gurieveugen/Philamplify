@@ -50,6 +50,11 @@ class AssessmentsOptionsPage{
                 do_settings_sections(__FILE__);
                 ?>
                 <table class="gctable industry-table" data-count="<?php echo count($this->options['industry']); ?>">
+                    <colgroup>
+                        <col width="50">
+                        <col width="1000">
+                        <col width="50">
+                      </colgroup>
                     <thead>
                         <tr>
                             <th><?php _e('#'); ?></th>
@@ -63,8 +68,8 @@ class AssessmentsOptionsPage{
                             {
                                 foreach ($this->options['industry'] as $key => &$industry) 
                                 {  
-                                    echo '<tr>';
-                                    printf('<td>%s</td>', $key);
+                                    echo '<tr>';                                    
+                                    printf('<td><input type="text" name="assessments_options[industry_keys][%s]" value="%s" class="w100"></td>', $key, $key);
                                     printf('<td><input type="text" name="assessments_options[industry][%s]" value="%s" class="w100"></td>', $key, $industry);                            
                                     printf('<td><button type="button" class="button button-red remove-industry">%s</button></td>', __('Remove item'));
                                     echo '</tr>';
@@ -110,9 +115,10 @@ class AssessmentsOptionsPage{
 
         if(isset($input['industry'])) 
         {
-            foreach ($input['industry'] as $value) 
-            {
-                if($value['industry'] != '') $arr[] = $value;
+            foreach ($input['industry'] as $key => $value) 
+            {                
+                $k = $input['industry_keys'][$key];
+                if($value['industry'] != '') $arr[$k] = $value;
             }
             $new_input['industry']   = $arr;
 

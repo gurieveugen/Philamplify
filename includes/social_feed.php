@@ -74,7 +74,7 @@ class SocialFeed{
 					<option value="philamplify">Philamplify</option>
 					<option value="twitter">Twitter</option>
 					<option value="facebook">Facebook</option>
-					<option value="google">Google+</option>
+					<option value="google_plus">Google+</option>
 				</select>
 			</div>
 			<div class="socials-holder">
