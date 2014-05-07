@@ -161,6 +161,7 @@ var msnry            = null;
     				id: default_settings.ip
     			},					
     			success: function(data){  
+    				showUserInformation();
     				if(data.success)
     				{
     					info.html('<p class="info"><strong>' + data.percent + '%</strong> of ' + data.sum + ' people <strong class="blue">AGREE</strong></p>');    					
@@ -212,7 +213,7 @@ var msnry            = null;
 		// TWEET CLICK
 		// =========================================================
 		$('.just-tweet').click(function(e){
-			var url = 'https://twitter.com/share?text=@' + $(this).data('account') + '&url=';
+			var url = 'https://twitter.com/share?text=' + $(this).data('text') + '&url=';
 			window.open(url,'displayWindow', 'width=700,height=400,left=200,top=100,location=no, directories=no,status=no,toolbar=no,menubar=no');
 			e.preventDefault();
 		});

@@ -186,18 +186,16 @@ class AJAX{
 	 * Show user information Lightbox only once 
 	 */
 	public function showUserInformation()
-	{
-		$all_ips = get_option('user_information_ips');
-		if(is_array($all_ips) && in_array($_POST['ip'], $all_ips))
+	{		
+		if(isset($_COOKIE['show_user_information']) && $_COOKIE['show_user_information'] == true)
 		{
 			$json['show'] = false;
 		}
 		else
 		{
-			$json['show'] = true;
-			$all_ips[]    = $_POST['ip'];
+			$json['show'] = true;	
+			setcookie('show_user_information', true, time()+31536000);			
 		}
-		update_option('user_information_ips', $all_ips);
 		
 		echo json_encode($json);
 	}

@@ -134,6 +134,11 @@ class Assessment{
 			</p>	
 
 			<p>
+				<label for="mainslider_tfl"><?php _e('Tweet At Foundation Leadership text'); ?>:</label>
+				<input type="text" name="meta[tfl]" id="mainslider_tfl" value="<?php echo $meta['tfl']; ?>" class="w100">
+			</p>	
+
+			<p>
 				<label for="mainslider_google_title"><?php _e('Google share title'); ?>:</label>
 				<input type="text" name="meta[google_title]" id="mainslider_google_title" value="<?php echo $meta['google_title']; ?>" class="w100">
 			</p>	
