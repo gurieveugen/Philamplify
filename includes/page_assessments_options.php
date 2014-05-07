@@ -120,8 +120,8 @@ class AssessmentsOptionsPage{
                 $k = $input['industry_keys'][$key];
                 if($value['industry'] != '') $arr[$k] = $value;
             }
-            $new_input['industry']   = $arr;
-
+            ksort($arr, SORT_NUMERIC);
+            $new_input['industry'] = $arr;
         }
             
 

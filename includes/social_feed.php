@@ -43,8 +43,7 @@ class SocialFeed{
 	//  / / / / / /  __/ /_/ / / / /_/ / /_/ (__  ) 
 	// /_/ /_/ /_/\___/\__/_/ /_/\____/\__,_/____/  
 	public function __construct()
-	{
-		$this->googl    = new Googl();
+	{		
 		$this->twitter  = new TwitterOAuth(self::TWITTER_CONSUMER_KEY, self::TWITTER_CONSUMER_SECRET, self::TWITTER_ACCESS_TOKEN, self::TWITTER_ACCESS_TOKEN_SECRET);
 		$this->facebook = new Facebook(array( 'appId'  => self::FACEBOOK_APP_ID, 'secret' => self::FACEBOOK_SECRET)); 
 		$this->options  = $GLOBALS['sfoptions']->getAll();
@@ -113,8 +112,7 @@ class SocialFeed{
 		if(!$tweets) return '';
 
 		$out           = '';
-		$first         = true;
-		$tweets        = array_reverse($tweets);		
+		$first         = true;		
 		$article_class = array('box-social', 'blue', 'feed-twitter');
 
 		if($tweets)
@@ -133,7 +131,7 @@ class SocialFeed{
 
 				$classes = implode(' ', $article_class).$feed_all;
 				$url     = 'https://twitter.com/'.$tweet->user->screen_name.'/status/'.$tweet->id_str;
-				$url     = $this->googl->shorten($url);
+				$url     = $url;
 
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
@@ -165,7 +163,9 @@ class SocialFeed{
 			return $cache;
 		}
 
-		$tweets = $this->twitter->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$user."&count=".$count);
+		//$tweets = $this->twitter->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$user."&count=".$count);
+		$tweets = $this->twitter->get("https://api.twitter.com/1.1/search/tweets.json?q=".urlencode($user)."&count=".$count);
+		$tweets = $tweets->statuses;
 
 		$this->setCache($user.$count, $tweets, 3600, self::TWITTER_CACHE_LABEL);
 
@@ -274,7 +274,7 @@ class SocialFeed{
 				$out.= sprintf('<a href="%s" class="link-arrow-darkblue mobile-hide-dib">View on Facebook</a>', $value['url']);
 				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $value['name']);
-				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value['created_time'])));
+				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate($value['created_time']));
 				$out.= '</div>';
 				$out.= '</header>';
 				$out.= sprintf('<div class="content"><p>%s</p></div>', $value['msg']);				
@@ -299,7 +299,7 @@ class SocialFeed{
 		}
 
 		$fb = array();
-		$user_profile = $this->facebook->api('/'.$user.'/posts');
+		$user_profile = $this->facebook->api('/'.$user.'/posts?fields=message,story,id,from,created_time');	
 		
 		foreach ($user_profile['data'] as &$post) 
 		{
@@ -307,18 +307,20 @@ class SocialFeed{
 			$msg = isset($post['story']) ? $post['story'] : '';
 			$msg = isset($post['message']) ? $post['message'] : $msg;
 			$url = 'https://www.facebook.com/'.$id.'/';
-			$url = $this->googl->shorten($url);
+			$url = $url;
 			$c   = intval($count);
 
 			if(strlen($msg) && $count)
 			{
 				$count--;
+				$time = strtotime($post['created_time']);
+				$time = $time - 14400;				
 				$fb[] = array(
 					'id'           => $id, 
 					'name'         => $post['from']['name'],
 					'msg'          => $msg,
 					'url'          => $url,
-					'created_time' => $post['created_time']);
+					'created_time' => $time);
 			}
 		}		
 
@@ -380,11 +382,11 @@ class SocialFeed{
 	 */
 	public function getGooglePlusMsg($id, $count)
 	{
-		$cache = $this->getCache($id.$count, self::GOOGLE_PLUS_CACHE_LABEL);
-		if($cache)
-		{			
-			return $cache;
-		}
+		// $cache = $this->getCache($id.$count, self::GOOGLE_PLUS_CACHE_LABEL);
+		// if($cache)
+		// {			
+		// 	return $cache;
+		// }
 
 		$out         = array();
 		$dest        = sprintf('https://www.googleapis.com/plus/v1/people/%s/activities/public?maxResults=%s&key=%s', $id, $count, self::GOOGLE_PLUS_KEY);		
@@ -395,10 +397,18 @@ class SocialFeed{
 		{
 			foreach ($json['items'] as &$post) 
 			{
-				$url = $this->googl->shorten($url);
+				$msg = $post['title'];
+				if($msg == '')
+				{
+
+					if(isset($post['object']['attachments'][0]['embed']['url']))
+					{
+						$msg = sprintf('<iframe width="540" height="480" src="%s" frameborder="0" allowfullscreen></iframe>', str_replace('autoplay=1', 'autoplay=0', $post['object']['attachments'][0]['embed']['url']));
+					}					
+				}
 				$out[] = array(
-					'url'          => $this->googl->shorten($post['url']),
-					'msg'          => $post['title'],
+					'url'          => $post['url'],
+					'msg'          => $msg,
 					'name'         => $post['actor']['displayName'],
 					'created_time' => $post['published']);
 			}
