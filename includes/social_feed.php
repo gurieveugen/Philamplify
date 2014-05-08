@@ -186,22 +186,10 @@ class SocialFeed{
 		$first = true;
 		$class = array('box-social', 'green', 'feed-philamplify');
 
-		$args = array(
-			'posts_per_page'   => $count,
-			'offset'           => 0,
-			'category'         => '',
-			'orderby'          => 'post_date',
-			'order'            => 'DESC',
-			'include'          => '',
-			'exclude'          => '',
-			'meta_key'         => '',
-			'meta_value'       => '',
-			'post_type'        => 'assessment',
-			'post_mime_type'   => '',
-			'post_parent'      => '',
-			'post_status'      => 'publish',
-			'suppress_filters' => true );
-		$assesments = get_posts($args);
+		$disqus = new DisqusAPI('mf8qrBtFMVSLRiw2AZu8keys4lYnhywyJEKmY1mZT8UGTAK0qu5Kl3AcrUJFBqhv');
+		$assesments = $disqus->posts->list(array(
+			'forum' => 'philamplify',
+			'limit' => $count));		
 
 		if($assesments)
 		{
@@ -218,22 +206,24 @@ class SocialFeed{
 				}
 				
 				$classes = implode(' ', $class).$feed_all;
-				$msg     = explode('<!--more-->', $value->post_content);
+				$msg     = explode('<!--more-->', $value->message);
 				$msg     = $msg[0];
-				$user    = get_userdata($value->post_author);
+				$user    = $value->author->name;
+				$time    = strtotime($value->createdAt);
+				$time    = $time - 14400;
 
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
 				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-assessment.png" alt=""></div>';
-				$out.= sprintf('<a href="%s" class="link-arrow mobile-hide-dibb">View the Assessment</a>', get_permalink($value->ID));
+				$out.= sprintf('<a href="%s" class="link-arrow mobile-hide-dibb">View the Assessment</a>', $value->author->profileUrl);
 				$out.= '<div class="h-text">';
-				//$out.= sprintf('<h4>%s</h4>', $user->display_name);
-				$out.= sprintf('<h4>%s</h4>',$value ->post_title);
-				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value->post_date)));
+				$out.= sprintf('<h4>%s</h4>', $user);
+				// $out.= sprintf('<h4>%s</h4>',$value ->post_title);
+				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate($time));
 				$out.= '</div>';
 				$out.= '</header>';
 				//$out.= sprintf('<div class="content"><p>%s</p></div>', $msg);
-				$out.= sprintf('<div class="content"><p>%s</p></div>', $value->post_excerpt);
+				$out.= sprintf('<div class="content"><p>%s</p></div>', $value->message);
 								
 				$out.= '</article>';
 			}

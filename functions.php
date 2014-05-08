@@ -31,6 +31,7 @@ require_once 'includes/widget_social_share.php';
 require_once 'includes/meta_box_featured_post.php';
 require_once 'includes/social_feed_options.php';
 require_once 'includes/social_feed.php';
+require_once 'includes/disqusapi/disqusapi.php';
 // =========================================================
 // Constants
 // =========================================================

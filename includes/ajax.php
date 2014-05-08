@@ -3,7 +3,7 @@
 // REQUIRE
 // =========================================================
 require($_SERVER["DOCUMENT_ROOT"].'/wp-blog-header.php');
-require('disqusapi/disqusapi.php');
+
 header("HTTP/1.1 200 OK");
 
 
@@ -26,6 +26,14 @@ class AJAX{
 		{
 			$this->$action();
 		}		
+	}
+
+	public function SomeTest()
+	{
+		$disqus = new DisqusAPI('mf8qrBtFMVSLRiw2AZu8keys4lYnhywyJEKmY1mZT8UGTAK0qu5Kl3AcrUJFBqhv');
+		var_dump($disqus->posts->list(array(
+			'forum' => 'philamplify',
+			'limit' => 5)));
 	}
 
 	/**

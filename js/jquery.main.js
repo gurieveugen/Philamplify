@@ -350,6 +350,15 @@ var msnry            = null;
 		});
 		disqus_config();
 
+		// =========================================================
+		// ADD DISQUS TO NEWS PAGES
+		// =========================================================
+		if($('.comments-section').html() != undefined)
+		{			
+			loadDisqus($('.comments-section'), $('.comments-section').data('id'), $('.comments-section').data('url'));	
+		}
+		
+
 	});
 	
 })(jQuery);
@@ -362,10 +371,6 @@ function loadDisqus(source, identifier, url)
 	{
 		jQuery('#disqus_thread').insertAfter(source);
 		/** if Disqus exists, call it's reset method with new parameters **/
-
-		console.log(source);
-		console.log(identifier);
-		console.log(url);
 
 		DISQUS.reset({
 			reload: true,
