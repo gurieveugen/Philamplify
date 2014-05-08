@@ -49,7 +49,7 @@ var msnry            = null;
 		$('.slider-area .slides').cycle({ 
 			fx:     'scrollHorz',
 			speed:  500,
-			timeout: 0,
+			timeout: parseInt(default_settings.seconds)*1000,
 			prev: '.slider-area .link-prev',
 			next: '.slider-area .link-next'			
 		});

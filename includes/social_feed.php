@@ -132,6 +132,8 @@ class SocialFeed{
 				$classes = implode(' ', $article_class).$feed_all;
 				$url     = 'https://twitter.com/'.$tweet->user->screen_name.'/status/'.$tweet->id_str;
 				$url     = $url;
+				$time    = strtotime($tweet->created_at);
+				$time    = $time - 14400;	
 
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
@@ -139,7 +141,7 @@ class SocialFeed{
 				$out.= sprintf('<a href="%s" class="link-arrow-blue mobile-hide-dib">View on Twitter</a>', $url);
 				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $tweet->user->name);
-				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($tweet->created_at)));
+				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate($time));
 				$out.= '</div>';
 				$out.= '</header>';
 				$out.= sprintf('<div class="content"><p>%s</p></div>', $tweet->text);				
@@ -364,7 +366,7 @@ class SocialFeed{
 				$out.= sprintf('<a href="%s" class="link-arrow-red mobile-hide-dib">View on Google +</a>', $value['url']);
 				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $value['name']);
-				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate(strtotime($value['created_time'])));
+				$out.= sprintf('<strong class="date">%s</strong>', $this->formatDate($value['created_time']));
 				$out.= '</div>';
 				$out.= '</header>';
 				$out.= sprintf('<div class="content"><p>%s</p></div>', $value['msg']);				
@@ -406,11 +408,14 @@ class SocialFeed{
 						$msg = sprintf('<iframe width="540" height="480" src="%s" frameborder="0" allowfullscreen></iframe>', str_replace('autoplay=1', 'autoplay=0', $post['object']['attachments'][0]['embed']['url']));
 					}					
 				}
+				$time = strtotime($post['published']);
+				$time = $time - 14400;		
+
 				$out[] = array(
 					'url'          => $post['url'],
 					'msg'          => $msg,
 					'name'         => $post['actor']['displayName'],
-					'created_time' => $post['published']);
+					'created_time' => $time);
 			}
 		}
 

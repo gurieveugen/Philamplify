@@ -234,6 +234,7 @@ function scripts_method()
 		'stories_count'     => $options['stories_count'], 
 		'stories_container' => '.stories-list',
 		'more_count'        => 1,
+		'seconds'			=> $options['seconds'],
 		'ip'				=> getIp()));
 
 	

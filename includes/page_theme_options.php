@@ -79,6 +79,7 @@ class GCOptionsPage{
         add_settings_field('ncrp_url', __('NCRP URL'), array($this, 'ncrp_url_callback'), __FILE__, 'default_settings');
         add_settings_field('stories_count', __('Stories show at most'), array($this, 'stories_count_callback'), __FILE__, 'default_settings');
         add_settings_field('comments_instructions', __('Comments - instructional text'), array($this, 'comments_instructions_callback'), __FILE__, 'default_settings');
+        add_settings_field('seconds', __('Seconds for rotate'), array($this, 'seconds_callback'), __FILE__, 'default_settings');
         
     }
 
@@ -99,6 +100,7 @@ class GCOptionsPage{
         if(isset($input['ncrp_url'])) $new_input['ncrp_url']                           = strip_tags($input['ncrp_url']);
         if(isset($input['stories_count'])) $new_input['stories_count']                 = strip_tags($input['stories_count']);
         if(isset($input['comments_instructions'])) $new_input['comments_instructions'] = $input['comments_instructions'];
+        if(isset($input['seconds'])) $new_input['seconds']                             = intval($input['seconds']);
 
         return $new_input;
     }
@@ -165,6 +167,14 @@ class GCOptionsPage{
     public function comments_instructions_callback()
     {
         printf('<textarea id="comments_instructions" name="gcoptions[comments_instructions]" cols="37" rows="15">%s</textarea>', isset($this->options['comments_instructions']) ? $this->options['comments_instructions'] : '');
+    }
+
+    /** 
+     * Get the settings option array and print one of its values
+     */
+    public function seconds_callback()
+    {
+        printf('<input type="text" class="regular-text" id="seconds" name="gcoptions[seconds]" value="%s" />', isset($this->options['seconds']) ? intval($this->options['seconds']) : 1);
     }
     
 }
