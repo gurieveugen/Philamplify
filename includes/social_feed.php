@@ -195,6 +195,19 @@ class SocialFeed{
 		{
 			foreach ($assesments as $value) 
 			{
+                $assesments_link = '#';
+                if(!empty($value->thread)){
+                    $threadQuery = new WP_Query(array(
+                        'meta_key' => 'dsq_thread_id',
+                        'meta_value' => $value->thread
+                    ));
+                    if($threadQuery->have_posts()):
+                        while($threadQuery->have_posts()):$threadQuery->the_post();
+                            $assesments_link = get_permalink();
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
 				if($first)
 				{
 					$first    = false;
@@ -215,7 +228,7 @@ class SocialFeed{
 				$out.= sprintf('<article class="%s">', $classes);
 				$out.= '<header class="cf">';
 				$out.= '<div class="ico"><img src="'.TDU.'/images/ico-assessment.png" alt=""></div>';
-				$out.= sprintf('<a href="%s" class="link-arrow mobile-hide-dibb">View the Assessment</a>', $value->author->profileUrl);
+				$out.= sprintf('<a href="%s" class="link-arrow mobile-hide-dibb">Learn More</a>', $assesments_link);
 				$out.= '<div class="h-text">';
 				$out.= sprintf('<h4>%s</h4>', $user);
 				// $out.= sprintf('<h4>%s</h4>',$value ->post_title);

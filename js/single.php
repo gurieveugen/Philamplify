@@ -40,8 +40,8 @@
 		</p>
 		<?php the_content(); ?>
 		<?php echo $options['comments_instructions']; ?>
-        <div class="comments-section">
-			<div id="disqus_thread"></div>
+        <div class="comments-section" data-url="<?php echo get_permalink(); ?>" data-id="<?php echo md5(get_permalink()); ?>">
+			
 		</div>
 	
 	<?php endif; ?>

@@ -30,7 +30,7 @@
 						)); ?>						
 					</div>
 					<div class="column column-1">
-						<p>&copy;2014 National Committe for Responsive Philanthropy. <br>All rights reserved.</p>
+						<p>&copy;2014 National Committee for Responsive Philanthropy. <br>All rights reserved.</p>
 						<?php wp_nav_menu( array(
 							'container'       => '',
 							'theme_location'  => 'bottom_left_nav',
