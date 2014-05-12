@@ -297,9 +297,9 @@ class Stories{
 
 				if($item->meta['media_link'])
 				{
-					if(strpos($item->meta['media_link'], 'youtube'))
+					if(strpos($item->meta['media_link'], 'youtu.be'))
 					{
-						$youtube_id = explode('watch?v=', $item->meta['media_link']);
+						$youtube_id = explode('http://youtu.be/', $item->meta['media_link']);
 						$youtube_id = $youtube_id[1];
 						$media      = sprintf('<div class="media-container"><iframe width="300" height="225" src="//www.youtube.com/embed/%s" frameborder="0" allowfullscreen></iframe></div>', $youtube_id);	
 						$type       = 'video';
@@ -319,6 +319,7 @@ class Stories{
 				$out.= $this->wrapMediaBlock($media, $media_title, $media_content);
 				
 				$out.= '<div class="text-media">';
+				$out.= sprintf('<h1>%s</h1>', $item->post_title);
 				$out.= (strlen($content)) ? sprintf('<p>%s</p>', $content) : '';				
 				$out.= sprintf('<em class="meta">Shared by %s %s on %s</em>', $first_name, $last_name, $date);
 				$out.= '</div>';

@@ -195,6 +195,7 @@ class SocialFeed{
 		{
 			foreach ($assesments as $value) 
 			{
+				$hash = sprintf('#comment-%s', $value->id);
                 $assesments_link = '#';
                 if(!empty($value->thread)){
                     $threadQuery = new WP_Query(array(
@@ -217,7 +218,7 @@ class SocialFeed{
 				{
 					$feed_all = '';	
 				}
-				
+				$assesments_link.= $hash;
 				$classes = implode(' ', $class).$feed_all;
 				$msg     = explode('<!--more-->', $value->message);
 				$msg     = $msg[0];

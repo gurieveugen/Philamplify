@@ -87,6 +87,7 @@ class ShareStory{
 				// INSERT POST
 				// =========================================================
 				$p = array(
+					'post_title'   => $this->post['story_title'],
 					'post_content' => $this->post['story'],
 					'post_status'  => 'Pending',
 					'post_type'    => 'story',

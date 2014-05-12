@@ -125,7 +125,10 @@
 				Write Your Story
 			</h4>
 			<div class="row-2 cf">
-				<textarea name="story" cols="30" rows="10" required></textarea>
+				<input type="text" name="story_title" style="width: 100%;" placeholder="Story title" required>
+			</div>
+			<div class="row-2 cf">
+				<textarea name="story" cols="30" rows="10" placeholder="Story"  required></textarea>
 			</div>
 			<div class="submit-row cf">
 				<div class="right">
