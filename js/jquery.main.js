@@ -243,6 +243,14 @@ var msnry            = null;
 		// SUBMIT STORY
 		// =========================================================
 		$('.form-share-story-ajax').submit(function(e){
+			if($(this).find('[name=video_title]').val() == '' &&
+				$(this).find('[name=photo_title]').val() == '' &&
+				$(this).find('[name=media_title]').val() == '' &&
+				$(this).find('[name=story_title]').val() == '')
+			{
+				e.preventDefault();
+				alert('"Story title" is required. Please fill in this field!');
+			}
 			if(!$(this).find('[name=i_agree]').prop("checked"))
 			{
 				e.preventDefault();
@@ -433,6 +441,7 @@ function disqus_config() {
   if(typeof this.callbacks != 'undefined'){
     this.callbacks.onNewComment = [function(comment) {
       showUserInformation();
+      alert(1);
     }];
   }
 }

@@ -17,7 +17,7 @@
 	<div class="content-box cf">
 		<h2>Share Your Story and Upload Media</h2>
 		<p><?php the_content(); ?></p>
-		<form action="<?php bloginfo('template_url'); ?>/includes/share_story.php" class="form-story form-share-story-ajax" method="POST" enctype="multipart/form-data">
+		<form action="<?php bloginfo('template_url'); ?>/includes/share_story.php" id="#submit-story-form" class="form-story form-share-story-ajax" method="POST" enctype="multipart/form-data">
 			
 			<h4>
 				<img src="<?php echo TDU; ?>/images/icon-person-mini.png" class="pc-visible-dib" alt="">
@@ -125,7 +125,7 @@
 				Write Your Story
 			</h4>
 			<div class="row-2 cf">
-				<input type="text" name="story_title" style="width: 100%;" placeholder="Story title" required>
+				<input type="text" name="story_title" style="width: 100%;" placeholder="Story title">
 			</div>
 			<div class="row-2 cf">
 				<textarea name="story" cols="30" rows="10" placeholder="Story"  required></textarea>
