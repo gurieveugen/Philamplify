@@ -1,9 +1,10 @@
-var disqus_shortname = 'philamplify'; // required: replace example with your forum shortname
+var disqus_shortname   = 'philamplify'; // required: replace example with your forum shortname
 var disqus_identifier; //made of post id and guid
 var disqus_url;
-var urlArray         = [];
-var disqusPublicKey  = "OQayG6vSjiJn3lHkJ7th2geCSHpphVduQXc5TC0jk10xiYfFq1o19mvEWS7l8OJ1";
-var msnry            = null;
+var urlArray           = [];
+var newsroom_url_array = [];
+var disqusPublicKey    = "OQayG6vSjiJn3lHkJ7th2geCSHpphVduQXc5TC0jk10xiYfFq1o19mvEWS7l8OJ1";
+var msnry              = null;
 
 (function($){
 	$(function() {
@@ -264,6 +265,9 @@ var msnry            = null;
 			var url = $(this).attr('data-url');
 			urlArray.push('link:' + url);
 		});		
+		$('.disqus-comment').each(function(){			
+			newsroom_url_array.push('link:' + $(this).data('url'));
+		});		
 		getAllCounts();
 		// =========================================================
 		// SELECT STATE CHANGE
@@ -401,21 +405,44 @@ function loadDisqus(source, identifier, url)
 
 function getAllCounts()
 {
-	if(urlArray <= 0) return;
-	$.ajax({
-		type: 'POST',
-		url: default_settings.ajaxurl + '?action=disqusCounts',
-		data: { api_key: disqusPublicKey, forum : disqus_shortname, thread : urlArray },
-		dataType: 'json',
-		success: function (result) {
-			for (var i in result.response) {
-				var countText = " comments";
-				var count = result.response[i].posts;
-				if (count == 1) countText = " Comment";
-				$('a.link-comments[data-url="' + result.response[i].link + '"]').html(count + countText);
+
+	if(urlArray.length > 0)
+	{
+		$.ajax({
+			type: 'POST',
+			url: default_settings.ajaxurl + '?action=disqusCounts',
+			data: { api_key: disqusPublicKey, forum : disqus_shortname, thread : urlArray },
+			dataType: 'json',
+			success: function (result) {
+				for (var i in result.response) {
+					var countText = " comments";
+					var count = result.response[i].posts;
+					if (count == 1) countText = " Comment";
+					$('a.link-comments[data-url="' + result.response[i].link + '"]').html(count + countText);
+				}
 			}
-		}
-	});
+		});
+	}
+	// =========================================================
+	// LOAD NEWSROOM COMMENT COUNT'S
+	// =========================================================
+	if(newsroom_url_array.length > 0) 
+	{		
+		$.ajax({
+			type: 'POST',
+			url: default_settings.ajaxurl + '?action=disqusCounts',
+			data: { api_key: disqusPublicKey, forum : disqus_shortname, thread : newsroom_url_array },
+			dataType: 'json',
+			success: function (result) {
+				for (var i in result.response) {
+					var countText = " comments";
+					var count = result.response[i].posts;
+					if (count == 1) countText = " Comment";
+					$('li.disqus-comment[data-url="' + result.response[i].link + '"]').html(count + countText);
+				}
+			}
+		});	
+	}
 }
 
 function showUserInformation()
@@ -440,8 +467,7 @@ function showUserInformation()
 function disqus_config() {
   if(typeof this.callbacks != 'undefined'){
     this.callbacks.onNewComment = [function(comment) {
-      showUserInformation();
-      alert(1);
+      showUserInformation();      
     }];
   }
 }

@@ -65,7 +65,7 @@ if ( have_posts() ) : ?>
 					}
 				}
 				?>
-				<li><?php comments_number( 'No Comments', '1 Comment', '% Comments' ); ?></li>
+				<li class="disqus-comment" data-url="<?php echo get_permalink(); ?>"><?php comments_number( 'No Comments', '1 Comment', '% Comments' ); ?></li>
 			</ul>
 		</div>
 		
