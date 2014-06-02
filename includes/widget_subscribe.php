@@ -28,12 +28,14 @@ class Subscribe extends WP_Widget {
 		// =========================================================		
 		if($title != '') echo $before_title.$title.$after_title;
 		?>
-		<form action="#" class="form-signup form-subscribe-ajax">
-			<input type="email" placeholder="EMAIL ADDRESS" name="email" required>
-			<input type="hidden" value="<?php echo getIP(); ?>" name="ip">
-			<?php wp_nonce_field(AJAX::SUBSCRIBE_NONCE, 'security_subscribe'); ?>
-			<input type="submit" class="btn-dark-green" value="Subscribe">			
-		</form>
+		<form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="form-signup">
+
+			<input type=hidden name="oid" value="00D700000008Fiw">
+			<input type=hidden name="retURL" value="http://philamplify.beekeeperdev.com/thank-subscribe/">
+			<input  id="email" maxlength="80" name="email" size="20" placeholder="EMAIL ADDRESS" type="text" />
+
+			<input type="submit" class="btn-dark-green" name="submit">
+		</form>		
 		<?php
 		echo $after_widget;
 	}
