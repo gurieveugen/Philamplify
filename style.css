@@ -1527,7 +1527,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 }
 .box-story .media-description + .text-media{
 	padding-top: 0;
-	margin-top: -10px;
+	margin-top: 0;
 }
 .box-story a{
 	text-decoration: none;
@@ -1537,18 +1537,14 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	cursor: pointer;
 }
 .box-story h1{
-	margin: 0;
+	margin: 0 0 8px;
 	font-size: 12px;
 	line-height: 17px;
 	font-weight: 600;
 	color: #383737;
 }
-.box-story .text p{
-	margin: 0 0 12px;
-}
-.box-story .media-description p,
-.box-story .text-media p{
-	margin: 0 0 3px;
+.box-story p{
+	margin: 0 0 8px;
 }
 .box-story .meta{
 	display: block;
@@ -1565,6 +1561,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 .box-story iframe,
 .box-story object{
 	max-width: 100%;
+	margin: 0 0 8px;
 }
 .btn-more-holder{
 	text-align: center;
@@ -2730,6 +2727,12 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 .form-efl .button-holder{
 	padding: 10px 0 0;
 	text-align: center;
+}
+.form-efl .label-captcha{
+	margin-top: 10px;
+}
+.form-efl .wpcf7-captchac{
+	margin: 0 0 5px;
 }
 .lightbox-mask{
 	position: fixed;
