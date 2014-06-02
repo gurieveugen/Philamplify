@@ -190,24 +190,20 @@ class SocialFeed{
 		$assesments = $disqus->posts->list(array(
 			'forum' => 'philamplify',
 			'limit' => $count));		
-
+		
 		if($assesments)
 		{
 			foreach ($assesments as $value) 
 			{
 				$hash = sprintf('#comment-%s', $value->id);
                 $assesments_link = '#';
-                if(!empty($value->thread)){
-                    $threadQuery = new WP_Query(array(
-                        'meta_key' => 'dsq_thread_id',
-                        'meta_value' => $value->thread
-                    ));
-                    if($threadQuery->have_posts()):
-                        while($threadQuery->have_posts()):$threadQuery->the_post();
-                            $assesments_link = get_permalink();
-                        endwhile;
-                    endif;
-                    wp_reset_postdata();
+                if(!empty($value->thread))
+                {
+                	$thread = $disqus->threads->details(array('thread' => $value->thread));
+                	if($thread)
+                	{
+                		$assesments_link = $thread->link;
+                	}                	
                 }
 				if($first)
 				{
