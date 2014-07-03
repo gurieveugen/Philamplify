@@ -38,15 +38,7 @@
 						)); ?>						
 						<div class="form-logo-row cf">
 							<a href="<?php echo $ncrp_url; ?>" class="logo"><img src="<?php echo TDU; ?>/images/logo-ncrp.png" alt=""></a>
-							
-							<form action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="form-subscribe">								
-								<input type=hidden name="oid" value="00D700000008Fiw">
-								<input type=hidden name="retURL" value="http://philamplify.beekeeperdev.com/thank-subscribe/">
-								<label for="email">Subscribe to NCRP Newsletter</label><input  id="email" maxlength="80" name="email" size="20" placeholder="EMAIL ADDRESS" type="text" />
-
-								<input type="submit" name="submit">
-							</form>
-							<!-- <form action="#" class="form-subscribe form-subscribe-ajax">
+							<form action="#" class="form-subscribe form-subscribe-ajax">
 								<label>Subscribe to NCRP Newsletter</label>
 								<div class="cf">
 									<input type="email" placeholder="EMAIL ADDRESS" name="email">
@@ -54,7 +46,7 @@
 									<?php wp_nonce_field('subscribe-nonce', 'security'); ?>
 									<input type="submit" value="SUBMIT">									
 								</div>
-							</form> -->
+							</form>
 						</div>
 					</div>
 				</div>
