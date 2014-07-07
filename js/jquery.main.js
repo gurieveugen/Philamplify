@@ -77,7 +77,9 @@ var msnry              = null;
 		// =========================================================
 		// Subscribe AJAX
 		// =========================================================
-		$('.form-subscribe-ajax').submit(function(e){			
+		$('.form-subscribe-ajax').submit(function(e){	
+			var serialize = $(this).serialize();
+			var email     = $(this).find("input[name='email']");
 			jQuery.ajax({
     			type: "POST",
     			url: default_settings.ajaxurl + '?action=subscribe',
@@ -86,9 +88,12 @@ var msnry              = null;
     			success: function(data){  
     				if(data.add_subscriber)  				
     				{
-    					window.location.href = default_settings.redirecturl + '/subscribe-ncrp-newsletter/';
+    					window.location.href = default_settings.redirecturl + '/subscribe-ncrp-newsletter/?email=' + email.val();
     				}
-    				alert(data.msg);
+    				else
+    				{
+    					alert(data.msg);	
+    				}
     			}
     		});
 			e.preventDefault();
@@ -369,7 +374,13 @@ var msnry              = null;
 		{			
 			loadDisqus($('.comments-section'), $('.comments-section').data('id'), $('.comments-section').data('url'));	
 		}
-		
+		// =========================================================
+		// SALESFORCE FORM DEFAULTS
+		// =========================================================
+		if(typeof(salesforce) != 'undefined')
+		{
+			$("#main input[name='email']").val(salesforce.email);
+		}
 
 	});
 	

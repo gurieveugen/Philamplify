@@ -5,7 +5,7 @@ class AssessmentsOptionsPage{
     //  / ___/ __ \/ __ \/ ___/ __/ __ `/ __ \/ __/ ___/
     // / /__/ /_/ / / / (__  ) /_/ /_/ / / / / /_(__  ) 
     // \___/\____/_/ /_/____/\__/\__,_/_/ /_/\__/____/  
-    const PARENT_PAGE = 'edit.php?post_type=assessment';
+    const PARENT_PAGE = 'edit.php?post_type=story';
 
     //                __  _                 
     //   ____  ____  / /_(_)___  ____  _____
@@ -31,7 +31,7 @@ class AssessmentsOptionsPage{
      */
     public function add_plugin_page()
     {
-        add_submenu_page(self::PARENT_PAGE, __('Assessments options'), __('Assessments options'), 'administrator', __FILE__, array($this, 'create_admin_page'), ''); 
+        add_submenu_page(self::PARENT_PAGE, __('Story Categories'), __('Story Categories'), 'administrator', __FILE__, array($this, 'create_admin_page'), ''); 
     }
 
     /**
