@@ -53,6 +53,18 @@
 			</div>
 		</footer>
 	</div>
+	<div id="inline" style="display:none;width:500px;">
+		<h2>Lorem ipsum dolor sit amet</h2>
+
+		<p>
+			<a id="add_paragraph" title="Add" class="button button-blue" href="javascript:;">Add new paragraph</a>
+			&nbsp;
+			<a href="javascript:$.fancybox.close();">Close</a>
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+		</p>
+	</div>
 	<?php wp_footer(); ?>
 </body>
 </html>

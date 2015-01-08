@@ -381,7 +381,15 @@ var msnry              = null;
 		{
 			$("#main input[name='email']").val(salesforce.email);
 		}
-
+		// ==============================================================
+		// Email fancybox
+		// ==============================================================
+		if(typeof($.cookie('first_visit')) != 'undefined')
+		{
+			$.fancybox.helpers.overlay.open({parent: $('body')});
+			$.fancybox(jQuery('#inline'));
+			$.cookie('first_visit', 'true');
+		}
 	});
 	
 })(jQuery);

@@ -217,7 +217,8 @@ function scripts_method()
     wp_enqueue_script('jquery-migrate', 'http://code.jquery.com/jquery-migrate-1.2.1.js', array('jquery'));
 	wp_enqueue_script('masonry', TDU.'/js/masonry.min.js', array('jquery'));
 	wp_enqueue_script('masonry-filter', TDU.'/js/multipleFilterMasonry.js', array('jquery'));
-	wp_enqueue_script('jmain', TDU.'/js/jquery.main.js', array('jquery'));
+	wp_enqueue_script('cookie', TDU.'/js/jquery.cookie.js', array('jquery'));
+	wp_enqueue_script('jmain', TDU.'/js/jquery.main.js', array('jquery', 'cookie'));
 	wp_enqueue_script('mousewheel', TDU.'/fancybox/lib/jquery.mousewheel-3.0.6.pack.js', array('jquery'));
 	wp_enqueue_script('fancybox', TDU.'/fancybox/source/jquery.fancybox.pack.js', array('jquery'));
 	wp_enqueue_script('fancybox-buttons', TDU.'/fancybox/source/helpers/jquery.fancybox-buttons.js', array('jquery'));
