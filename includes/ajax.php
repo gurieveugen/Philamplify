@@ -28,6 +28,14 @@ class AJAX{
 		}		
 	}
 
+	public function SomeTest()
+	{
+		$disqus = new DisqusAPI('mf8qrBtFMVSLRiw2AZu8keys4lYnhywyJEKmY1mZT8UGTAK0qu5Kl3AcrUJFBqhv');
+		var_dump($disqus->posts->list(array(
+			'forum' => 'philamplify',
+			'limit' => 5)));
+	}
+
 	/**
 	 * Subscribe new user
 	 */

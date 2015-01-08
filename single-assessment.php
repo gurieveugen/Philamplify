@@ -3,7 +3,10 @@
 	the_post();
 
 	$meta            = get_post_meta(get_the_id(), 'meta', true);	
-	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);   
+	$recommendations = get_post_meta(get_the_id(), 'recommendations', true);
+    echo "<!--<pre>";
+    var_dump($recommendations);
+    echo "</pre>-->";	
 	$size            = getFileSize($meta['pdf_url']);
 	$options 		 = $GLOBALS['gcoptions']->getAll();
 ?>

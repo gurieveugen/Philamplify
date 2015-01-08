@@ -59,7 +59,6 @@ class SubscribersPage{
                 </tbody>
             </table>
             <button class="button" type="button" id="reset-subscribers"><?php _e('Delete all'); ?></button>
-            <a class="button" href="<?php echo get_bloginfo('template_url');?>/includes/subscribers.php"><?php _e('Export list'); ?></a>           
         </div>
         <?php
     }

@@ -266,8 +266,11 @@ body{
 .filters-area .select-state{
 	width: 130px;
 }
-.filters-area .select-industry{
+/* .filters-area .select-industry{
 	width: 252px;
+} */
+.filters-area .select-industry .jq-selectbox__dropdown{
+	font-size: 15px;
 }
 .stories-list{
 	margin: 0;
