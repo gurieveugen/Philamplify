@@ -61,7 +61,7 @@
 				<?php 
 				$assessments_options = $GLOBALS['assessments_options']->getAll();
 				$industry            = $assessments_options['industry'];
-				var_dump($industry);
+				
 				if($industry)
 				{
 					foreach ($industry as $key => &$value) 

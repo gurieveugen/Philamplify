@@ -66,7 +66,7 @@ $email = isset($_GET['email']) ? $_GET['email'] : '';
 
 		<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
 
-		<input type="submit" name="submit" class="btn-dark-green" style="margin: 0">
+		<input type="submit" name="submit" value="Submit" class="btn-dark-green" style="margin: 10px 0 0">
 
 		</form>
 		
