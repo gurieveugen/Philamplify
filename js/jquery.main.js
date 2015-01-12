@@ -384,14 +384,18 @@ var msnry              = null;
 		// ==============================================================
 		// Email fancybox
 		// ==============================================================
-		$.fancybox.helpers.overlay.open({parent: $('body')});
-		$.fancybox.open([jQuery('#lightbox-first-visit')], {
-			padding:0, 
-			wrapCSS: 'lightbox-custom', 
-			maxWidth:600,
-			overlayOpacity: 1
-		});
-		// $.cookie('first_visit', 'true');
+		if(typeof($.cookie('first_visit')) == 'undefined')
+		{
+			$.fancybox.helpers.overlay.open({parent: $('body')});
+			$.fancybox.open([jQuery('#lightbox-first-visit')], {
+				padding:0, 
+				wrapCSS: 'lightbox-custom', 
+				maxWidth:600,
+				overlayOpacity: 1
+			});
+
+			$.cookie('first_visit', 'true');
+		}
 		// 
 		// jQuery('#lightbox-first-visit').fancybox({ 
 		// 	padding:0, 

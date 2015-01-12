@@ -12,6 +12,13 @@
 	$socials['rss']      = (isset($options['rss_url']) && strlen($options['rss_url'])) ? $options['rss_url'] : '';
 	$donate_url          = (isset($options['donate_url']) && strlen($options['donate_url'])) ? htmlspecialchars($options['donate_url'], ENT_QUOTES) : '';
 	$ncrp_url            = (isset($options['ncrp_url']) && strlen($options['ncrp_url'])) ? htmlspecialchars($options['ncrp_url'], ENT_QUOTES) : '';
+
+	$share = array(
+		'facebook' => sprintf('https://www.facebook.com/sharer/sharer.php?u=%s', get_bloginfo('url')),
+		'twitter' => sprintf('https://twitter.com/home?status=%s', get_bloginfo('url')),
+		'google_plus' => sprintf('https://plus.google.com/share?url=%s', get_bloginfo('url')),
+		'linkedin' => sprintf('https://www.linkedin.com/shareArticle?mini=true&url=%s&title=Philamplifu&summary=&source=', get_bloginfo('url')),
+	);
 ?>
 		<footer id="footer">
 			<div class="holder">
@@ -59,17 +66,17 @@
 			<p>We need your help to break the isolation bubble around grantmakers. Join the movement!</p>
 			<span class="line"></span>
 			<h4 class="title-green">Sign up to receive the National Committee for Responsive Philanthropy’s monthly e-newsletter now!</h4>
-			<form action="#" class="form-subscr-lightbox cf">
-				<input type="email" placeholder="Email Address">
+			<form action="/subscribe-ncrp-newsletter" class="form-subscr-lightbox cf" method="GET">
+				<input type="email" name="email" placeholder="Email Address">
 				<input type="submit" value="Subscribe">
 			</form>
 			<span class="line"></span>
 			<h4 class="title-green">Share Philamplify with your colleagues!</h4>
 			<ul class="social-links">
-				<li><a href="#" class="twitter">twitter</a></li>
-				<li><a href="#" class="facebook">facebook</a></li>
-				<li><a href="#" class="google">google</a></li>
-				<li><a href="#" class="in">in</a></li>
+				<li><a href="<?php echo $share['twitter']; ?>" class="twitter">twitter</a></li>
+				<li><a href="<?php echo $share['facebook']; ?>" class="facebook">facebook</a></li>
+				<li><a href="<?php echo $share['google_plus']; ?>" class="google">google</a></li>
+				<li><a href="<?php echo $share['linkedin']; ?>" class="in">in</a></li>
 			</ul>
 		</div>
 	</div>
