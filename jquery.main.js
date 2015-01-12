@@ -388,8 +388,7 @@ var msnry              = null;
 		$.fancybox.open([jQuery('#lightbox-first-visit')], {
 			padding:0, 
 			wrapCSS: 'lightbox-custom', 
-			maxWidth:600,
-			overlayOpacity: 1
+			maxWidth:600 
 		});
 		// $.cookie('first_visit', 'true');
 		// 

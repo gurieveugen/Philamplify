@@ -1,26 +1,16 @@
-*[class*="pc-visible"],
-*[class*="tablet-visible"],
-*[class*="mobile-hide"]{
+*[class*="pc-visible"], *[class*="tablet-visible"], *[class*="mobile-hide"]{
 	display: none !important;
 }
-.pc-hide,
-.tablet-hide,
-.mobile-visible{
+.pc-hide, .tablet-hide, .mobile-visible{
 	display: block !important;
 }
-.pc-hide-dt,
-.tablet-hide-dt,
-.mobile-visible-dt{
+.pc-hide-dt, .tablet-hide-dt, .mobile-visible-dt{
 	display: table !important;
 }
-.pc-hide-dtc,
-.tablet-hide-dtc,
-.mobile-visible-dtc{
+.pc-hide-dtc, .tablet-hide-dtc, .mobile-visible-dtc{
 	display: table-cell !important;
 }
-.pc-hide-dib,
-.tablet-hide-dib,
-.mobile-visible-dib{
+.pc-hide-dib, .tablet-hide-dib, .mobile-visible-dib{
 	display: inline-block !important;
 }
 body{
@@ -71,6 +61,7 @@ body{
 .nav-tablet a{
 	padding: 12px 10px 12px 20px;
 }
+
 /* footer */
 #footer{
 	font-size: 14px;
@@ -86,8 +77,7 @@ body{
 #footer .column:first-child{
 	margin: 0;
 }
-#footer .column.column-2,
-#footer .column.column-3{
+#footer .column.column-2, #footer .column.column-3{
 	width: 195px;
 	float: none;
 	margin-left: auto;
@@ -135,8 +125,7 @@ body{
 #footer .form-subscribe label{
 	margin: 0 0 12px;
 }
-.form-subscribe input[type="email"],
-.form-subscribe input[type="text"]{
+.form-subscribe input[type="email"], .form-subscribe input[type="text"]{
 	width: 204px;
 	height: 36px;
 	font-size: 13px;
@@ -146,18 +135,17 @@ body{
 	width: 76px;
 	height: 36px;
 }
+
 /* end footer */
 #content{
 	padding: 10px 14px;
 	line-height: 27px;
 }
-.main-content ul,
-.main-content ol{
+.main-content ul, .main-content ol{
 	line-height: 23px;
 	margin-bottom: 20px;
 }
-.content-columns .col-2,
-.content-columns .col-4{
+.content-columns .col-2, .content-columns .col-4{
 	margin: 0;
 	width: auto;
 	float: none;
@@ -177,8 +165,8 @@ body{
 	padding: 50px 0 20px;
 }
 .aside-widget{
-	-webkit-border-radius:0;
-	border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 }
 .aside-widget.w-col{
 	width: auto;
@@ -188,15 +176,16 @@ body{
 .aside-widget .list{
 	margin: 0 3%;
 }
+
 /* yop-poll-widget */
 .yop-poll-widget .yop-poll-container{
 	padding: 20px 9% 35px !important;
 }
+
 /* yop-poll-widget end */
 .aside-widget .form-poll{
 	padding: 20px 9% 35px;
 }
-
 .posts-holder article .image{
 	margin: 8px 17px 0 0;
 }
@@ -218,8 +207,7 @@ body{
 	padding: 0 5px;
 	text-align: center;
 }
-.main-stories,
-.main-stories.center-wrap{
+.main-stories, .main-stories.center-wrap{
 	padding: 20px 0;
 }
 .btn-submit-stories{
@@ -266,9 +254,11 @@ body{
 .filters-area .select-state{
 	width: 130px;
 }
+
 /* .filters-area .select-industry{
 	width: 252px;
-} */
+}
+*/
 .filters-area .select-industry .jq-selectbox__dropdown{
 	font-size: 15px;
 }
@@ -282,8 +272,8 @@ body{
 	padding: 20px 9px 0;
 	margin: 0;
 	border-bottom: 3px solid #cfcfcf;
-	-webkit-box-shadow:none;
-	box-shadow:none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 .box-story .text-media{
 	font-size: 13px;
@@ -299,7 +289,6 @@ body{
 .box-story .text-media p{
 	margin: 0 0 6px;
 }
-
 .content-box{
 	padding: 10px 12px;
 	line-height: 21px;
@@ -315,18 +304,11 @@ body{
 	width: 35%;
 	margin: 0 3% 0 0;
 }
-
-.form-story .column,
-.form-story .column.last,
-.form-story .width-125,
-.form-story .width-140,
-.form-story .width-175,
-.form-story .width-238{
+.form-story .column, .form-story .column.last, .form-story .width-125, .form-story .width-140, .form-story .width-175, .form-story .width-238{
 	width: 100% !important;
 	margin: 0 0 20px;
 }
-.form-story input[type="text"],
-.form-story input[type="email"]{
+.form-story input[type="text"], .form-story input[type="email"]{
 	padding: 7px 10px;
 	font-size: 17px;
 }
@@ -370,7 +352,6 @@ body{
 	padding: 0 0 24px;
 	float: none;
 }
-
 .data-section h1{
 	margin-left: 12px;
 	margin-right: 12px;
@@ -390,8 +371,8 @@ body{
 .data-section .quotes-holder .box-quote{
 	padding: 13px 23px;
 	margin: 0 0 43px;
-	-webkit-border-radius:0;
-	border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 }
 .data-section .quotes-holder .box-quote:before{
 	right: 33px;
@@ -413,8 +394,8 @@ body{
 }
 .data-box{
 	margin: 0 -14px 25px;
-	-webkit-border-radius:0;
-	border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 }
 .data-box .btn-box .arrow{
 	margin: 0 0 0 5px;
@@ -423,8 +404,8 @@ body{
 	margin: 0 -14px 20px;
 	border: none;
 	border-top: 4px solid #179bd7;
-	-webkit-border-radius:0;
-	border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 }
 .r-box header{
 	padding: 8px 12px;
@@ -481,8 +462,8 @@ body{
 .section-media .box-quote{
 	font-size: 14px;
 	padding: 10px 18px;
-	-webkit-border-radius:7px;
-	border-radius:7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
 }
 .section-media .box-quote cite{
 	float: left;
@@ -503,8 +484,8 @@ body{
 	float: none;
 	display: block;
 	padding: 0 10px;
-	-webkit-border-radius:0;
-	border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 	margin: 0 0 17px;
 }
 .slider-area .title-section{
@@ -515,8 +496,7 @@ body{
 	padding: 0;
 	text-align: center;
 }
-.slider-area .link-prev,
-.slider-area .link-next{
+.slider-area .link-prev, .slider-area .link-next{
 	width: 13px;
 	height: 22px;
 	background-position: -64px 0;
@@ -531,8 +511,7 @@ body{
 	height: 16px;
 	background-position: -19px -14px;
 }
-.slider-area .switcher li a:hover,
-.slider-area .switcher li.activeSlide a{
+.slider-area .switcher li a:hover, .slider-area .switcher li.activeSlide a{
 	background-position: 0 -14px;
 }
 .slider-area .slides{
@@ -583,8 +562,8 @@ body{
 .section-socials .title-section{
 	margin: 0;
 	display: block;
-	-webkit-border-radius:0;
-	border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 }
 .socials-filter-row{
 	position: static;
@@ -596,8 +575,8 @@ body{
 .box-social{
 	margin: 0;
 	padding: 13px 16px;
-	-webkit-border-radius:0;
-	border-radius:0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
@@ -613,8 +592,8 @@ body{
 }
 .section-columns .title-section{
 	margin: 0 0 12px;
-	-webkit-border-radius:0 0 7px 7px;
-	border-radius:0 0 7px 7px;
+	-webkit-border-radius: 0 0 7px 7px;
+	border-radius: 0 0 7px 7px;
 }
 .section-columns .columns{
 	margin: 0 20px 0 26px;
@@ -657,33 +636,24 @@ body{
 .form-efl .label-left{
 	margin: 7px 0;
 }
-
-.form-efl input[type="text"],
-.form-efl input[type="email"],
-.form-efl textarea{
+.form-efl input[type="text"], .form-efl input[type="email"], .form-efl textarea{
 	padding: 6px 4px;
 	font-size: 17px;
 }
 .form-efl .t-col{
 	float: none;
 }
-.form-efl .t-col.width-140,
-.form-efl .width-217{
+.form-efl .t-col.width-140, .form-efl .width-217{
 	width: 100% !important;
 }
-.form-efl .firstname,
-.form-efl .lasttname{
+.form-efl .firstname, .form-efl .lasttname{
 	float: none;
 	margin: 0 0 20px;
 }
-.form-efl input[type="text"],
-.form-efl input[type="email"],
-.form-efl .t-col{
+.form-efl input[type="text"], .form-efl input[type="email"], .form-efl .t-col{
 	margin: 0 0 20px !important;
 }
-.form-efl input[type="text"]:last-child,
-.form-efl input[type="email"]:last-child,
-.form-efl .t-col:last-child{
+.form-efl input[type="text"]:last-child, .form-efl input[type="email"]:last-child, .form-efl .t-col:last-child{
 	margin: 0 !important;
 }
 .form-efl label.width-70{
@@ -692,10 +662,49 @@ body{
 .form-efl .width-282{
 	width: 100% !important;
 }
-.form-efl .row-radio,
-.form-efl span.wpcf7-list-item{
+.form-efl .row-radio, .form-efl span.wpcf7-list-item{
 	padding: 0 0 11px 7%;
 }
 .lb1 h2{
 	font-size: 20px;
+}
+.lightbox-custom .content{
+	padding: 24px 15px 40px;
+	font-size: 13px;
+}
+.lightbox-custom h2{
+	font-size: 18px;
+	margin: 0 0 5px;
+}
+.lightbox-custom p{
+	margin: 0 0 10px;
+}
+.lightbox-custom .line{
+	margin: 15px 0;
+}
+.lightbox-custom .title-green{
+	font-size: 13px;
+	margin: 0 0 10px;
+}
+.form-subscr-lightbox input[type="text"], .form-subscr-lightbox input[type="email"]{
+	width: 100%;
+}
+.social-links li{
+	margin-left: 20px;
+}
+.social-links a{
+	width: 25px;
+	height: 25px;
+}
+.social-links .twitter{
+	background-position: 0 -33px;
+}
+.social-links .facebook{
+	background-position: -27px -33px;
+}
+.social-links .google{
+	background-position: -54px -33px;
+}
+.social-links .in{
+	background-position: -81px -33px;
 }

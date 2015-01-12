@@ -53,17 +53,25 @@
 			</div>
 		</footer>
 	</div>
-	<div id="inline" style="display:none;width:500px;">
-		<h2>Lorem ipsum dolor sit amet</h2>
-
-		<p>
-			<a id="add_paragraph" title="Add" class="button button-blue" href="javascript:;">Add new paragraph</a>
-			&nbsp;
-			<a href="javascript:$.fancybox.close();">Close</a>
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-		</p>
+	<div id="lightbox-first-visit" style="display:none;">
+		<div class="content">
+			<h2>Thank you for visiting Philamplify!</h2>
+			<p>We need your help to break the isolation bubble around grantmakers. Join the movement!</p>
+			<span class="line"></span>
+			<h4 class="title-green">Sign up to receive the National Committee for Responsive Philanthropy’s monthly e-newsletter now!</h4>
+			<form action="#" class="form-subscr-lightbox cf">
+				<input type="email" placeholder="Email Address">
+				<input type="submit" value="Subscribe">
+			</form>
+			<span class="line"></span>
+			<h4 class="title-green">Share Philamplify with your colleagues!</h4>
+			<ul class="social-links">
+				<li><a href="#" class="twitter">twitter</a></li>
+				<li><a href="#" class="facebook">facebook</a></li>
+				<li><a href="#" class="google">google</a></li>
+				<li><a href="#" class="in">in</a></li>
+			</ul>
+		</div>
 	</div>
 	<?php wp_footer(); ?>
 </body>
