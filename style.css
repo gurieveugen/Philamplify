@@ -755,7 +755,7 @@ dl, p, h1, h2, h3, h4, h5, h6, applet, embed, object, frameset{
 	border-bottom-width: 1px;
 }
 .btn-green:visited{
-	color: #fff;
+	color: #fff;  
 }
 .btn-donate{
 	display: block;
