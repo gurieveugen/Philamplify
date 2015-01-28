@@ -47,7 +47,7 @@
 	<div class="filter-box-assessments cf">
 		<div class="center-wrap cf">
 			<h3>Filter</h3>
-			<div class="select types">
+			<div class="select types" name="types">
 				<select>
 					<option>All Foundation Types</option>
 					<option>Community Foundation</option>
@@ -58,7 +58,7 @@
 				</select>
 			</div>
 			
-			<div class="select states">
+			<div class="select states" name="states">
 				<select>
 					<option>All States</option>
 					<option>All States 1</option>
@@ -66,7 +66,7 @@
 				</select>
 			</div>
 			
-			<div class="select years">
+			<div class="select years" name="years">
 				<select>
 					<option>All Years Assessed</option>
 					<option>All Years Assessed 1</option>
@@ -74,7 +74,7 @@
 				</select>
 			</div>
 			
-			<div class="select sort">
+			<div class="select sort" name="sort">
 				<select>
 					<option>Sort A to Z</option>
 					<option>Sort A to Z 1</option>

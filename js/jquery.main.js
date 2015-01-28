@@ -17,7 +17,8 @@ var msnry              = null;
 		});
 		
 		$('.form-poll input[type="radio"], .yop-poll-widget input[type="radio"], .filters-area select, .form-story select, .select-socials-filter, .form-efl input[type="radio"]').styler();
-		
+		$('input, select').styler({ selectSearch: true });
+
 		$('.data-box .btn-box').click(function(e){
 			$(this).toggleClass('open');
 			$(this).parent().find('.content').slideToggle(200);
