@@ -1,7 +1,7 @@
 <?php
 /*
  * @package WordPress
- * Template Name: AllAssessments Page
+ * Template Name: Crowdsourcing Page Step 1
 */
 ?>
 <?php get_header(); ?>
@@ -13,36 +13,32 @@
 		</div>
 	</div>
 </header>
-	<article class="big-post-assessments cf">
-		<div class="txt">
-			<header>
-				<h3><a href="#">Featured</a></h3>
-				<h2><a href="#">Foundation Name</a></h2>
+	<div class="whoshould-post cf">
+	  <article class="center-wrap cf">
+		  <header>
+			  <h2>Lorem ipsum dolor sit amet</h2>
 			</header>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-			<footer>
-				<ul class="share-post">
-					<li class="tweet"><a href="#">tweet</a></li>
-					<li class="facebook"><a href="#">facebook</a></li>
-					<li class="google"><a href="#">google</a></li>
-					<li class="linkedin"><a href="#">linkedin</a></li>
-				</ul>
-				
-				<span class="comment-link"><a href="#">3 Comments</a></span>
-			</footer>
-		</div>
-		<figure><img src="<?php echo TDU; ?>/images/img_01.jpg" alt=" "></figure>
-		<footer class="table">
-			<ul class="share-post">
-				<li class="tweet"><a href="#">tweet</a></li>
-				<li class="facebook"><a href="#">facebook</a></li>
-				<li class="google"><a href="#">google</a></li>
-				<li class="linkedin"><a href="#">linkedin</a></li>
-			</ul>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex commodo. Mauris venenatis, lorem mal.</p>
 			
-			<span class="comment-link"><a href="#">3 Comments</a></span>
-		</footer>
-	</article>
+			<ul class="whoshould-list">
+			  <li>
+				  <figure><img src="<?php echo TDU; ?>/images/img_02.gif" alt=" "></figure>
+					<h3>Submit</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut dolore. Ut enim ad minim veniam, quis.</p>
+				</li>
+				<li>
+				  <figure><img src="<?php echo TDU; ?>/images/img_03.gif" alt=" "></figure>
+					<h3>Vote</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut dolore. Ut enim ad minim veniam, quis.</p>
+				</li>
+				<li>
+				  <figure><img src="<?php echo TDU; ?>/images/img_04.gif" alt=" "></figure>
+					<h3>Comment</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut dolore. Ut enim ad minim veniam, quis.</p>
+				</li>
+			</ul>
+		</article>
+	</div>
 	
 	<div class="filter-box-assessments cf">
 		<div class="center-wrap cf">
@@ -66,14 +62,6 @@
 				</select>
 			</div>
 			
-			<div class="select years">
-				<select>
-					<option>All Years Assessed</option>
-					<option>All Years Assessed 1</option>
-					<option>All Years Assessed 2</option>
-				</select>
-			</div>
-			
 			<div class="select sort">
 				<select>
 					<option>Sort A to Z</option>
@@ -86,47 +74,61 @@
 		
 	<div id="main" class="center-wrap assessments-page cf">		
 	  <div id="content" class="main-content cf">
-		  <article class="small-post-assessments cf">
-			  <header>
-				  <h2><a href="#">Foundation Name</a></h2>
-				</header>
+		  <article class="small-post-whoshould cf">
 				<figure><img src="<?php echo TDU; ?>/images/img-1.jpg"></figure>
 				<div class="txt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-				</div>
-				<footer>
-				  <ul class="share-post">
-					  <li class="tweet"><a href="#">tweet</a></li>
-						<li class="facebook"><a href="#">facebook</a></li>
-						<li class="google"><a href="#">google</a></li>
-						<li class="linkedin"><a href="#">linkedin</a></li>
-					</ul>
-					
-					<span class="comment-link"><a href="#">3 Comments</a></span>
-				</footer>
+				  <header>
+						<h2><a href="#">Foundation Name</a></h2>
+						<h3>Foundation type</h3>
+						<h4>Location</h4>
+					</header>
+					<a href="#" class="btn-vote">vote</a>
+					<footer>
+						<ul class="meta-box">
+							<li class="votes"><span>25</span>votes</li>
+							<li class="comments"><span>3</span>comments</li>
+						</ul>
+						
+						<div class="mob"><a href="#" class="btn-vote">vote</a></div>
+						
+						<ul class="share-post">
+							<li class="tweet"><a href="#">tweet</a></li>
+							<li class="facebook"><a href="#">facebook</a></li>
+							<li class="google"><a href="#">google</a></li>
+							<li class="linkedin"><a href="#">linkedin</a></li>
+						</ul>
+					</footer>
+				</div>				
 			</article>
 			
-			<article class="small-post-assessments cf">
-			  <header>
-				  <h2><a href="#">Foundation Name</a></h2>
-				</header>
+			<article class="small-post-whoshould cf">
 				<figure><img src="<?php echo TDU; ?>/images/img-1.jpg"></figure>
 				<div class="txt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-				</div>
-				<footer>
-				  <ul class="share-post">
-					  <li class="tweet"><a href="#">tweet</a></li>
-						<li class="facebook"><a href="#">facebook</a></li>
-						<li class="google"><a href="#">google</a></li>
-						<li class="linkedin"><a href="#">linkedin</a></li>
-					</ul>
-					
-					<span class="comment-link"><a href="#">3 Comments</a></span>
-				</footer>
+				  <header>
+						<h2><a href="#">Foundation Name</a></h2>
+						<h3>Foundation type</h3>
+						<h4>Location</h4>
+					</header>
+					<a href="#" class="btn-vote">vote</a>
+					<footer>
+						<ul class="meta-box">
+							<li class="votes"><span>25</span>votes</li>
+							<li class="comments"><span>3</span>comments</li>
+						</ul>
+						
+						<div class="mob"><a href="#" class="btn-vote">vote</a></div>
+						
+						<ul class="share-post">
+							<li class="tweet"><a href="#">tweet</a></li>
+							<li class="facebook"><a href="#">facebook</a></li>
+							<li class="google"><a href="#">google</a></li>
+							<li class="linkedin"><a href="#">linkedin</a></li>
+						</ul>
+					</footer>
+				</div>				
 			</article>
 			
-			<div class="btn-more-foundations"><a href="#">more foundations</a></div>
+			<div class="btn-more-foundations blue"><a href="#">more foundations</a></div>
 		</div>
 		
 		<div id="sidebar">

@@ -1,7 +1,7 @@
 <?php
 /*
  * @package WordPress
- * Template Name: AllAssessments Page
+ * Template Name: Crowdsourcing Page Step 2
 */
 ?>
 <?php get_header(); ?>
@@ -13,120 +13,47 @@
 		</div>
 	</div>
 </header>
-	<article class="big-post-assessments cf">
-		<div class="txt">
-			<header>
-				<h3><a href="#">Featured</a></h3>
-				<h2><a href="#">Foundation Name</a></h2>
-			</header>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-			<footer>
-				<ul class="share-post">
-					<li class="tweet"><a href="#">tweet</a></li>
-					<li class="facebook"><a href="#">facebook</a></li>
-					<li class="google"><a href="#">google</a></li>
-					<li class="linkedin"><a href="#">linkedin</a></li>
-				</ul>
-				
-				<span class="comment-link"><a href="#">3 Comments</a></span>
-			</footer>
-		</div>
-		<figure><img src="<?php echo TDU; ?>/images/img_01.jpg" alt=" "></figure>
-		<footer class="table">
-			<ul class="share-post">
-				<li class="tweet"><a href="#">tweet</a></li>
-				<li class="facebook"><a href="#">facebook</a></li>
-				<li class="google"><a href="#">google</a></li>
-				<li class="linkedin"><a href="#">linkedin</a></li>
-			</ul>
-			
-			<span class="comment-link"><a href="#">3 Comments</a></span>
-		</footer>
-	</article>
-	
-	<div class="filter-box-assessments cf">
-		<div class="center-wrap cf">
-			<h3>Filter</h3>
-			<div class="select types">
-				<select>
-					<option>All Foundation Types</option>
-					<option>Community Foundation</option>
-					<option>Corporate Foundation</option>
-					<option>Family Foundation</option>
-					<option>Independent Foundation</option>
-					<option>Grantmaking Public Charity</option>
-				</select>
-			</div>
-			
-			<div class="select states">
-				<select>
-					<option>All States</option>
-					<option>All States 1</option>
-					<option>All States 2</option>
-				</select>
-			</div>
-			
-			<div class="select years">
-				<select>
-					<option>All Years Assessed</option>
-					<option>All Years Assessed 1</option>
-					<option>All Years Assessed 2</option>
-				</select>
-			</div>
-			
-			<div class="select sort">
-				<select>
-					<option>Sort A to Z</option>
-					<option>Sort A to Z 1</option>
-					<option>Sort A to Z 2</option>
-				</select>
-			</div>
-		</div>
-	</div>
-		
-	<div id="main" class="center-wrap assessments-page cf">		
+	<div id="main" class="center-wrap foundation-form-page cf">		
 	  <div id="content" class="main-content cf">
-		  <article class="small-post-assessments cf">
-			  <header>
-				  <h2><a href="#">Foundation Name</a></h2>
-				</header>
-				<figure><img src="<?php echo TDU; ?>/images/img-1.jpg"></figure>
-				<div class="txt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
+		  <div class="foundation-form cf">
+			  <div class="entry">
+			    <h2>Submit a Foundation</h2>
+				  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra vehicula auctor. Suspendisse eu leo odio. Donec dui neque, luctus nec congue non, tempor sit amet urna. Sed ligula est, faucibus a nibh eget, viverra commodo lacus. Donec non ipsum a quam rhoncus iaculis eu vitae est.</p>
 				</div>
-				<footer>
-				  <ul class="share-post">
-					  <li class="tweet"><a href="#">tweet</a></li>
-						<li class="facebook"><a href="#">facebook</a></li>
-						<li class="google"><a href="#">google</a></li>
-						<li class="linkedin"><a href="#">linkedin</a></li>
-					</ul>
-					
-					<span class="comment-link"><a href="#">3 Comments</a></span>
-				</footer>
-			</article>
-			
-			<article class="small-post-assessments cf">
-			  <header>
-				  <h2><a href="#">Foundation Name</a></h2>
-				</header>
-				<figure><img src="<?php echo TDU; ?>/images/img-1.jpg"></figure>
-				<div class="txt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
+				<h3 class="tit-foundation">Tell us about the foundation</h3>
+				<p class="two-columns cf">
+				  <label class="left"><input type="text" placeholder="Foundation Name"></label>
+					<label class="right"><input type="text" placeholder="Foundation Website (Optional)"></label>
+				</p>
+				
+				<p class="two-columns cf">
+				  <label class="left">
+					  <select>
+						  <option>Foundation Type (Optional)</option>
+							<option>Foundation Type (Optional)</option>
+							<option>Foundation Type (Optional)</option>
+						</select>
+					</label>
+					<label class="right"><input type="text" placeholder="Location -- City, State"></label>
+				</p>
+				
+				<p>
+				  <label><textarea placeholder="Why do you think this foundation should be Philamplified?"></textarea></label>
+				</p>
+				
+				<h3 class="tit-yourself">Tell us about yourself</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+				<p class="three-columns cf">
+				  <label class="left"><input type="text" placeholder="First Name (Optional)"></label>
+					<label class="center"><input type="text" placeholder="Last Name (Optional)"></label>
+					<label class="right"><input type="text" placeholder="Email Address"></label>
+				</p>
+				<p><input type="checkbox">I would like my submission to be anonymous. I'm posting as a guest.</p>
+				<div class="submit">
+				  <label><input type="checkbox">I agree to <a href="#">Terms of Use</a> and <a href="#">Privace Policy</a></label>
+				  <input type="submit" value="submit">					
 				</div>
-				<footer>
-				  <ul class="share-post">
-					  <li class="tweet"><a href="#">tweet</a></li>
-						<li class="facebook"><a href="#">facebook</a></li>
-						<li class="google"><a href="#">google</a></li>
-						<li class="linkedin"><a href="#">linkedin</a></li>
-					</ul>
-					
-					<span class="comment-link"><a href="#">3 Comments</a></span>
-				</footer>
-			</article>
-			
-			<div class="btn-more-foundations"><a href="#">more foundations</a></div>
+			</div>
 		</div>
 		
 		<div id="sidebar">

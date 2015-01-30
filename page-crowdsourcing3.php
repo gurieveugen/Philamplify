@@ -1,7 +1,7 @@
 <?php
 /*
  * @package WordPress
- * Template Name: AllAssessments Page
+ * Template Name: Crowdsourcing Page Step 3
 */
 ?>
 <?php get_header(); ?>
@@ -13,124 +13,58 @@
 		</div>
 	</div>
 </header>
-	<article class="big-post-assessments cf">
-		<div class="txt">
-			<header>
-				<h3><a href="#">Featured</a></h3>
-				<h2><a href="#">Foundation Name</a></h2>
-			</header>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie egestas. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-			<footer>
-				<ul class="share-post">
-					<li class="tweet"><a href="#">tweet</a></li>
-					<li class="facebook"><a href="#">facebook</a></li>
-					<li class="google"><a href="#">google</a></li>
-					<li class="linkedin"><a href="#">linkedin</a></li>
-				</ul>
-				
-				<span class="comment-link"><a href="#">3 Comments</a></span>
-			</footer>
-		</div>
-		<figure><img src="<?php echo TDU; ?>/images/img_01.jpg" alt=" "></figure>
-		<footer class="table">
-			<ul class="share-post">
-				<li class="tweet"><a href="#">tweet</a></li>
-				<li class="facebook"><a href="#">facebook</a></li>
-				<li class="google"><a href="#">google</a></li>
-				<li class="linkedin"><a href="#">linkedin</a></li>
-			</ul>
-			
-			<span class="comment-link"><a href="#">3 Comments</a></span>
-		</footer>
-	</article>
-	
-	<div class="filter-box-assessments cf">
-		<div class="center-wrap cf">
-			<h3>Filter</h3>
-			<div class="select types">
-				<select>
-					<option>All Foundation Types</option>
-					<option>Community Foundation</option>
-					<option>Corporate Foundation</option>
-					<option>Family Foundation</option>
-					<option>Independent Foundation</option>
-					<option>Grantmaking Public Charity</option>
-				</select>
-			</div>
-			
-			<div class="select states">
-				<select>
-					<option>All States</option>
-					<option>All States 1</option>
-					<option>All States 2</option>
-				</select>
-			</div>
-			
-			<div class="select years">
-				<select>
-					<option>All Years Assessed</option>
-					<option>All Years Assessed 1</option>
-					<option>All Years Assessed 2</option>
-				</select>
-			</div>
-			
-			<div class="select sort">
-				<select>
-					<option>Sort A to Z</option>
-					<option>Sort A to Z 1</option>
-					<option>Sort A to Z 2</option>
-				</select>
-			</div>
-		</div>
+	<div class="votes-widget cf">	
+		<ul class="meta-box cf">
+			<li class="votes"><span>25</span>votes</li>
+			<li class="comments"><span>3</span>comments</li>
+		</ul>
+		<a href="#" class="btn-vote">vote for <br>this foundation <span>to be philamplified</span></a>
 	</div>
 		
-	<div id="main" class="center-wrap assessments-page cf">		
+	<div id="main" class="center-wrap foundation-form-page cf">		
 	  <div id="content" class="main-content cf">
-		  <article class="small-post-assessments cf">
-			  <header>
-				  <h2><a href="#">Foundation Name</a></h2>
-				</header>
-				<figure><img src="<?php echo TDU; ?>/images/img-1.jpg"></figure>
-				<div class="txt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-				</div>
+
+		  <article class="foundation-post cf">
+			  <figure><img src="<?php echo TDU; ?>/images/img-1.jpg" alt=" "></figure>
+				<h2>Why should this foundation be Philamplified?</h2>
+				<blockquote>
+				  <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis faucibus elit molestie. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat."  <cite>-- <a href="#">Quote Source</a></cite></p>
+				</blockquote>
+				<h2>Foundation Type</h2>
+				<p>Foundation type</p>
+				<h2>Location</h2>
+				<p>City, State</p>
+				<h2>Overview/Mission Statement</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 				<footer>
-				  <ul class="share-post">
-					  <li class="tweet"><a href="#">tweet</a></li>
-						<li class="facebook"><a href="#">facebook</a></li>
-						<li class="google"><a href="#">google</a></li>
-						<li class="linkedin"><a href="#">linkedin</a></li>
-					</ul>
-					
-					<span class="comment-link"><a href="#">3 Comments</a></span>
+				  <h3>Tell us what you think!</h3>
+					<p><strong>You may comment anonymously or login to register.</strong> After typing your feedback, indicate “Guest” in the name Field and your email address (just to verify that you are a real person) and check “I’d rather post as guest” and your information will not be shared.</p>
 				</footer>
 			</article>
-			
-			<article class="small-post-assessments cf">
-			  <header>
-				  <h2><a href="#">Foundation Name</a></h2>
-				</header>
-				<figure><img src="<?php echo TDU; ?>/images/img-1.jpg"></figure>
-				<div class="txt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-				</div>
-				<footer>
-				  <ul class="share-post">
-					  <li class="tweet"><a href="#">tweet</a></li>
-						<li class="facebook"><a href="#">facebook</a></li>
-						<li class="google"><a href="#">google</a></li>
-						<li class="linkedin"><a href="#">linkedin</a></li>
-					</ul>
-					
-					<span class="comment-link"><a href="#">3 Comments</a></span>
-				</footer>
-			</article>
-			
-			<div class="btn-more-foundations"><a href="#">more foundations</a></div>
 		</div>
 		
 		<div id="sidebar">
 		  <div class="holder cf">
+			  <div class="aside-widget">	
+				  <ul class="meta-box cf">
+						<li class="votes"><span>25</span>votes</li>
+						<li class="comments"><span>3</span>comments</li>
+					</ul>
+					<a href="#" class="btn-vote">vote for<br>this foundation <span>to be philamplified</span></a>
+				</div>
+				
+				<div class="aside-widget socialshare" id="socialshare-5">		
+					<div class="w-block">			
+						<h3>spread the word</h3>			
+						<ul class="social-list social-share-buttons">
+							<li><a href="#"><img alt="" src="<?php echo TDU; ?>/images/ico-twitter-1.png"></a></li>
+							<li><a href="#"><img alt="" src="<?php echo TDU; ?>/images/ico-facebook-1.png"></a></li>
+							<li><a href="#"><img alt="" src="<?php echo TDU; ?>/images/ico-google-1.png"></a></li>
+							<li><a href="#"><img alt="" src="<?php echo TDU; ?>/images/ico-in-1.png"></a></li>				
+						</ul>
+					</div>
+				</div>
+				
 			  <div class="widget-social tweet">
 					<h3>Tweets</h3>
 					<header class="cf">
