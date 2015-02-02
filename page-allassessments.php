@@ -59,26 +59,38 @@
 			</div>
 			
 			<div class="select states">
-				<select>
-					<option>All States</option>
-					<option>All States 1</option>
-					<option>All States 2</option>
+				<?php 
+				$states = array_merge(array('ALL' => 'ALL'), getStates()); 
+
+				?>
+				<select name="state" class="select-state">
+					<?php
+					foreach ($states as $key => $value) 
+					{
+						?>
+						<option value="<?php echo $key; ?>"><?php echo $key; ?></option>
+						<?php
+					}
+					?>
 				</select>
 			</div>
 			
 			<div class="select years">
 				<select>
 					<option>All Years Assessed</option>
-					<option>All Years Assessed 1</option>
-					<option>All Years Assessed 2</option>
+					<?php
+					for($years = 2010; $years <= 2015; $years++)
+					{
+						printf('<option>%s</option>', $years);
+					}
+					?>
 				</select>
 			</div>
 			
 			<div class="select sort">
 				<select>
 					<option>Sort A to Z</option>
-					<option>Sort A to Z 1</option>
-					<option>Sort A to Z 2</option>
+					<option>Sort Z to A</option>
 				</select>
 			</div>
 		</div>
@@ -86,46 +98,7 @@
 		
 	<div id="main" class="center-wrap assessments-page cf">		
 	  <div id="content" class="main-content cf">
-		  <article class="small-post-assessments cf">
-			  <header>
-				  <h2><a href="#">Foundation Name</a></h2>
-				</header>
-				<figure><img src="<?php echo TDU; ?>/images/img-1.jpg"></figure>
-				<div class="txt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-				</div>
-				<footer>
-				  <ul class="share-post">
-					  <li class="tweet"><a href="#">tweet</a></li>
-						<li class="facebook"><a href="#">facebook</a></li>
-						<li class="google"><a href="#">google</a></li>
-						<li class="linkedin"><a href="#">linkedin</a></li>
-					</ul>
-					
-					<span class="comment-link"><a href="#">3 Comments</a></span>
-				</footer>
-			</article>
-			
-			<article class="small-post-assessments cf">
-			  <header>
-				  <h2><a href="#">Foundation Name</a></h2>
-				</header>
-				<figure><img src="<?php echo TDU; ?>/images/img-1.jpg"></figure>
-				<div class="txt">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed adipiscing dolor eu tincidunt tristique. Nam aliquet turpis <strong>faucibus elit</strong> <em>molestie egestas</em>. Nulla nec dui quis mi molestie euismod at non ipsum. Quisque dolor augue, feugiat dignissim elit sed, malesuada hendrerit lacus.</p>
-				</div>
-				<footer>
-				  <ul class="share-post">
-					  <li class="tweet"><a href="#">tweet</a></li>
-						<li class="facebook"><a href="#">facebook</a></li>
-						<li class="google"><a href="#">google</a></li>
-						<li class="linkedin"><a href="#">linkedin</a></li>
-					</ul>
-					
-					<span class="comment-link"><a href="#">3 Comments</a></span>
-				</footer>
-			</article>
-			
+	  		<?php echo do_shortcode('[assessments]'); ?>
 			<div class="btn-more-foundations"><a href="#">more foundations</a></div>
 		</div>
 		

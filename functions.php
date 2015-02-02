@@ -32,6 +32,7 @@ require_once 'includes/meta_box_featured_post.php';
 require_once 'includes/social_feed_options.php';
 require_once 'includes/social_feed.php';
 require_once 'includes/disqusapi/disqusapi.php';
+require_once 'includes/assessments.php';
 // =========================================================
 // Constants
 // =========================================================
@@ -55,6 +56,12 @@ set_post_thumbnail_size( 604, 270, true );
 add_image_size('news-image', 92, 92, true);
 add_image_size('news-tablet-image', 173, 115, true);
 add_filter('wpcf7_form_class_attr', 'stylizeCSSClass');
+
+// ==============================================================
+// Classes
+// ==============================================================
+$assessments = new Assessments();
+
 // =========================================================
 // Register sidebars and menus
 // =========================================================

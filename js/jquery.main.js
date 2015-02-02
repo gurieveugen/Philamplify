@@ -275,6 +275,7 @@ var msnry              = null;
 			newsroom_url_array.push('link:' + $(this).data('url'));
 		});		
 		getAllCounts();
+		coutAllAssessmentsComments();
 		// =========================================================
 		// SELECT STATE CHANGE
 		// =========================================================
@@ -480,6 +481,34 @@ function getAllCounts()
 					if (count == 1) countText = " Comment";
 					$('li.disqus-comment[data-url="' + result.response[i].link + '"]').html(count + countText);
 				}
+			}
+		});	
+	}
+}
+
+function coutAllAssessmentsComments()
+{
+	var all_assessments_urls = [];
+	$('.small-post-assessments').each(function(){
+		var url = $(this).attr('data-url');
+		all_assessments_urls.push('link:' + url);
+			
+	});
+	if(all_assessments_urls.length > 0)
+	{
+		$.ajax({
+			type: 'POST',
+			url: default_settings.ajaxurl + '?action=disqusCounts',
+			data: { api_key: disqusPublicKey, forum : disqus_shortname, thread : all_assessments_urls },
+			dataType: 'json',
+			success: function (result) {
+				console.log(result);
+				// for (var i in result.response) {
+				// 	var countText = " comments";
+				// 	var count = result.response[i].posts;
+				// 	if (count == 1) countText = " Comment";
+				// 	$('a.link-comments[data-url="' + result.response[i].link + '"]').html(count + countText);
+				// }
 			}
 		});	
 	}
