@@ -74,6 +74,27 @@ class AJAX{
 		echo json_encode(array('empty' => true));
 	}
 
+	public function vote()
+	{
+		if(isset($_POST['post_id']))
+		{
+			$post_id = (int) $_POST['post_id'];
+			$votes   = (int) get_post_meta( $post_id, 'votes', true ) + 1;
+			update_post_meta( $post_id, 'votes', $votes );
+			echo json_encode(
+				array(
+					'status' => 'OK'
+				)
+			);
+			die();
+		}
+		echo json_encode(
+				array(
+					'status' => 'ERROR'
+				)
+			);
+	}
+
 	/**
 	 * Get more stories
 	 */
@@ -179,6 +200,9 @@ class AJAX{
 	{	
 		$url = 'https://disqus.com/api/3.0/threads/set.json?'.http_build_query($_POST);
 		$url = preg_replace('/%5B.*?%5D/', '[]', $url);		
+		
+		var_dump($url);
+		
 		$json_string = $this->file_get_contents_curl($url);
 		echo $json_string;
 	}

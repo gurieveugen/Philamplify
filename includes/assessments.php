@@ -41,6 +41,7 @@ class Assessments{
 
 	public function wrapAssessments($p)
 	{
+		$link = get_permalink($p->ID);
 		ob_start();
 		?>
 		<article class="small-post-assessments cf" data-url="<?php echo get_permalink($p->ID); ?>">
@@ -55,10 +56,10 @@ class Assessments{
 			</div>
 			<footer>
 				<ul class="share-post">
-					<li class="tweet"><a href="#">tweet</a></li>
-					<li class="facebook"><a href="#">facebook</a></li>
-					<li class="google"><a href="#">google</a></li>
-					<li class="linkedin"><a href="#">linkedin</a></li>
+					<li class="tweet"><a href="https://twitter.com/home?status=<?php echo $link; ?>">tweet</a></li>
+					<li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $link; ?>">facebook</a></li>
+					<li class="google"><a href="https://plus.google.com/share?url=<?php echo $link; ?>">google</a></li>
+					<li class="linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $link; ?>&title=&summary=&source=">linkedin</a></li>
 				</ul>
 
 				<span class="comment-link"><a href="#">3 Comments</a></span>

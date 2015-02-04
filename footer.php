@@ -80,6 +80,20 @@
 			</ul>
 		</div>
 	</div>
+
+	<div id="lightbox-success-vote" style="display:none;">
+		<div class="content">
+			<h2>Thank you for vote this foundation!</h2>
+			<span class="line"></span>
+			<h4 class="title-green">Share Philamplify with your colleagues!</h4>
+			<ul class="social-links">
+				<li><a href="<?php echo $share['twitter']; ?>" class="twitter">twitter</a></li>
+				<li><a href="<?php echo $share['facebook']; ?>" class="facebook">facebook</a></li>
+				<li><a href="<?php echo $share['google_plus']; ?>" class="google">google</a></li>
+				<li><a href="<?php echo $share['linkedin']; ?>" class="in">in</a></li>
+			</ul>
+		</div>
+	</div>
 	<?php wp_footer(); ?>
 </body>
 </html>

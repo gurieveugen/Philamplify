@@ -23,16 +23,23 @@ require_once 'includes/post_type_slider.php';
 require_once 'includes/post_type_mainslider.php';
 require_once 'includes/post_type_stories.php';
 require_once 'includes/post_type_assessment.php';
+require_once 'includes/post_type_foundation.php';
 require_once 'includes/widget_news_feed.php';
+require_once 'includes/widget_tweet_feed.php';
+require_once 'includes/widget_facebook_feed.php';
 require_once 'includes/widget_assessment_feed.php';
 require_once 'includes/widget_text.php';
 require_once 'includes/widget_subscribe.php';
 require_once 'includes/widget_social_share.php';
+require_once 'includes/widget_votes_box.php';
 require_once 'includes/meta_box_featured_post.php';
 require_once 'includes/social_feed_options.php';
 require_once 'includes/social_feed.php';
 require_once 'includes/disqusapi/disqusapi.php';
 require_once 'includes/assessments.php';
+require_once 'includes/assessments_featured.php';
+require_once 'includes/share_foundation.php';
+require_once 'includes/foundations.php';
 // =========================================================
 // Constants
 // =========================================================
@@ -56,37 +63,69 @@ set_post_thumbnail_size( 604, 270, true );
 add_image_size('news-image', 92, 92, true);
 add_image_size('news-tablet-image', 173, 115, true);
 add_filter('wpcf7_form_class_attr', 'stylizeCSSClass');
+add_action('init', 'shareAssessment');
 
 // ==============================================================
 // Classes
 // ==============================================================
-$assessments = new Assessments();
+
+$assessments          = new Assessments();
+$assessments_featured = new AssessmentsFeatured();
+$foundations          = new Foundations();
 
 // =========================================================
 // Register sidebars and menus
 // =========================================================
-register_sidebar(array(
-	'id'            => 'right-sidebar',
-	'name'          => 'Right Sidebar',
-	'before_widget' => '<div class="aside-widget %2$s" id="%1$s">',
-	'after_widget'  => '</div>',
-	'before_title'  => '<h3>',
-	'after_title'   => '</h3>'
-));
-register_sidebar(array(
-	'id'            => 'blog-right-sidebar',
-	'name'          => 'Blog Right Sidebar',
-	'before_widget' => '<div class="aside-widget %2$s" id="%1$s">',
-	'after_widget'  => '</div>',
-	'before_title'  => '<h3>',
-	'after_title'   => '</h3>'
-));
+register_sidebar(
+	array(
+		'id'            => 'right-sidebar',
+		'name'          => 'Right Sidebar',
+		'before_widget' => '<div class="aside-widget %2$s" id="%1$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>'
+	)
+);
+register_sidebar(
+	array(
+		'id'            => 'blog-right-sidebar',
+		'name'          => 'Blog Right Sidebar',
+		'before_widget' => '<div class="aside-widget %2$s" id="%1$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>'
+	)
+);
 
-register_nav_menus( array(
-	'primary_nav'     => __( 'Primary Navigation', 'theme' ),
-	'bottom_nav'      => __( 'Footer (main) Navigation', 'theme' ),
-	'bottom_left_nav' => __( 'Footer (left) Navigation', 'theme' )
-) );
+register_sidebar(
+	array(
+		'id'            => 'assessments-right-sidebar',
+		'name'          => 'Assessments Right Sidebar',
+		'before_widget' => '<div class="aside-widget %2$s" id="%1$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>'
+	)
+);
+
+register_sidebar(
+	array(
+		'id'            => 'assessments-top-sidebar',
+		'name'          => 'Assessments Top Sidebar',
+		'before_widget' => '<li class="%2$s" id="%1$s">',
+		'after_widget'  => '</li>',
+		'before_title'  => '<h3>',
+		'after_title'   => '</h3>'
+	)
+);
+
+register_nav_menus( 
+	array(
+		'primary_nav'     => __( 'Primary Navigation', 'theme' ),
+		'bottom_nav'      => __( 'Footer (main) Navigation', 'theme' ),
+		'bottom_left_nav' => __( 'Footer (left) Navigation', 'theme' )
+	) 
+);
 
 // =========================================================
 // ADD STYLES AND SCRIPTS
@@ -105,6 +144,16 @@ if(is_admin())
 // =========================================================
 // methods
 // =========================================================
+
+function shareAssessment()
+{
+	if(isset($_POST['share_foundation']))
+	{
+		$share_foundation = new ShareFoundation($_POST);
+		$share_foundation->share();	
+	}
+}
+
 function change_menu_classes($css_classes)
 {
 	$css_classes = str_replace("current-menu-item", "current-menu-item active", $css_classes);
@@ -231,6 +280,8 @@ function scripts_method()
 	wp_enqueue_script('fancybox-buttons', TDU.'/fancybox/source/helpers/jquery.fancybox-buttons.js', array('jquery'));
 	wp_enqueue_script('fancybox-media', TDU.'/fancybox/source/helpers/jquery.fancybox-media.js', array('jquery'));
 	wp_enqueue_script('fancybox-thumbs', TDU.'/fancybox/source/helpers/jquery.fancybox-thumbs.js', array('jquery'));
+	wp_enqueue_script('filter', TDU.'/js/filter.js', array('jquery'));
+	wp_enqueue_script('votes', TDU.'/js/votes.js', array('jquery', 'cookie'));
 	wp_enqueue_style('fancybox_style', TDU.'/fancybox/source/jquery.fancybox.css');
 	wp_enqueue_style('fancybox-buttons_style', TDU.'/fancybox/source/helpers/jquery.fancybox-buttons.css');
 	wp_enqueue_style('fancybox-thumbs_style', TDU.'/fancybox/source/helpers/jquery.fancybox-thumbs.css');

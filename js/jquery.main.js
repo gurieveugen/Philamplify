@@ -264,6 +264,16 @@ var msnry              = null;
 				alert('You did not agree with Terms of Use and Privacy Policy!');
 			}
 		});
+		// ==============================================================
+		// SUBMIT 
+		// ==============================================================
+		$('.form-share-foundation').submit(function(e){
+			if(!$(this).find('[name=i_agree]').prop("checked"))
+			{
+				e.preventDefault();	
+				alert('You did not agree with Terms of Use and Privacy Policy!');
+			}
+		});
 		// =========================================================
 		// GET ALL URLS FOR DISQUS
 		// =========================================================

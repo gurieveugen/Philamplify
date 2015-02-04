@@ -32,7 +32,6 @@ class NewsFeed extends WP_Widget {
 		$args = array(
 			'posts_per_page'   => $count,
 			'offset'           => 0,
-			'cat'         	   => $category,
 			'orderby'          => 'post_date',
 			'order'            => 'DESC',
 			'include'          => '',
@@ -47,6 +46,7 @@ class NewsFeed extends WP_Widget {
 			'suppress_filters' => true );
 
 		$posts = get_posts($args);
+		
 		if($title != '') echo $before_title.'<a href="'.$title_url.'">'.$title.'</a>'.$after_title;
 		echo '<ul class="list-news">';
 		foreach ($posts as $value) 
